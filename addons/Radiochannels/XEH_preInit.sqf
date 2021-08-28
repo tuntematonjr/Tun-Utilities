@@ -1,0 +1,36 @@
+#include "script_component.hpp"
+#include "XEH_prep.sqf"
+
+[
+    QGVAR(enable), // Unique setting name. Matches resulting variable name <STRING>
+    "CHECKBOX", // Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER" or "COLOR" <STRING>
+    "Enable radiochannels", // Display name or display name + tooltip (optional, default: same as setting name) <STRING, ARRAY>
+    "Tun Utilities - Radio channels", // Category for the settings menu + optional sub-category <STRING, ARRAY>
+    true, // Extra properties of the setting depending of _settingType.
+    1, // 1: all clients share the same setting, 2: setting can't be overwritten (optional, default: 0) <ARRAY>
+    {}, // Script to execute when setting is changed. (optional) <CODE>
+    true //Setting will be marked as needing mission restart after being changed. (optional, default false) <BOOL>
+] call CBA_Settings_fnc_init;
+
+[
+    QGVAR(commandElementID), // Unique setting name. Matches resulting variable name <STRING>
+    "EDITBOX", // Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER" or "COLOR" <STRING>
+    ["Command element ID", "If this is found in names of squads, command net is automatically made. Like if name is Alpha 10, and this has 10 in it, there will be command net named ALPHA. There can be multiple, seperate by comas"], // Display name or display name + tooltip (optional, default: same as setting name) <STRING, ARRAY>
+    "Tun Utilities - Radio channels", // Category for the settings menu + optional sub-category <STRING, ARRAY>
+    "10", // Extra properties of the setting depending of _settingType.
+    1, // 1: all clients share the same setting, 2: setting can't be overwritten (optional, default: 0) <ARRAY>
+    {}, // Script to execute when setting is changed. (optional) <CODE>
+    true //Setting will be marked as needing mission restart after being changed. (optional, default false) <BOOL>
+] call CBA_Settings_fnc_init;
+
+[
+    QGVAR(trimNames), // Unique setting name. Matches resulting variable name <STRING>
+    "EDITBOX", // Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER" or "COLOR" <STRING>
+    ["Trim auto names", "Trim net names defined in Command element ID. This will remove all these from name."], // Display name or display name + tooltip (optional, default: same as setting name) <STRING, ARRAY>
+    "Tun Utilities - Radio channels", // Category for the settings menu + optional sub-category <STRING, ARRAY>
+    "1234567890 ", // Extra properties of the setting depending of _settingType.
+    1, // 1: all clients share the same setting, 2: setting can't be overwritten (optional, default: 0) <ARRAY>
+    {}, // Script to execute when setting is changed. (optional) <CODE>
+    true //Setting will be marked as needing mission restart after being changed. (optional, default false) <BOOL>
+] call CBA_Settings_fnc_init;
+
