@@ -13,7 +13,6 @@
  */
 #include "script_component.hpp"
 
-[] call FUNC(updateData);
-
-GVAR(serverDone) = true;
-publicVariable QGVAR(serverDone);
+[{diag_tickTime > _this}, {
+	[] call FUNC(updateData);
+}, (diag_tickTime + 10)] call CBA_fnc_waitUntilAndExecute;
