@@ -92,11 +92,9 @@ private _vehiclesToCreateMarkers = [];
                 };
             };
         };   
-
-        [playableUnits, switchableUnits] select isMultiplayer 
         
         private _side = _vehicle getVariable [QGVAR(vehicleSide), sideLogic];
-        private _color = [[0,0.3,0.6,1], [0.5,0,0,1], [0,0.5,0,1], [0.4,0,0.5,1], [0.7,0.6,0,1]] select( [west, east, resistance, civilian, sideLogic] findIf {_x == _side});;
+        private _color = [[0,0.3,0.6,1], [0.5,0,0,1], [0,0.5,0,1], [0.4,0,0.5,1], [0.7,0.6,0,1]] select( [west, east, resistance, civilian, sideLogic] findIf {_x == _side});
         ///check that side is defined
         if ( _side in [west, east, independent, civilian] ) then {
             switch (_side) do {
@@ -117,7 +115,7 @@ private _vehiclesToCreateMarkers = [];
     };
 } forEach vehicles;
 
-if (isServer && {cba_missiontime < GVAR(updateInterval) }) then {
+if (isServer) then {
     publicVariable QGVAR(squadMarkersWestData);
     publicVariable QGVAR(squadMarkersEastData);
     publicVariable QGVAR(squadMarkersIndependentData);
