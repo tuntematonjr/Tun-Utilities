@@ -93,9 +93,10 @@ private _vehiclesToCreateMarkers = [];
             };
         };   
 
-
+        [playableUnits, switchableUnits] select isMultiplayer 
+        
         private _side = _vehicle getVariable [QGVAR(vehicleSide), sideLogic];
-        private _color = [_side, false] call BIS_fnc_sideColor;
+        private _color = [[0,0.3,0.6,1], [0.5,0,0,1], [0,0.5,0,1], [0.4,0,0.5,1], [0.7,0.6,0,1]] select( [west, east, resistance, civilian, sideLogic] findIf {_x == _side});;
         ///check that side is defined
         if ( _side in [west, east, independent, civilian] ) then {
             switch (_side) do {
@@ -126,4 +127,7 @@ if (isServer && {cba_missiontime < GVAR(updateInterval) }) then {
     publicVariable QGVAR(vehicleMarkersEastData);
     publicVariable QGVAR(vehicleMarkersIndependentData);
     publicVariable QGVAR(vehicleMarkersCivilianData);
+
+    GVAR(serverDone) = true;
+    publicVariable QGVAR(serverDone);
 };
