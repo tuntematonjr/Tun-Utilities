@@ -17,13 +17,13 @@
 private _radioBase = ['RadioBase', "Radio Settings", QPATHTOF(kuvat\Radiot.paa), {}, {call TFAR_fnc_haveSWRadio || call TFAR_fnc_haveLRRadio}] call ace_interact_menu_fnc_createAction;
 [player, 1, ["ACE_SelfActions"], _radioBase] call ace_interact_menu_fnc_addActionToObject;
 
-private _SWradio= ['SR_Radio', "SR Radio", QPATHTOF(SW_Radio.paa),{}, {call TFAR_fnc_haveSWRadio}] call ace_interact_menu_fnc_createAction;
+private _SWradio= ['SR_Radio', "SR Radio", QPATHTOF(kuvat\SW_Radio.paa),{}, {call TFAR_fnc_haveSWRadio}] call ace_interact_menu_fnc_createAction;
 [player, 1, ["ACE_SelfActions", "RadioBase"], _SWradio] call ace_interact_menu_fnc_addActionToObject;
 
-private _LRradio= ['LR_Radio', "LR Radio", QPATHTOF(LR_Radio.paa), {},  {true}] call ace_interact_menu_fnc_createAction;
+private _LRradio= ['LR_Radio', "LR Radio", QPATHTOF(kuvat\LR_Radio.paa), {},  {true}] call ace_interact_menu_fnc_createAction;
 [player, 1, ["ACE_SelfActions", "RadioBase"], _LRradio] call ace_interact_menu_fnc_addActionToObject;
 
-private _radioStereo = ['Stereo', "Stereo", QPATHTOF(headset.paa), {},  {true}] call ace_interact_menu_fnc_createAction;
+private _radioStereo = ['Stereo', "Stereo", QPATHTOF(kuvat\headset.paa), {},  {true}] call ace_interact_menu_fnc_createAction;
 [player, 1, ["ACE_SelfActions", "RadioBase"], _radioStereo] call ace_interact_menu_fnc_addActionToObject;
 
 private _srValues = [];
@@ -129,13 +129,13 @@ private _stereoSRtatement = {
 };
 
 //Stereo LR
-private _interactionStereoLRbase= ["stereo_lr_base", "LR Stereo", QPATHTOF(LR_Radio.paa), {},  {call TFAR_fnc_haveLRRadio}] call ace_interact_menu_fnc_createAction;
+private _interactionStereoLRbase= ["stereo_lr_base", "LR Stereo", QPATHTOF(kuvat\LR_Radio.paa), {},  {call TFAR_fnc_haveLRRadio}] call ace_interact_menu_fnc_createAction;
 [player, 1, ["ACE_SelfActions", "RadioBase", "Stereo"], _interactionStereoLRbase] call ace_interact_menu_fnc_addActionToObject;
 
-private _interactionStereoLR= ["stereo_lr_set", "Stereo", QPATHTOF(headset.paa), {},  {true}] call ace_interact_menu_fnc_createAction;
+private _interactionStereoLR= ["stereo_lr_set", "Stereo", QPATHTOF(kuvat\headset.paa), {},  {true}] call ace_interact_menu_fnc_createAction;
 [player, 1, ["ACE_SelfActions", "RadioBase", "Stereo", "stereo_lr_base"], _interactionStereoLR] call ace_interact_menu_fnc_addActionToObject;
 
-private _interactionStereoLRbadd= ["stereo_lr_set_add", "Stereo Additional", QPATHTOF(headset_additional.paa), {},  {true}] call ace_interact_menu_fnc_createAction;
+private _interactionStereoLRbadd= ["stereo_lr_set_add", "Stereo Additional", QPATHTOF(kuvat\headset_additional.paa), {},  {true}] call ace_interact_menu_fnc_createAction;
 [player, 1, ["ACE_SelfActions", "RadioBase", "Stereo", "stereo_lr_base"], _interactionStereoLRbadd] call ace_interact_menu_fnc_addActionToObject;
 
 private _forLoopThings = [[0,"Both"], [1,"Left"], [2,"Right"]];
@@ -153,13 +153,13 @@ private _forLoopThings = [[0,"Both"], [1,"Left"], [2,"Right"]];
 } forEach _forLoopThings;
 
 //Stereo SR
-private _interactionStereoSRbase= ["stereo_sr_base", "SR Stereo", QPATHTOF(SW_Radio.paa), {},  {call TFAR_fnc_haveSWRadio}] call ace_interact_menu_fnc_createAction;
+private _interactionStereoSRbase= ["stereo_sr_base", "SR Stereo", QPATHTOF(kuvat\SW_Radio.paa), {},  {call TFAR_fnc_haveSWRadio}] call ace_interact_menu_fnc_createAction;
 [player, 1, ["ACE_SelfActions", "RadioBase", "Stereo"], _interactionStereoSRbase] call ace_interact_menu_fnc_addActionToObject;
 
-private _interactionStereoSR= ["stereo_sr_set", "Stereo", QPATHTOF(headset.paa), {},  {true}] call ace_interact_menu_fnc_createAction;
+private _interactionStereoSR= ["stereo_sr_set", "Stereo", QPATHTOF(kuvat\headset.paa), {},  {true}] call ace_interact_menu_fnc_createAction;
 [player, 1, ["ACE_SelfActions", "RadioBase", "Stereo", "stereo_sr_base"], _interactionStereoSR] call ace_interact_menu_fnc_addActionToObject;
 
-private _interactionStereoSRbadd= ["stereo_sr_set_add", "Stereo Additional", QPATHTOF(headset_additional.paa), {},  {true}] call ace_interact_menu_fnc_createAction;
+private _interactionStereoSRbadd= ["stereo_sr_set_add", "Stereo Additional", QPATHTOF(kuvat\headset_additional.paa), {},  {true}] call ace_interact_menu_fnc_createAction;
 [player, 1, ["ACE_SelfActions", "RadioBase", "Stereo", "stereo_sr_base"], _interactionStereoSRbadd] call ace_interact_menu_fnc_addActionToObject;
 
 private _forLoopThings = [[0,"Both"], [1,"Left"], [2,"Right"]];
