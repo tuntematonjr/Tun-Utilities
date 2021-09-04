@@ -2,9 +2,9 @@
 
 if (GVAR(enable)) then {
     if (isServer) then {
-        [{ !isNil "TFAR_defaultFrequencies_sr_west" && !isNil "TFAR_defaultFrequencies_sr_east" && !isNil "TFAR_defaultFrequencies_sr_independent" &&  !isNil "TFAR_defaultFrequencies_lr_west" && !isNil "TFAR_defaultFrequencies_lr_east" && !isNil "TFAR_defaultFrequencies_lr_independent" }, {
+        [{ !isNil "TFAR_defaultFrequencies_sr_west" && !isNil "TFAR_defaultFrequencies_sr_east" && !isNil "TFAR_defaultFrequencies_sr_independent" &&  !isNil "TFAR_defaultFrequencies_lr_west" && !isNil "TFAR_defaultFrequencies_lr_east" && !isNil "TFAR_defaultFrequencies_lr_independent" && (diag_tickTime > _this || is3DENPreview) }, {
             [] call FUNC(serverInit);
-        }] call CBA_fnc_waitUntilAndExecute;
+        }, (diag_tickTime + 10)] call CBA_fnc_waitUntilAndExecute;
     };
 
     if (hasInterface) then {
