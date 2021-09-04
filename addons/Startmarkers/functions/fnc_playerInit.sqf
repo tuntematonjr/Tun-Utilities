@@ -20,12 +20,13 @@ GVAR(vehicleOccupationToggle) = true;
 
 [{ !isNull findDisplay 53 || !isNull findDisplay 52 || !isMultiplayer}, {
 
-	if (!isMultiplayer) then {
+	if (isMultiplayer) then {
 		GVAR(displayIDD) = [53, 52] select !isNull findDisplay 52;
 
 		[] call FUNC(createVehicleMarkers);
 		[] call FUNC(createSquadMarkers);
 	};
+
 	[{
 		GVAR(displayIDD) = 12;
 
@@ -60,7 +61,7 @@ GVAR(vehicleOccupationToggle) = true;
 			};
 		}] call CBA_fnc_waitUntilAndExecute;
 
-	}, [], 1] call CBA_fnc_waitAndExecute;
+	}, [], 2] call CBA_fnc_waitAndExecute;
 
 	private _text = "<font face='PuristaBold' size='15'>This missions uses automatic startpositions markers.</font>
 	<br/>The markers are hidden after the safe start is over.
