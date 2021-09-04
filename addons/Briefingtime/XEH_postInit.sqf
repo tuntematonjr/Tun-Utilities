@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 
-[{ !isNil QGVAR(enable)}, {
+[{ !isNil QGVAR(enable) && ((diag_tickTime > _this && isMultiplayer) || !isMultiplayer ) }, {
     if (isServer && isMultiplayer && GVAR(enable)) then {
 
 
@@ -26,7 +26,12 @@
 
             _handle = [{
                 private _time = [GVAR(value), "M:SS"] call CBA_fnc_formatElapsedTime;
-                private _text = format["Briefing time left: %1", _time];
+                private _realTime = ((systemTime select 3) * 60 * 60) + ((systemTime select 4) * 60) + (systemTime select 5) + GVAR(value); 
+                if (_realTime > 86400) then {
+                    _realTime = _realTime - 86400;
+                };
+                _realTime = [_realTime, "H:MM:SS"] call CBA_fnc_formatElapsedTime;
+                private _text = format["Briefing time left: %1 ( %2 )", _time, _realTime];
                 (uiNamespace getVariable QGVAR(timeText)) ctrlSetText _text;
 
                 if (cba_missiontime > 0) then {
@@ -44,4 +49,4 @@
 
         }] call CBA_fnc_waitUntilAndExecute;
     };
-}] call CBA_fnc_waitUntilAndExecute;
+}, (diag_tickTime + 10)] call CBA_fnc_waitUntilAndExecute;
