@@ -79,7 +79,6 @@ private _groupsIndependent = allGroups select {side _x isEqualTo independent};
 	{
 		private _group = _x;
 		private _isCommandElement = _group getVariable [QGVAR(isCommandElement), false];
-		private _skip = _group getVariable [QGVAR(skipSquad), false];
 		private _commandTrimmed = (((str _group) select [2]) splitString GVAR(trimNames)) select 0;
 		private _squadNameTrimmed = ((str _group) select [2]);
 		private _lrFrequency = nil;
@@ -87,7 +86,7 @@ private _groupsIndependent = allGroups select {side _x isEqualTo independent};
 		private _lrData = [];
 		private _srData = [];
 
-		if (!(_skip) && {!(vehicle leader _group isKindOf "UAV")}) then {
+		if (!(_group getVariable [QGVAR(skipSquad), false]) && {!(vehicle leader _group isKindOf "UAV")}) then {
 			if ({ (toLower str _group) find toLower _x  != -1} count GVAR(HQelement) > 0) then {
 				_isCommandElement = true;
 			};
