@@ -13,10 +13,11 @@
  */
 #include "script_component.hpp"
 [{cba_missiontime > 0}, {
-	GVAR(spectatorInitCountWest) = west countSide allPlayers;
-	GVAR(spectatorInitCountEast) = east countSide allPlayers;
-	GVAR(spectatorInitCountIndependent) = independent countSide allPlayers;
-	GVAR(spectatorInitCountCivilian) = civilian countSide allPlayers; 
+	private _units = ([switchableUnits, playableUnits] select isMultiplayer);
+	GVAR(spectatorInitCountWest) = west countSide _units;
+	GVAR(spectatorInitCountEast) = east countSide _units;
+	GVAR(spectatorInitCountIndependent) = independent countSide _units;
+	GVAR(spectatorInitCountCivilian) = civilian countSide _units; 
 }] call CBA_fnc_waitUntilAndExecute;
 
 private _id = ["ace_spectator_displayLoaded", {
