@@ -22,10 +22,11 @@ GVAR(vehicleOccupationToggle) = true;
 
 	if (isMultiplayer) then {
 		GVAR(displayIDD) = [53, 52] select !isNull findDisplay 52;
-
 		[] call FUNC(createVehicleMarkers);
-		[] call FUNC(createSquadMarkers);
 	};
+
+	
+	[] call FUNC(createSquadMarkers);
 
 	[{
 		GVAR(displayIDD) = 12;
