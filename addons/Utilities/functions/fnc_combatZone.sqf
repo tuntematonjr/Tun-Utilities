@@ -3,22 +3,43 @@
  * [Description]
  *
  * Arguments:
- * 0: Side to use this area <SIDE>
- * 1: Prefix for markers <STRING>
- * 2: How many markers are there <NUMBER>
+ * None
  *
  * Return Value:
  * none
  *
  * Example:
- * [west, "Raja", 69] call tun_utilities_fnc_combatZone
+ * [] call tun_utilities_fnc_combatZone
  */
 #include "script_component.hpp"
-params ["_side", "_markerPrefix", "_markerCount"];
+private _module = param [0,objNull,[objNull]];
+private _markerPreFix = _module getVariable ["markerPreFix", "Missing classname"];
+private _markerCount = _module getVariable ["markerCount", "Missing classname"];
+private _sideWest = _module getVariable ["sideWest", false];
+private _sideEast = _module getVariable ["sideEast", false];
+private _sideResistance = _module getVariable ["sideResistance", false];
+private _sideCiv = _module getVariable ["sideCiv", false];
+private _sides = [];
+
+if (_sideWest) then {
+    _sides pushBack west;
+};
+
+if (_sideEast) then {
+    _sides pushBack east;
+};
+
+if (_sideResistance) then {
+    _sides pushBack resistance;
+};
+
+if (_sideCiv) then {
+    _sides pushBack civilian;
+};
 
 [{ !isNull player }, {
-	_this params ["_side", "_markerPrefix", "_markerCount"];
-    if (playerside isEqualTo _side && isNil QGVAR(borderPolygon)) then {
+	_this params ["_sides", "_markerPrefix", "_markerCount"];
+    if (playerside in _sides && isNil QGVAR(borderPolygon)) then {
         GVAR(borderPolygon) = [];
 
         for "_i" from 1 to _markerCount do {
@@ -48,6 +69,4 @@ params ["_side", "_markerPrefix", "_markerCount"];
             }, 10, []] call CBA_fnc_addPerFrameHandler;
         }, _displayIDD] call CBA_fnc_waitUntilAndExecute;
     };
-}, [_side, _markerPrefix, _markerCount]] call CBA_fnc_waitUntilAndExecute;
-
-
+}, [_sides, _markerPrefix, _markerCount]] call CBA_fnc_waitUntilAndExecute;
