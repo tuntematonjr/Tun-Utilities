@@ -24,6 +24,7 @@ if (!isNull (uiNamespace getVariable "Tun_Briefingtime_notificationBox")) exitWi
 		[_text] call FUNC(notification);
 	}] call CBA_fnc_waitUntilAndExecute;
 };
+
 private _display = [53, 52] select !isNull findDisplay 52;
 private _control = findDisplay _display ctrlCreate ["Tun_Briefingtime_notificationBox", 320006];
 uiNamespace setVariable ["Tun_Briefingtime_notificationBox", _control ];

@@ -82,6 +82,5 @@ if (playerSide isNotEqualTo civilian) then {
 			str _text
 		]
 	];
-
 	GVAR(vehicleMarkers) pushBack _IDC;
 } forEach _markerData;
