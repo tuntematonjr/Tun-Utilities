@@ -12,13 +12,6 @@
  * [] call tun_utilities_fnc_initSpectatorStats
  */
 #include "script_component.hpp"
-[{cba_missiontime > 0}, {
-	private _units = ([switchableUnits, playableUnits] select isMultiplayer);
-	GVAR(spectatorInitCountWest) = west countSide _units;
-	GVAR(spectatorInitCountEast) = east countSide _units;
-	GVAR(spectatorInitCountIndependent) = independent countSide _units;
-	GVAR(spectatorInitCountCivilian) = civilian countSide _units; 
-}] call CBA_fnc_waitUntilAndExecute;
 
 private _id = ["ace_spectator_displayLoaded", {
 	[{!isNull findDisplay 60000}, {
