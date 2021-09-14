@@ -23,6 +23,10 @@ if (!(call TFAR_fnc_haveLRRadio)) exitWith { [parseText "You don't have LR radio
 
 _channel = _channel - 1;
 
+if !(IS_STRING(_frequency)) then {
+	_frequency = str _frequency;
+};
+
 if (_isAdditional) then {
 
 	if (_channel > 6)then {

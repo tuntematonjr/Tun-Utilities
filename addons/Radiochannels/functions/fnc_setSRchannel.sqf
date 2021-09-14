@@ -23,6 +23,10 @@ if (!(call TFAR_fnc_haveSWRadio)) exitWith { [parseText "You don't have SR radio
 
 _channel = _channel - 1;
 
+if !(IS_STRING(_frequency)) then {
+	_frequency = str _frequency;
+};
+
 if (_isAdditional) then {
 	if (toLower call TFAR_fnc_activeSwRadio select [0,11] in ["tf_rf7800st","tf_anprc154","tf_pnr1000a"]) exitWith { [parseText "Your SR radio does not support additional", 7] call TFAR_fnc_showHint;};
 	if (_channel > 6) then {
