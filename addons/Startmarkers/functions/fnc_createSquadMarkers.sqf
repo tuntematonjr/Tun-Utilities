@@ -13,9 +13,9 @@
  */
 #include "script_component.hpp"
 
-[] call FUNC(deleteSquadMarkers);
-if !(GVAR(squadTogle)) exitWith { };
 
+if !(GVAR(squadTogle)) exitWith { [true] call FUNC(hideSquadMarkers); };
+[true] call FUNC(hideSquadMarkers);
 private _markerData = switch (playerSide) do {
 	case west: { 
 		GVAR(squadMarkersWestData)
@@ -49,15 +49,24 @@ if (playerSide isNotEqualTo civilian) then {
 {
 	_x params ["_icon", "_pos", "_color", "_group"];
 	private _text = groupId _group;
+	private _nameOld = _group getVariable QGVAR(markerName);
+	private _name = format["Tun_startmarkers_%1", _group];
+	if (!isNil "_nameOld") then {
+		deleteMarkerLocal _nameOld;
+		REM(GVAR(squadMarkers),_nameOld);
+	};
+	
 	if (GVAR(showAI) && { units _group findIf {_x in playableUnits + switchableUnits} isEqualTo -1 }) then {
 		_text = format["%1 (AI)", _text];
 	};
-	private _marker = createMarkerLocal [(format["Tun_startmarkers_%1", _group]), _pos];
+	private _marker = createMarkerLocal [_name, _pos];
 	_marker setMarkerShapeLocal "ICON";
 	_marker setMarkerTypeLocal _icon;
 	_marker setMarkerSizeLocal [0.7,0.7];
 	_marker setMarkerColorLocal _color;
 	_marker setMarkerTextLocal _text;
 
+	_group setVariable [QGVAR(markerName), _name, true];
 	GVAR(squadMarkers) pushBack _marker;
 } forEach _markerData;
+
