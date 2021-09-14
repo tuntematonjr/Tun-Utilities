@@ -23,11 +23,6 @@ GVAR(lrINDEPENDENT) = [];
 ISNILS(GVAR(commandElementID),"10");
 ISNILS(GVAR(trimNames),"1234567890 ");
 
-ISNILS(GVAR(additional_LR_west), []);
-ISNILS(GVAR(additional_LR_east), []);
-ISNILS(GVAR(additional_LR_independent), []);
-
-
 private _untrimmed = GVAR(CommandElementID) splitString ",";
 GVAR(HQelement) = [];
 {
@@ -79,15 +74,15 @@ private _groupsIndependent = allGroups select {side _x isEqualTo independent};
 	{
 		private _group = _x;
 		private _isCommandElement = _group getVariable [QGVAR(isCommandElement), false];
-		private _commandTrimmed = (((str _group) select [2]) splitString GVAR(trimNames)) select 0;
-		private _squadNameTrimmed = ((str _group) select [2]);
+		private _commandTrimmed = ((groupID _group) splitString GVAR(trimNames)) select 0;
+		private _squadNameTrimmed = (groupID _group);
 		private _lrFrequency = nil;
 		private _srFrequency = nil;
 		private _lrData = [];
 		private _srData = [];
 
 		if (!(_group getVariable [QGVAR(skipSquad), false]) && {!(vehicle leader _group isKindOf "UAV")}) then {
-			if ({ (toLower str _group) find toLower _x  != -1} count GVAR(HQelement) > 0) then {
+			if ({ (toLower str _group) find toLower _x  isNotEqualTo -1} count GVAR(HQelement) > 0) then {
 				_isCommandElement = true;
 			};
 
@@ -109,7 +104,7 @@ private _groupsIndependent = allGroups select {side _x isEqualTo independent};
 				_valuesLR_final pushBack _lrData;
 			} else {
 				private _findLR = _valuesLR_final findIf {(_x select 2) isEqualTo _commandTrimmed};
-				if (_findLR != -1) then {
+				if (_findLR isNotEqualTo -1) then {
 					_lrData = (_valuesLR_final select _findLR);
 				};
 			};
@@ -168,20 +163,20 @@ private _Tun_FNC_create_LR_channel = {
 	_valuesLR_final
 };
 
-if (count GVAR(additional_LR_west) != 0) then {
-	private _count = count GVAR(lrWEST);
+if ((count GVAR(additional_LR_west)) isNotEqualTo 0) then {
+	private _count = (count GVAR(lrWEST)) + 1;
 	private _valuesLR_final = [GVAR(additional_LR_west), _count] call _Tun_FNC_create_LR_channel;
 	GVAR(lrWEST) append _valuesLR_final;
 };
 
-if (count GVAR(additional_LR_east) != 0) then {
-	private _count = count GVAR(lrEAST);
+if ((count GVAR(additional_LR_east)) isNotEqualTo 0) then {
+	private _count = (count GVAR(lrEAST)) + 1;
 	private _valuesLR_final = [GVAR(additional_LR_east), _count] call _Tun_FNC_create_LR_channel;
 	GVAR(lrEAST) append _valuesLR_final;
 };
 
-if (count GVAR(additional_LR_independent) != 0) then {
-	private _count = count GVAR(lrINDEPENDENT);
+if ((count GVAR(additional_LR_independent)) isNotEqualTo 0) then {
+	private _count = (count GVAR(lrINDEPENDENT)) + 1;
 	private _valuesLR_final = [GVAR(additional_LR_independent), _count] call _Tun_FNC_create_LR_channel;
 	GVAR(lrINDEPENDENT) append _valuesLR_final;
 };
