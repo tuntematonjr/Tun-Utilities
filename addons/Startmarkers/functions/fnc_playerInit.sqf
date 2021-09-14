@@ -37,8 +37,10 @@ GVAR(vehicleOccupationToggle) = true;
 
 		[{!isNil QGVAR(enableBFT) && !isNil QGVAR(bftItems)}, {
 			if (GVAR(enableBFT)) then {
-				_handle = [{			
-					if ((GVAR(bftItems) findIf {_x in (assignedItems player + items player)} ) isNotEqualTo -1 || GVAR(bftAlwaysOn) ) then {
+				_handle = [{	
+					private _items = (assignedItems player + items player);
+					MAP(_items, toLower _x);
+					if ((GVAR(bftItems) findIf {_x in _items} ) isNotEqualTo -1 || GVAR(bftAlwaysOn) ) then {
 						[] call FUNC(updateData);
 						[] call FUNC(createSquadMarkers);
 						[] call FUNC(createVehicleMarkers);
