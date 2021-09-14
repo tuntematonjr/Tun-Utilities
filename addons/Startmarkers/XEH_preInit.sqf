@@ -97,6 +97,6 @@
     ["Tun Utilities - Startmakers & BFT","BFT"], // Category for the settings menu + optional sub-category <STRING, ARRAY>
     '"ACE_microDAGR", "ItemGPS"', // Extra properties of the setting depending of _settingType.
     1, // 1: all clients share the same setting, 2: setting can't be overwritten (optional, default: 0) <ARRAY>
-    { GVAR(bftItems) = _this splitString """, """ }, // Script to execute when setting is changed. (optional) <CODE>
+    { GVAR(bftItems) = _this splitString """, """; MAP(GVAR(bftItems), toLower _x);}, // Script to execute when setting is changed. (optional) <CODE>
     true //Setting will be marked as needing mission restart after being changed. (optional, default false) <BOOL>
 ] call CBA_Settings_fnc_init;
