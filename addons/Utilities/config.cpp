@@ -27,11 +27,20 @@ class Extended_PreInit_EventHandlers {
 
 #include "spectatorStats.hpp"
 
+class CfgFactionClasses
+{
+    class NO_CATEGORY;
+    class GVAR(category) : NO_CATEGORY
+    {
+        displayName = "Tun Utilities";
+    };
+};
+
 class CfgVehicles {
     class ACE_Module;
     class GVAR(combatZoneModule): ACE_Module {
         author = "Tuntematon";
-        category = "Tun Utilities";
+        category = QGVAR(category);
         displayName = "Tun Combat Zone";
         function = QFUNC(combatZone);
         scope = 2;// Editor visibility; 2 will show it in the menu, 1 will hide it.
@@ -42,42 +51,63 @@ class CfgVehicles {
         class Arguments {
             class markerPreFix {
                 displayName = "Marker prefix";
-                //description = $STR_tun_firesupport_module_gun_class_description;
+                //description = "";
                 typeName = "STRING";
-                defaultValue = "B_Mortar_01_F";
+                defaultValue = "";
             };
             
             class markerCount {
                 displayName = "Marker Count";
-                //description = $STR_tun_firesupport_module_gun_countDown_description;
+                //description = "";
                 typeName = "NUMBER";
-                defaultValue = 60;
+                defaultValue = 0;
             };
             
+            class updateInterval {
+                displayName = "Update interval";
+                //description = "";
+                typeName = "NUMBER";
+                defaultValue = 10;
+            };
+
+            class hintText {
+                displayName = "Notification text";
+                //description = "";
+                typeName = "STRING";
+                defaultValue = "Warning!<br />You are leaving the combatzone. TURN BACK!";
+            };
+
+            class sound {
+                displayName = "Sound";
+                //description = "";
+                typeName = "STRING";
+                defaultValue = "beep_strobe";
+            };
+
             class sideWest {
                 displayName = "Enable West";
-                //description = $STR_tun_firesupport_module_gun_markerToggle_description;
+                //description = "";
                 typeName = "BOOL";
                 defaultValue = false;
             };
             
             class sideEast {
                 displayName = "Enable East";
-                //description = $STR_tun_firesupport_module_gun_markerToggle_description;
+                //description = "";
                 typeName = "BOOL";
                 defaultValue = false;
             };
             
             class sideResistance {
                 displayName = "Enable Resistance";
-                //description = $STR_tun_firesupport_module_gun_markerToggle_description;
+                //description = "";
                 typeName = "BOOL";
                 defaultValue = false;
             };
             
             class sideCiv {
                 displayName = "Enable Civilian";
-                //description = $STR_tun_firesupport_module_gun_markerToggle_description;
+                //description = "";
                 typeName = "BOOL";
                 defaultValue = false;
             };
