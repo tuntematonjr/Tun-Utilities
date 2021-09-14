@@ -29,10 +29,17 @@ private _colorINDEPENDENT = "ColorGUER";
 private _colorCIVILIAN = "ColorCIV";
 
 { 
-    private _group = _x;
+    private _group = _x; 
     private _leader = leader _group;
+    private _hasGPS = true;
 
-    if (vehicle _leader == _leader && _group getVariable [QGVAR(enableMarker), true] ) then {
+    if (cba_missiontime > 0) then {
+        private _items = assignedItems _leader + items _leader;
+        MAP(_items, toLower _x);
+        _hasGPS = ( tun_startmarkers_bftItems findIf {_x in _items} ) isNotEqualTo -1;
+    };
+
+    if (vehicle _leader == _leader && _group getVariable [QGVAR(enableMarker), true] && _hasGPS) then {
         private _side = side _group;
         private _icon = [_group] call FUNC(squadIcon);
         private _pos = getPosWorld _leader;
