@@ -9,11 +9,13 @@
  * None
  *
  * Example:
- * [] call tun_startmarkers_fnc_deleteSquadMarkers
+ * [] call tun_startmarkers_fnc_hideSquadMarkers
  */
 #include "script_component.hpp"
+params ["_hide"];
 
+_hide = [1,0] select _hide;
 {
-	deleteMarkerLocal _x;
+	_x setMarkerAlphaLocal _hide;
 } forEach GVAR(squadMarkers);
 GVAR(squadMarkers) = [];

@@ -6,7 +6,7 @@
 PREP(squadIcon);
 PREP(createVehicleMarkers);
 PREP(deleteVehicleMarkers);
-PREP(deleteSquadMarkers);
+PREP(hideSquadMarkers);
 PREP(createSquadMarkers);
 PREP(updateData);
 PREP(serverInit);
