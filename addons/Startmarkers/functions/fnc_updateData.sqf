@@ -27,35 +27,47 @@ private _colorWEST = "ColorWEST";
 private _colorEAST = "ColorEAST";
 private _colorINDEPENDENT = "ColorGUER";
 private _colorCIVILIAN = "ColorCIV";
+private _allowWest = GVAR(allowBftWest);
+private _allowEast = GVAR(allowBftEast);
+private _allowInd = GVAR(allowBftInd);
+
+if (!isServer) then {
+    _allowWest = (GVAR(allowBftWest) && { [west, playerSide] call BIS_fnc_sideIsFriendly });
+    _allowEast = (GVAR(allowBftEast) && { [east, playerSide] call BIS_fnc_sideIsFriendly });
+    _allowInd = (GVAR(allowBftInd) && { [independent, playerSide] call BIS_fnc_sideIsFriendly });
+};
 
 { 
-    private _group = _x; 
-    private _leader = leader _group;
-    private _hasGPS = true;
+    private _group = _x;
+    private _side = side _group;
+    if ((_side isEqualTo west && _allowWest) || {(_side isEqualTo east && _allowEast)} || {(_side isEqualTo independent && _allowInd)}) then {
+        private _leader = leader _group;
+        private _hasGPS = true;
 
-    if (cba_missiontime > 0) then {
-        private _items = assignedItems _leader + items _leader;
-        MAP(_items, toLower _x);
-        _hasGPS = ( tun_startmarkers_bftItems findIf {_x in _items} ) isNotEqualTo -1;
-    };
+        if (cba_missiontime > 0) then {
+            private _items = assignedItems _leader + items _leader;
+            MAP(_items, toLower _x);
+            _hasGPS = ( GVAR(bftItems) findIf {_x in _items} ) isNotEqualTo -1;
+        };
 
-    if (vehicle _leader == _leader && _group getVariable [QGVAR(enableMarker), true] && _hasGPS) then {
-        private _side = side _group;
-        private _icon = [_group] call FUNC(squadIcon);
-        private _pos = getPosWorld _leader;
+        if (vehicle _leader == _leader && {_group getVariable [QGVAR(enableMarker), true]} && {_hasGPS || GVAR(bftAlwaysOn)}) then {
+            
+            private _icon = [_group] call FUNC(squadIcon);
+            private _pos = getPosWorld _leader;
 
-        switch (_side) do {
-            case west: { 
-                GVAR(squadMarkersWestData) pushBack [_icon, _pos, _colorWEST, _group];
-            };
-            case east: { 
-                GVAR(squadMarkersEastData) pushBack [_icon, _pos, _colorEAST, _group];
-            };
-            case independent: { 
-                GVAR(squadMarkersIndependentData) pushBack [_icon, _pos, _colorINDEPENDENT, _group];
-            };
-            default { 
-                GVAR(squadMarkersCivilianData) pushBack [_icon, _pos, _colorCIVILIAN, _group];
+            switch (_side) do {
+                case west: { 
+                    GVAR(squadMarkersWestData) pushBack [_icon, _pos, _colorWEST, _group];
+                };
+                case east: { 
+                    GVAR(squadMarkersEastData) pushBack [_icon, _pos, _colorEAST, _group];
+                };
+                case independent: { 
+                    GVAR(squadMarkersIndependentData) pushBack [_icon, _pos, _colorINDEPENDENT, _group];
+                };
+                default { 
+                    GVAR(squadMarkersCivilianData) pushBack [_icon, _pos, _colorCIVILIAN, _group];
+                };
             };
         };
     };
