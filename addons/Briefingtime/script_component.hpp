@@ -1,4 +1,4 @@
-#define COMPONENT Briefingtime
+#define COMPONENT briefingtime
 #define PREFIX Tun
 
 #define MAJOR 1
