@@ -37,8 +37,8 @@ if (_isAdditional) then {
 		[true] call FUNC(clearAdditional);
 	};
 
-	[(call TFAR_fnc_activeSwRadio), _channel + 1, _frequency] call TFAR_fnc_SetChannelFrequency;
-	[(call TFAR_fnc_activeSwRadio), _channel] call TFAR_fnc_setAdditionalSwChannel;
+	[(call TFAR_fnc_activeSwRadio), 8, _frequency] call TFAR_fnc_SetChannelFrequency;
+	[(call TFAR_fnc_activeSwRadio), 7] call TFAR_fnc_setAdditionalSwChannel;
 } else {
 	[(call TFAR_fnc_activeSwRadio), _channel + 1, _frequency] call TFAR_fnc_SetChannelFrequency;
 	[(call TFAR_fnc_activeSwRadio), _channel] call TFAR_fnc_setSwChannel;
