@@ -18,13 +18,12 @@ GVAR(vehicleTogle) = true;
 GVAR(vehicleTextToggle) = true;
 GVAR(vehicleOccupationToggle) = true;
 
-[{ !isNull findDisplay 53 || !isNull findDisplay 52 || !isMultiplayer}, {
+[{ (!isNull findDisplay 53 || {!isNull findDisplay 52} || {!isMultiplayer} || {cba_missiontime > 0})}, {
 
 	if (isMultiplayer) then {
 		GVAR(displayIDD) = [53, 52] select !isNull findDisplay 52;
 		[] call FUNC(createVehicleMarkers);
 	};
-
 	
 	[] call FUNC(createSquadMarkers);
 
