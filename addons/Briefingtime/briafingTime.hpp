@@ -5,11 +5,11 @@ class  RscText;
 class  RscXSliderH;
 
 #include "\a3\3DEN\UI\macros.inc"
-//#include "\a3\3DEN\UI\macroexecs.inc"
-#include "\a3\ui_f\hpp\definedikcodes.inc"
+#include "\a3\ui_f\hpp\definecommon.inc"
+//#include "\a3\ui_f\hpp\definedikcodes.inc"
 #include "\a3\ui_f\hpp\definecommoncolors.inc"
 #include "\a3\ui_f\hpp\definecommongrids.inc"
-#include "\a3\ui_f\hpp\defineresincl.inc"
+//#include "\a3\ui_f\hpp\defineresincl.inc"
 
 //#include "script_component.hpp"
 
@@ -34,7 +34,6 @@ class Tun_Briefingtime_notificationBox : RscText
     h = safeZoneH * 0.125;
     style = 2+16;
 	sizeEx = GUI_TEXT_SIZE_LARGE;
-	colorText[] = {0.6, 0, 0, 1};
 };
 
 class Tun_Briefingtime_Time

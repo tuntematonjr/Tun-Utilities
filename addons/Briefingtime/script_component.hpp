@@ -3,8 +3,8 @@
 
 #define MAJOR 1
 #define MINOR 0
-#define PATCHLVL 2
-#define BUILD 14092021
+#define PATCHLVL 4
+#define BUILD 28112021
 
 #define VERSION MAJOR.MINOR.PATCHLVL.BUILD
 #define VERSION_AR MAJOR,MINOR,PATCHLVL,BUILD
@@ -26,3 +26,5 @@
 
 // Default versioning level
 #define DEFAULT_VERSIONING_LEVEL 2
+
+#define TUN_DEBUGLOG(TEXT) 	diag_log format["%1_%2 Debug: %3",PREFIX,COMPONENT,TEXT];

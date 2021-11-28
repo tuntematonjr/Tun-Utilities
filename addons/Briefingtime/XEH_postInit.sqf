@@ -3,7 +3,6 @@
 [{ !isNil QGVAR(enable) && ((diag_tickTime > _this && isMultiplayer) || !isMultiplayer ) }, {
     if (isServer && isMultiplayer && GVAR(enable)) then {
 
-
         _handle = [{
             if (GVAR(value) > 0) then {
                 DEC(GVAR(value));
@@ -19,8 +18,7 @@
         GVAR(Notifications) = [];
         [{ !isNull findDisplay 53 || !isNull findDisplay 52 }, {
 
-            private _display = [53, 52] select !isNull findDisplay 52;
-
+            private _display = [52, 53] select isDedicated;
             private _control = findDisplay _display ctrlCreate [QGVAR(timeText), 320001];
             uiNamespace setVariable [QGVAR(timeText), _control ];
 
@@ -42,9 +40,8 @@
 
             player createDiarySubject [QGVAR(briefingTimeDiary),"Briefing Time"];
             player createDiaryRecord [QGVAR(briefingTimeDiary), ["Briefing Time",
-            "Do not abuse!
-            <br/><br/><font size=20><execute expression=' [] call "+QFUNC(openTimeDialog)+"'> Request more time / Modify briefing time</execute>
-            </font>"
+            "Request more briefing time. Do not spam!
+            <br/><br/><font size=20><execute expression=' [] call "+QFUNC(openTimeDialog)+"'> Request more time / Modify briefing time</execute></font>"
             ]];
 
         }] call CBA_fnc_waitUntilAndExecute;
