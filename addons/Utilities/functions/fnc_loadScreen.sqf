@@ -14,9 +14,10 @@
 #include "script_component.hpp"
 if (!isMultiplayer) exitWith { }; // skip if singleplayer
 
-[{!isNull player && !isNull findDisplay 12}, {
+[{!isNull player && !isNull findDisplay 12 && !isNil QGVAR(runLoadScreen)}, {
+    if (GVAR(runLoadScreen)) exitWith { };
     if !(playerside in [west, east, resistance, civilian]) exitWith { };
-
+    LOG("Start load screen");
 	private _time = GVAR(loadScreenTime);
     tun_loadscreen_done = false;
   
@@ -49,6 +50,7 @@ if (!isMultiplayer) exitWith { }; // skip if singleplayer
 		if (GVAR(rulesHintEnable)) then {
 		GVAR(rulesTitleText) hintC GVAR(rulesMessageText);
 		};
+        LOG("End load screen");
     }, _camera] call CBA_fnc_waitUntilAndExecute;
 
 }] call CBA_fnc_waitUntilAndExecute;

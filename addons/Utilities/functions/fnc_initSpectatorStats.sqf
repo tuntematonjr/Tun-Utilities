@@ -15,7 +15,7 @@
 
 private _id = ["ace_spectator_displayLoaded", {
 	[{!isNull findDisplay 60000}, {
-
+		LOG("init spectator stats");
 		private _control = findDisplay 60000 ctrlCreate ["tun_utilities_spectatorStatsWest", 1];
 		uiNamespace setVariable ["tun_utilities_spectatorStatsWest", _control ];
 
