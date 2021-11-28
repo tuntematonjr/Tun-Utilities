@@ -29,6 +29,7 @@ GVAR(vehicleOccupationToggle) = true;
 
 	[{
 		GVAR(displayIDD) = 12;
+		GVAR(vehicleMarkers) = [];
 
 		[{!isNull findDisplay GVAR(displayIDD)}, {
 			[] call FUNC(createVehicleMarkers);
@@ -63,7 +64,7 @@ GVAR(vehicleOccupationToggle) = true;
 			};
 		}] call CBA_fnc_waitUntilAndExecute;
 
-	}, [], 2] call CBA_fnc_waitAndExecute;
+	}, [], 5] call CBA_fnc_waitAndExecute;
 
 	private _text = "<font face='PuristaBold' size='15'>This missions uses automatic startpositions markers.</font>
 	<br/>The markers are hidden after the safe start is over.
