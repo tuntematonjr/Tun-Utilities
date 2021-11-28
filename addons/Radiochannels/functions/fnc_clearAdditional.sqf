@@ -15,9 +15,9 @@
 #include "script_component.hpp"
 params ["_isSR"];
 
-
 if (cba_missionTime isEqualTo 0) exitWith { false };
 
+LOG("clear additional");
 if (_isSR) then {
 	if (!(call TFAR_fnc_haveSWRadio)) exitWith { false };
 	if (((call TFAR_fnc_ActiveSwRadio) call TFAR_fnc_getAdditionalSwChannel) isNotEqualTo -1) then {

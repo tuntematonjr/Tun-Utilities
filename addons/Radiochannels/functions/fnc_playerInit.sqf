@@ -16,6 +16,7 @@
 
 if (playerSide isEqualTo civilian) exitWith { };
 
+LOG("Player init start");
 private _srValues = [];
 private _lrValues = [];
 private _text = "<font face='PuristaBold' size='20'>Long Range Net(s)</font><br/><br/>";
@@ -37,7 +38,8 @@ switch (playerSide) do {
 
 { 
 	_x params ["_frequency", "_channel", "_name"];
-	_text = format ["%1[ <execute expression='[%2,%3,false] call %6;'>Set LR</execute> - <execute expression='[%2,%3,true] call %6;'>Set LR Additional</execute> - <execute expression='[%2,%3,true] call %5;'>Set SR Additional</execute> ] Channel: %2 (%3) - %4<br/>", _text, _channel, _frequency, toUpper _name, QFUNC(setSRchannel), QFUNC(setLRchannel)];
+	private _index = _forEachIndex;
+	_text = format ["%1[ <execute expression='[%7,false] call %6;'>Set LR</execute> - <execute expression='[%7,true] call %6;'>Set LR Additional</execute> - <execute expression='[%7,2,true] call %5;'>Set SR Additional</execute> ] Channel: %2 (%3) - %4<br/>", _text, _channel, _frequency, toUpper _name, QFUNC(setSRchannel), QFUNC(setLRchannel), _index];
 } forEach _lrValues;
 
 _text = format ["%1<br/><br/><font face='PuristaBold' size='20'>Squad Net(s)</font>", _text];
@@ -46,6 +48,7 @@ private _commandTrimmedLast = "";
 { 
 	_x params ["_frequency", "_channel", "_name", "_commandTrimmed"];
 	private _divader = "<br/>";
+	private _index = _forEachIndex;
 	if (_commandTrimmed isNotEqualTo _commandTrimmedLast) then {
 		_divader = "<br/><br/>";
 	};
@@ -54,7 +57,7 @@ private _commandTrimmedLast = "";
 	if (parseNumber _frequency < 100) then {
 		_space = "   ";
 	};
-	_text = format ["%1%5[ <execute expression='[%2,%3,false] call %6;'>Set</execute> - <execute expression='[%2,%3,true] call %6;'>Set Additional</execute> ] Channel: %2 (%3)%7- %4", _text, _channel, _frequency, _name, _divader, QFUNC(setSRchannel), _space];
+	_text = format ["%1%5[ <execute expression='[%8,1] call %6;'>Set</execute> - <execute expression='[%8,2] call %6;'>Set Additional</execute> ] Channel: %2 (%3)%7- %4", _text, _channel, _frequency, _name, _divader, QFUNC(setSRchannel), _space, _index];
 
 	_commandTrimmedLast = _commandTrimmed;
 } forEach _srValues;
@@ -68,27 +71,31 @@ player createDiarySubject ["Command & Signal","Command & Signal", QPATHTOF(kuvat
 player createDiaryRecord ["Command & Signal",["Command & Signal",_text]];
 
 [{ cba_missionTime > 1 && !isNull player }, {
+	LOG("Player start auto set radios");
     [{
         private _values = (group player) getVariable [QGVAR(radioValues), [[],[],[]]];
 
 		private _lrStatement = {
-            private _lrValues = _this select 1;
-            if ((count _lrValues > 0)) then {
-                [_lrValues select 1, _lrValues select 0, false] call FUNC(setLRchannel);
+			LOG("Player LR auto set");
+            if ((count (_this select 1) > 0)) then {
+				LOG("Auto set LR");
+                [ nil, false, true] call FUNC(setLRchannel);
             };    
         };
 
 		private _timeoutCodeLR = {
-            private _lrValues = _this select 1;
-            if ((count _lrValues > 0) && leader group player isEqualTo player) then {
-                [7, _lrValues select 0, true] call FUNC(setSRchannel);
+			LOG("Player LR auto set to SR");
+            if ((count (_this select 1) > 0) && leader group player isEqualTo player) then {
+				LOG("Auto set LR to SR");
+                [nil, 2, true, true] call FUNC(setSRchannel);
             };    
         };
 
 		private _srStatement = {
-            private _srValues = _this  select 0;
-            if ((count _srValues > 0)) then {
-                [_srValues select 1, _srValues select 0, false] call FUNC(setSRchannel);
+			LOG("Player SR auto set");
+            if ((count (_this  select 0) > 0)) then {
+				LOG("Auto set SR");
+                [nil, 1, false, true] call FUNC(setSRchannel);
             }; 
         };
 

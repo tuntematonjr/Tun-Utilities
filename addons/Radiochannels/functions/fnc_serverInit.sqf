@@ -13,6 +13,8 @@
  */
 #include "script_component.hpp"
 
+LOG("Server init start");
+
 GVAR(srWEST) = [];
 GVAR(srEAST) = [];
 GVAR(srINDEPENDENT) = [];

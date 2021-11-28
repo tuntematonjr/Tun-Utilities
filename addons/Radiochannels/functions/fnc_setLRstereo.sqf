@@ -16,6 +16,7 @@
 #include "script_component.hpp"
 params ["_ear", "_isAdditional"];
 
+LOG("set LR stereo");
 if (cba_missionTime isEqualTo 0) exitWith { false };
 if (!(call TFAR_fnc_haveLRRadio)) exitWith { [parseText "You don't have LR radio", 5] call TFAR_fnc_showHint; false };
 

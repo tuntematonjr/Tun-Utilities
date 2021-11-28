@@ -13,6 +13,7 @@
  */
 #include "script_component.hpp"
 
+LOG("create ace actions");
 //RADIO POHJAT
 private _radioBase = ['RadioBase', "Radio Settings", QPATHTOF(kuvat\Radiot.paa), {}, {call TFAR_fnc_haveSWRadio || call TFAR_fnc_haveLRRadio}] call ace_interact_menu_fnc_createAction;
 [player, 1, ["ACE_SelfActions"], _radioBase] call ace_interact_menu_fnc_addActionToObject;
@@ -45,55 +46,56 @@ switch (playerSide) do {
 
 private _lrStatement = {
 	params ["_target", "_player", "_params"];
+	LOG("set LR ace");
 	_params call FUNC(setLRchannel);
 };
 
 private _swStatement = {
 	params ["_target", "_player", "_params"];
+	LOG("set SR ace");
 	_params call FUNC(setSRchannel);
 };
 
 //LR things
 {
 	_x params ["_frequency", "_channel", "_name"];
+	private _index = _forEachIndex;
 
 	private _text = format["%1 [CH:%2 (%3)]",toUpper _name, _channel, _frequency];
 	private _interactionBase = [_name, _text, "", {},  {true}] call ace_interact_menu_fnc_createAction;
 	[player, 1, ["ACE_SelfActions", "RadioBase", "LR_Radio"], _interactionBase] call ace_interact_menu_fnc_addActionToObject;
 
-	private _interactionSetLR = ["set_lr", "Set LR", "", _lrStatement,  {true}, nil, [_channel, _frequency,  false]] call ace_interact_menu_fnc_createAction;
+	private _interactionSetLR = ["set_lr", "Set LR", "", _lrStatement,  {true}, nil, [_index, false]] call ace_interact_menu_fnc_createAction;
 	[player, 1, ["ACE_SelfActions", "RadioBase", "LR_Radio", _name], _interactionSetLR] call ace_interact_menu_fnc_addActionToObject;
 
-	private _interactionSetLRAD = ["set_lr_add", "Set LR Additional", "", _lrStatement,  {true}, nil, [_channel, _frequency,  true]] call ace_interact_menu_fnc_createAction;
+	private _interactionSetLRAD = ["set_lr_add", "Set LR Additional", "", _lrStatement,  {true}, nil, [_index, true]] call ace_interact_menu_fnc_createAction;
 	[player, 1, ["ACE_SelfActions", "RadioBase", "LR_Radio", _name], _interactionSetLRAD] call ace_interact_menu_fnc_addActionToObject;
 
-	private _interactionSetSRAD = ["set_lr_sr_add", "Set SR Additional", "", _swStatement,  {true}, nil, [_channel, _frequency,  true]] call ace_interact_menu_fnc_createAction;
+	private _interactionSetSRAD = ["set_lr_sr_add", "Set SR Additional", "", _swStatement,  {true}, nil, [_index, 2, true]] call ace_interact_menu_fnc_createAction;
 	[player, 1, ["ACE_SelfActions", "RadioBase", "LR_Radio", _name], _interactionSetSRAD] call ace_interact_menu_fnc_addActionToObject;
 } forEach _lrValues;
 
 //SR things
 {
 	_x params ["_frequency", "_channel", "_name"];
+	private _index = _forEachIndex;
 
 	private _text = format["%1 [CH:%2 (%3)]",_name, _channel, _frequency];
 	private _interactionBase = [_name, _text, "", {},  {true}] call ace_interact_menu_fnc_createAction;
 	[player, 1, ["ACE_SelfActions", "RadioBase", "SR_Radio"], _interactionBase] call ace_interact_menu_fnc_addActionToObject;
 
-	private _interactionSetSW = ["set_sr", "Set SR", "", _swStatement,  {true}, nil, [_channel, _frequency,  false]] call ace_interact_menu_fnc_createAction;
+	private _interactionSetSW = ["set_sr", "Set SR", "", _swStatement,  {true}, nil, [ _index, 1]] call ace_interact_menu_fnc_createAction;
 	[player, 1, ["ACE_SelfActions", "RadioBase", "SR_Radio", _name], _interactionSetSW] call ace_interact_menu_fnc_addActionToObject;
 
-	private _interactionSetSRAD = ["set_sr_add", "Set SR Additional", "", _swStatement,  {true}, nil, [_channel, _frequency,  true]] call ace_interact_menu_fnc_createAction;
+	private _interactionSetSRAD = ["set_sr_add", "Set SR Additional", "", _swStatement,  {true}, nil, [_index, 2]] call ace_interact_menu_fnc_createAction;
 	[player, 1, ["ACE_SelfActions", "RadioBase", "SR_Radio", _name], _interactionSetSRAD] call ace_interact_menu_fnc_addActionToObject;
 } forEach _srValues;
 
 //Team channels
 private _teamStatement = {
 	params ["_target", "_player", "_team"];
-	private _values = ((group player) getVariable [QGVAR(radioValues), [[],[],[]]]) select 2;
-	if (count _values > 0) then {
-		_values = _values select _team;
-		[8, _values, true] call FUNC(setSRchannel);
-	};
+	LOG("set SR Team ace");
+	[_team, 3] call FUNC(setSRchannel);
 };
 
 private _interactionTeam = ["Team_channels", "Team Channels", "\z\ace\addons\interaction\UI\team\team_management_ca.paa", {},  {true}] call ace_interact_menu_fnc_createAction;
@@ -118,13 +120,13 @@ private _interactionTeamYellow = ["Team_channels", "Yellow Team", "\z\ace\addons
 
 private _stereoLRtatement = {
 	params ["_target", "_player", "_params"];
-	
+	LOG("set LR Stereo ace");
 	_params call FUNC(setLRstereo);	
 };
 
 private _stereoSRtatement = {
 	params ["_target", "_player", "_params"];
-
+	LOG("set SR Stereo ace");
 	_params call FUNC(setSRstereo);	
 };
 

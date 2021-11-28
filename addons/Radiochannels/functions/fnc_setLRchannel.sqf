@@ -16,19 +16,34 @@
  */
 #include "script_component.hpp"
 
-params ["_channel", "_frequency", "_isAdditional"];
-
+params ["_index", ["_isAdditional", false], ["_setSquadValues", false]];
+private ["_channel", "_frequency"];
+private _debugText = format ["set LR start: %1, %2, %3", _index, _isAdditional, _setSquadValues];
+LOG(_debugText);
 if (cba_missionTime isEqualTo 0) exitWith { };
 if (!(call TFAR_fnc_haveLRRadio)) exitWith { [parseText "You don't have LR radio", 5] call TFAR_fnc_showHint; };
 
-_channel = _channel - 1;
-
-if !(IS_STRING(_frequency)) then {
-	_frequency = str _frequency;
+private _lrValues = switch (playerSide) do {
+	case west: { GVAR(lrWEST) };
+	case east: { GVAR(lrEAST) };
+	case independent: { GVAR(lrINDEPENDENT) };
 };
 
-if (_isAdditional) then {
+if (_setSquadValues) then {
+	private _values = (group player) getVariable [QGVAR(radioValues), [[],[],[]]];
+	private _lrValues = _values select 1;
+	_channel = _lrValues select 1;
+	_frequency = _lrValues select 0;
+} else {
+	_frequency = (_lrValues select _index) select 0;
+	_channel = (_lrValues select _index) select 1;
+};
 
+_channel = _channel - 1;
+
+if (_isAdditional) then {
+	private _debugText = format ["Set LR additional: %1, %2", _channel, _frequency];
+	LOG(_debugText);
 	if (_channel > 6)then {
 		_channel = 7
 	};
@@ -40,6 +55,8 @@ if (_isAdditional) then {
 	[(call TFAR_fnc_activeLrRadio), _channel + 1, _frequency] call TFAR_fnc_SetChannelFrequency;
 	[call TFAR_fnc_activeLrRadio, _channel] call TFAR_fnc_setAdditionalLrChannel;
 } else {
+	private _debugText = format ["Set LR: %1, %2", _channel, _frequency];
+	LOG(_debugText);
 	[(call TFAR_fnc_activeLrRadio), _channel + 1, _frequency] call TFAR_fnc_SetChannelFrequency;
 	[call TFAR_fnc_activeLrRadio, _channel] call TFAR_fnc_setLrChannel;
 };
