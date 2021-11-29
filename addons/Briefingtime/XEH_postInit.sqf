@@ -18,7 +18,7 @@
         GVAR(Notifications) = [];
         [{ !isNull findDisplay 53 || !isNull findDisplay 52 }, {
 
-            private _display = [52, 53] select isDedicated;
+            private _display = [53, 52] select !isNull findDisplay 52;
             private _control = findDisplay _display ctrlCreate [QGVAR(timeText), 320001];
             uiNamespace setVariable [QGVAR(timeText), _control ];
 
