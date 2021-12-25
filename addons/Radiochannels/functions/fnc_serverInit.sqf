@@ -54,7 +54,6 @@ private _groupsIndependent = allGroups select {side _x isEqualTo independent};
 	private _currentSRchannel = 1;
 	private _currentLRchannel = 1;
 	
-
 	switch (_side) do {
 		case west: { 
 			_valuesSR = _sr_west;
@@ -123,11 +122,10 @@ private _groupsIndependent = allGroups select {side _x isEqualTo independent};
 			_srData = [_srFrequency, _channelSR, _squadNameTrimmed, _commandTrimmed];
 			_valuesSR_final pushBack _srData;
 			
-			private _partolFrequencies = [4,512,30,10] call TFAR_fnc_generateFrequencies;
+			private _partolFrequencies = [4,512,30,20] call TFAR_fnc_generateFrequencies;
 			_group setVariable [QGVAR(radioValues), [_srData, _lrData, _partolFrequencies], true];
 		};
 	} forEach _groups;
-
 
 	switch (_side) do {
 		case west: { 

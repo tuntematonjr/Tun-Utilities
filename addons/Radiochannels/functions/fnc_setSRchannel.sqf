@@ -28,6 +28,15 @@ private _lrValues = [];
 private _frequency = "error";
 private _channel = 0;
 
+private _tun_fnc_checkFrequency = {
+	private _frequency = param [0, nil];
+	_frequency = parseNumber _frequency;
+	if (_frequency isEqualTo (round _frequency)) then {
+		_frequency = round _frequency;
+	};
+	str _frequency
+};
+
 switch (playerSide) do {
 	case west: { 
 		_srValues = GVAR(srWEST);
@@ -56,6 +65,7 @@ if (_setSquadValuest) then {
 		_channel = 8;
 	};
 };
+_frequency = [_frequency] call _tun_fnc_checkFrequency;
 
 switch (_mode) do {
 	case 1: { //set main channel
@@ -84,9 +94,16 @@ switch (_mode) do {
 		private _values = ((group player) getVariable [QGVAR(radioValues), [[],[],[]]]) select 2;
 		if (count _values > 0) then {
 			private _frequency = _values select _index;
-			
-			[(call TFAR_fnc_activeSwRadio), _channel, _frequency] call TFAR_fnc_SetChannelFrequency;
-			[(call TFAR_fnc_activeSwRadio), _channel - 1] call TFAR_fnc_setSwChannel;
+			_frequency = [_frequency] call _tun_fnc_checkFrequency;
+			private _debugText = str [_frequency, _channel];
+			LOG(_debugText);
+
+			if (((call TFAR_fnc_ActiveSwRadio) call TFAR_fnc_getAdditionalSwChannel) isNotEqualTo -1) then {
+				[true] call FUNC(clearAdditional);
+			};
+
+			[(call TFAR_fnc_activeSwRadio), 8, _frequency] call TFAR_fnc_SetChannelFrequency;
+			[(call TFAR_fnc_activeSwRadio), 7] call TFAR_fnc_setAdditionalSwChannel;
 		};
 	};
 	default { [parseText "Missing SR mode", 7] call TFAR_fnc_showHint; };
