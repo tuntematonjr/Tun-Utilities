@@ -17,6 +17,7 @@ GVAR(squadTogle) = true;
 GVAR(vehicleTogle) = true;
 GVAR(vehicleTextToggle) = true;
 GVAR(vehicleOccupationToggle) = true;
+GVAR(runBFT) = true; //Variable to disable bft for unit in game
 
 [{ (!isNull findDisplay 53 || {!isNull findDisplay 52} || {!isMultiplayer} || {cba_missiontime > 0})}, {
 
@@ -37,13 +38,15 @@ GVAR(vehicleOccupationToggle) = true;
 
 		[{!isNil QGVAR(enableBFT) && !isNil QGVAR(bftItems)}, {
 			if (GVAR(enableBFT)) then {
-				_handle = [{	
-					private _items = (assignedItems player + items player);
-					MAP(_items, toLower _x);
-					if ((GVAR(bftItems) findIf {_x in _items} ) isNotEqualTo -1 || GVAR(bftAlwaysOn) ) then {
-						[] call FUNC(updateData);
-						[] call FUNC(createSquadMarkers);
-						[] call FUNC(createVehicleMarkers);
+				_handle = [{
+					if (GVAR(runBFT)) then {
+						private _items = (assignedItems player + items player);
+						MAP(_items, toLower _x);
+						if ((GVAR(bftItems) findIf {_x in _items} ) isNotEqualTo -1 || GVAR(bftAlwaysOn) ) then {
+							[] call FUNC(updateData);
+							[] call FUNC(createSquadMarkers);
+							[] call FUNC(createVehicleMarkers);
+						};
 					};
 				}, GVAR(updateInterval)] call CBA_fnc_addPerFrameHandler;
 				if ( GVAR(addAllVehicles) ) then {
