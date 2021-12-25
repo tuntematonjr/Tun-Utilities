@@ -13,7 +13,7 @@
  */
 #include "script_component.hpp"
 if (!isMultiplayer) exitWith { }; // skip if singleplayer
-
+LOG("Call load screen");
 [{!isNull player && !isNull findDisplay 12 && !isNil QGVAR(runLoadScreen)}, {
     if (GVAR(runLoadScreen)) exitWith { };
     if !(playerside in [west, east, resistance, civilian]) exitWith { };
@@ -54,4 +54,3 @@ if (!isMultiplayer) exitWith { }; // skip if singleplayer
     }, _camera] call CBA_fnc_waitUntilAndExecute;
 
 }] call CBA_fnc_waitUntilAndExecute;
-
