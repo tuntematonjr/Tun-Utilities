@@ -13,7 +13,6 @@
  */
 #include "script_component.hpp"
 
-
 if (playerSide isEqualTo civilian) exitWith { };
 
 LOG("Player init start");
@@ -70,38 +69,40 @@ player createDiaryRecord ["Diary",["Command & Signal",_text]];
 player createDiarySubject ["Command & Signal","Command & Signal", QPATHTOF(kuvat\Radiot.paa)];
 player createDiaryRecord ["Command & Signal",["Command & Signal",_text]];
 
-[{ cba_missionTime > 1 && !isNull player }, {
+[{ cba_missionTime > 1 && !isNull player  && TFAR_core_SettingsInitialized}, {
 	LOG("Player start auto set radios");
     [{
-        private _values = (group player) getVariable [QGVAR(radioValues), [[],[],[]]];
+		if (GVAR(enableAutoSetup)) then {
+			private _values = (group player) getVariable [QGVAR(radioValues), [[],[],[]]];
 
-		private _lrStatement = {
-			LOG("Player LR auto set");
-            if ((count (_this select 1) > 0)) then {
-				LOG("Auto set LR");
-                [ nil, false, true] call FUNC(setLRchannel);
-            };    
-        };
+			private _lrStatement = {
+				LOG("Player LR auto set");
+				if ((count (_this select 1) > 0)) then {
+					LOG("Auto set LR");
+					[ nil, false, true] call FUNC(setLRchannel);
+				};    
+			};
 
-		private _timeoutCodeLR = {
-			LOG("Player LR auto set to SR");
-            if ((count (_this select 1) > 0) && leader group player isEqualTo player) then {
-				LOG("Auto set LR to SR");
-                [nil, 2, true, true] call FUNC(setSRchannel);
-            };    
-        };
+			private _timeoutCodeLR = {
+				LOG("Player LR auto set to SR");
+				if ((count (_this select 1) > 0) && leader group player isEqualTo player) then {
+					LOG("Auto set LR to SR");
+					[nil, 2, true, true] call FUNC(setSRchannel);
+				};    
+			};
 
-		private _srStatement = {
-			LOG("Player SR auto set");
-            if ((count (_this  select 0) > 0)) then {
-				LOG("Auto set SR");
-                [nil, 1, false, true] call FUNC(setSRchannel);
-            }; 
-        };
+			private _srStatement = {
+				LOG("Player SR auto set");
+				if ((count (_this  select 0) > 0)) then {
+					LOG("Auto set SR");
+					[nil, 1, false, true] call FUNC(setSRchannel);
+				}; 
+			};
 
-        [{call TFAR_fnc_haveLRRadio}, _lrStatement, _values, 20, _timeoutCodeLR] call CBA_fnc_waitUntilAndExecute;   
-        [{call TFAR_fnc_haveSWRadio}, _srStatement, _values, 20] call CBA_fnc_waitUntilAndExecute;
-
-        [] call FUNC(createAceActions);
-    }, nil, 20] call CBA_fnc_waitAndExecute;
+			[{call TFAR_fnc_haveLRRadio}, _lrStatement, _values, 20, _timeoutCodeLR] call CBA_fnc_waitUntilAndExecute;   
+			[{call TFAR_fnc_haveSWRadio}, _srStatement, _values, 20] call CBA_fnc_waitUntilAndExecute;
+			[parseText "Automatic radio settings applied", 5] call TFAR_fnc_showHint;
+			[] call FUNC(createAceActions);
+		};
+    }, nil, 3] call CBA_fnc_waitAndExecute;
 }] call CBA_fnc_waitUntilAndExecute;
