@@ -37,6 +37,7 @@ switch (playerSide) do {
 
 { 
 	_x params ["_frequency", "_channel", "_name"];
+	_frequency = [_frequency] call FUNC(checkFrequency);
 	private _index = _forEachIndex;
 	_text = format ["%1[ <execute expression='[%7,false] call %6;'>Set LR</execute> - <execute expression='[%7,true] call %6;'>Set LR Additional</execute> - <execute expression='[%7,2,true] call %5;'>Set SR Additional</execute> ] Channel: %2 (%3) - %4<br/>", _text, _channel, _frequency, toUpper _name, QFUNC(setSRchannel), QFUNC(setLRchannel), _index];
 } forEach _lrValues;
@@ -46,6 +47,7 @@ _text = format ["%1<br/><br/><font face='PuristaBold' size='20'>Squad Net(s)</fo
 private _commandTrimmedLast = "";
 { 
 	_x params ["_frequency", "_channel", "_name", "_commandTrimmed"];
+	_frequency = [_frequency] call FUNC(checkFrequency);
 	private _divader = "<br/>";
 	private _index = _forEachIndex;
 	if (_commandTrimmed isNotEqualTo _commandTrimmedLast) then {
@@ -71,38 +73,40 @@ player createDiaryRecord ["Command & Signal",["Command & Signal",_text]];
 
 [{ cba_missionTime > 1 && !isNull player  && TFAR_core_SettingsInitialized}, {
 	LOG("Player start auto set radios");
-    [{
-		if (GVAR(enableAutoSetup)) then {
-			private _values = (group player) getVariable [QGVAR(radioValues), [[],[],[]]];
+	if (GVAR(enableAutoSetup)) then {
+		[{
+			if (GVAR(enableAutoSetup)) then {
+				private _values = (group player) getVariable [QGVAR(radioValues), [[],[],[]]];
 
-			private _lrStatement = {
-				LOG("Player LR auto set");
-				if ((count (_this select 1) > 0)) then {
-					LOG("Auto set LR");
-					[ nil, false, true] call FUNC(setLRchannel);
-				};    
+				private _lrStatement = {
+					LOG("Player LR auto set");
+					if ((count (_this select 1) > 0)) then {
+						LOG("Auto set LR");
+						[nil, false, true] call FUNC(setLRchannel);
+					};    
+				};
+
+				private _timeoutCodeLR = {
+					LOG("Player LR auto set to SR");
+					if ((count (_this select 1) > 0) && leader group player isEqualTo player) then {
+						LOG("Auto set LR to SR");
+						[nil, 2, true, true] call FUNC(setSRchannel);
+					};    
+				};
+
+				private _srStatement = {
+					LOG("Player SR auto set");
+					if ((count (_this  select 0) > 0)) then {
+						LOG("Auto set SR");
+						[nil, 1, false, true] call FUNC(setSRchannel);
+					}; 
+				};
+
+				[{call TFAR_fnc_haveLRRadio}, _lrStatement, _values, 20, _timeoutCodeLR] call CBA_fnc_waitUntilAndExecute;   
+				[{call TFAR_fnc_haveSWRadio}, _srStatement, _values, 20] call CBA_fnc_waitUntilAndExecute;
+				[{[parseText "Automatic radio settings applied", 5] call TFAR_fnc_showHint; }, nil, 3] call CBA_fnc_waitAndExecute;
+				[] call FUNC(createAceActions);
 			};
-
-			private _timeoutCodeLR = {
-				LOG("Player LR auto set to SR");
-				if ((count (_this select 1) > 0) && leader group player isEqualTo player) then {
-					LOG("Auto set LR to SR");
-					[nil, 2, true, true] call FUNC(setSRchannel);
-				};    
-			};
-
-			private _srStatement = {
-				LOG("Player SR auto set");
-				if ((count (_this  select 0) > 0)) then {
-					LOG("Auto set SR");
-					[nil, 1, false, true] call FUNC(setSRchannel);
-				}; 
-			};
-
-			[{call TFAR_fnc_haveLRRadio}, _lrStatement, _values, 20, _timeoutCodeLR] call CBA_fnc_waitUntilAndExecute;   
-			[{call TFAR_fnc_haveSWRadio}, _srStatement, _values, 20] call CBA_fnc_waitUntilAndExecute;
-			[parseText "Automatic radio settings applied", 5] call TFAR_fnc_showHint;
-			[] call FUNC(createAceActions);
-		};
-    }, nil, 3] call CBA_fnc_waitAndExecute;
+		}, nil, 3] call CBA_fnc_waitAndExecute;
+	};
 }] call CBA_fnc_waitUntilAndExecute;
