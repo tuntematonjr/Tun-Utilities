@@ -1,7 +1,7 @@
 ﻿/*
  * Author: [Tuntematon]
  * [Description]
- *
+ * Force players to map view to reduce desync
  * Arguments:
  * None
  *
@@ -12,13 +12,19 @@
  * [] call tun_utilities_fnc_loadScreen
  */
 #include "script_component.hpp"
-if (!isMultiplayer) exitWith { }; // skip if singleplayer
-LOG("Call load screen");
+LOG("Called desync load screen");
+if (!isMultiplayer) exitWith { LOG("Skip desync load screen in SP"); }; // skip if singleplayer
+
 [{!isNull player && !isNull findDisplay 12 && !isNil QGVAR(runLoadScreen)}, {
-    if (GVAR(runLoadScreen)) exitWith { };
-    if !(playerside in [west, east, resistance, civilian]) exitWith { };
-    LOG("Start load screen");
-	private _time = GVAR(loadScreenTime);
+    if !(GVAR(runLoadScreen)) exitWith { LOG("Desync load screen disabled"); };
+    if !(playerside in [west, east, resistance, civilian]) exitWith { LOG("Not in right side, so skip desync load screen"); };
+    LOG("Start desync load screen");
+	GVAR(loadScreenTimer) = GVAR(loadScreenTime);
+
+    if (cba_missiontime > GVAR(loadScreenTime)) then {
+        GVAR(loadScreenTimer) = (GVAR(loadScreenTime) / 2);
+    };
+
     tun_loadscreen_done = false;
   
     _camera = "camera" camCreate [(getPos player select 0),(getPos player select 1),100];
@@ -28,29 +34,33 @@ LOG("Call load screen");
     _camera camCommit 0;
 	openMap [true, true];
     //Run loadscreen text loop
+    private _debugText = format ["Desync load screen start time: %1", cba_missiontime]; 
+    LOG(_debugText);
     [{
-        _time = ceil (_args - cba_missiontime);
-
-        if (_time <= 0) then {
-            cutText[GVAR(loadScreenText), "PLAIN", 5, true];
+        if (GVAR(loadScreenTimer) <= 0) then {
+            titleText [GVAR(loadScreenText), "PLAIN", 5, true];
+            titleFadeOut 5;
             [_handle] call CBA_fnc_removePerFrameHandler;
             tun_loadscreen_done = true;
         } else {
-            cutText[format ["%2\n%1", _time, GVAR(loadScreenText)], "PLAIN", 1, true];
+            titleText [format ["%2\n%1", GVAR(loadScreenTimer), GVAR(loadScreenText)], "PLAIN", 1, true];
+            titleFadeOut 5;
+            GVAR(loadScreenTimer) = GVAR(loadScreenTimer) - 1;
         };
-    }, 1, _time] call CBA_fnc_addPerFrameHandler;
+    }, 1] call CBA_fnc_addPerFrameHandler;
 
     // Destroy camera after loadtime is done
     [{tun_loadscreen_done}, {
         private _camera = _this;
         player cameraEffect ["terminate","back"];
         camDestroy _camera;
-        cutText["", "BLACK IN", 5];
+        titleText ["", "PLAIN"];
         openMap [false, false];
 		if (GVAR(rulesHintEnable)) then {
-		GVAR(rulesTitleText) hintC GVAR(rulesMessageText);
+		    GVAR(rulesTitleText) hintC GVAR(rulesMessageText);
 		};
-        LOG("End load screen");
+        private _debugText = format ["Desync load screen end time: %1", cba_missiontime]; 
+        LOG(_debugText);
     }, _camera] call CBA_fnc_waitUntilAndExecute;
 
 }] call CBA_fnc_waitUntilAndExecute;
