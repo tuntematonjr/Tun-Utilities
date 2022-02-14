@@ -11,3 +11,4 @@ PREP(clearAdditional);
 PREP(createAceActions);
 PREP(serverInit);
 PREP(playerInit);
+PREP(checkFrequency);

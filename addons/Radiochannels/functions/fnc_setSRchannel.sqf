@@ -28,15 +28,6 @@ private _lrValues = [];
 private _frequency = "error";
 private _channel = 0;
 
-private _tun_fnc_checkFrequency = {
-	private _frequency = param [0, nil];
-	_frequency = parseNumber _frequency;
-	if (_frequency isEqualTo (round _frequency)) then {
-		_frequency = round _frequency;
-	};
-	str _frequency
-};
-
 switch (playerSide) do {
 	case west: { 
 		_srValues = GVAR(srWEST);
@@ -65,20 +56,26 @@ if (_setSquadValuest) then {
 		_channel = 8;
 	};
 };
-_frequency = [_frequency] call _tun_fnc_checkFrequency;
+
+_frequency = [_frequency] call FUNC(checkFrequency);
 
 switch (_mode) do {
 	case 1: { //set main channel
-		private _debugText = format ["set SR main: %1, %2", _channel - 1, _frequency];
+		private _debugText = format ["set mode: SR main: %1, %2", _channel - 1, _frequency];
 		LOG(_debugText);
 		[(call TFAR_fnc_activeSwRadio), _channel, _frequency] call TFAR_fnc_SetChannelFrequency;
 		[(call TFAR_fnc_activeSwRadio), _channel - 1] call TFAR_fnc_setSwChannel;
 	};
+	
 	case 2: { //SET additional for sr or lr frequency
 		if (toLower call TFAR_fnc_activeSwRadio select [0,11] in ["tf_rf7800st","tf_anprc154","tf_pnr1000a"]) exitWith { [parseText "Your SR radio does not support additional", 7] call TFAR_fnc_showHint;};
-		private _debugText = format ["set SR main: %1, %2, %3", _channel - 1, _frequency, _isLR];
+		private _debugText = format ["set mode: SR additonal: %1, %2, %3", _channel - 1, _frequency, _isLR];
 		LOG(_debugText);
 		if (_channel > 7 && !_isLR) then {
+			_channel = 7;
+		};
+
+		if (_isLR) then {
 			_channel = 8;
 		};
 
@@ -89,21 +86,22 @@ switch (_mode) do {
 		[(call TFAR_fnc_activeSwRadio), _channel, _frequency] call TFAR_fnc_SetChannelFrequency;
 		[(call TFAR_fnc_activeSwRadio), _channel - 1] call TFAR_fnc_setAdditionalSwChannel;
 	};
+
 	case 3: { // Set Team channel
-		LOG("set SR team");
 		private _values = ((group player) getVariable [QGVAR(radioValues), [[],[],[]]]) select 2;
 		if (count _values > 0) then {
 			private _frequency = _values select _index;
-			_frequency = [_frequency] call _tun_fnc_checkFrequency;
-			private _debugText = str [_frequency, _channel];
+			_frequency = [_frequency] call FUNC(checkFrequency);
+			private _debugText = format ["set mode: SR team: %1, %2", _frequency, _channel];
 			LOG(_debugText);
-
 			if (((call TFAR_fnc_ActiveSwRadio) call TFAR_fnc_getAdditionalSwChannel) isNotEqualTo -1) then {
 				[true] call FUNC(clearAdditional);
 			};
 
 			[(call TFAR_fnc_activeSwRadio), 8, _frequency] call TFAR_fnc_SetChannelFrequency;
 			[(call TFAR_fnc_activeSwRadio), 7] call TFAR_fnc_setAdditionalSwChannel;
+		} else {
+			LOG("Missing SR channels");
 		};
 	};
 	default { [parseText "Missing SR mode", 7] call TFAR_fnc_showHint; };

@@ -42,6 +42,8 @@ if (_setSquadValues) then {
 _channel = _channel - 1;
 
 if (_isAdditional) then {
+	_frequency = [_frequency] call FUNC(checkFrequency);
+
 	private _debugText = format ["Set LR additional: %1, %2", _channel, _frequency];
 	LOG(_debugText);
 	if (_channel > 6)then {
@@ -55,6 +57,7 @@ if (_isAdditional) then {
 	[(call TFAR_fnc_activeLrRadio), _channel + 1, _frequency] call TFAR_fnc_SetChannelFrequency;
 	[call TFAR_fnc_activeLrRadio, _channel] call TFAR_fnc_setAdditionalLrChannel;
 } else {
+	_frequency = [_frequency] call FUNC(checkFrequency);
 	private _debugText = format ["Set LR: %1, %2", _channel, _frequency];
 	LOG(_debugText);
 	[(call TFAR_fnc_activeLrRadio), _channel + 1, _frequency] call TFAR_fnc_SetChannelFrequency;
@@ -62,3 +65,4 @@ if (_isAdditional) then {
 };
 
 [(call TFAR_fnc_activeLrRadio), true] call TFAR_fnc_ShowRadioInfo;
+
