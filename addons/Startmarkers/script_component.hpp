@@ -3,18 +3,16 @@
 
 #define MAJOR 1
 #define MINOR 0
-#define PATCHLVL 6
-#define BUILD 26122021
+#define PATCHLVL 7
+#define BUILD 14022022
 
 #define VERSION MAJOR.MINOR.PATCHLVL.BUILD
 #define VERSION_AR MAJOR,MINOR,PATCHLVL,BUILD
 
 // MINIMAL required version for the Mod. Components can specify others..
-#define REQUIRED_VERSION 1.94
+#define REQUIRED_VERSION 2.06
 
-#ifdef DEBUG_ENABLED_MAIN
-	#define DEBUG_MODE_FULL
-#endif
+#define DEBUG_MODE_FULL
 
 #include "\x\cba\addons\main\script_macros_common.hpp"
 
