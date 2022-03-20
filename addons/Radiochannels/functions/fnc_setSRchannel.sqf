@@ -71,8 +71,8 @@ switch (_mode) do {
 		if (toLower call TFAR_fnc_activeSwRadio select [0,11] in ["tf_rf7800st","tf_anprc154","tf_pnr1000a"]) exitWith { [parseText "Your SR radio does not support additional", 7] call TFAR_fnc_showHint;};
 		private _debugText = format ["set mode: SR additonal: %1, %2, %3", _channel - 1, _frequency, _isLR];
 		LOG(_debugText);
-		if (_channel > 7 && !_isLR) then {
-			_channel = 7;
+		if (_channel > 6 && !_isLR) then {
+			_channel = 8;
 		};
 
 		if (_isLR) then {
