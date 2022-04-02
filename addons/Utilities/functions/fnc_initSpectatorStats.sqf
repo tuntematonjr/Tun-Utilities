@@ -14,7 +14,8 @@
 #include "script_component.hpp"
 
 private _id = ["ace_spectator_displayLoaded", {
-	[{!isNull findDisplay 60000}, {
+	[{!isNull findDisplay 60000  && !isNil QGVAR(enableSpectatorStats)}, {
+		if !(GVAR(enableSpectatorStats)) exitWith { LOG("Desync load screen disabled"); };
 		LOG("init spectator stats");
 		private _control = findDisplay 60000 ctrlCreate ["tun_utilities_spectatorStatsWest", 1];
 		uiNamespace setVariable ["tun_utilities_spectatorStatsWest", _control ];
@@ -27,7 +28,7 @@ private _id = ["ace_spectator_displayLoaded", {
 
 		_handle = [{
 			if (isNull findDisplay 60000) exitWith {
-				 _handle call CBA_fnc_removePerFrameHandler;
+				_handle call CBA_fnc_removePerFrameHandler;
 			};
 			private _westCount = playersNumber west;
 			if (_westCount > GVAR(spectatorInitCountWest)) then {
