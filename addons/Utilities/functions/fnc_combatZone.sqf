@@ -52,7 +52,7 @@ LOG(_debugText);
         };
 
         if (isNull findDisplay 12) then {
-            private _displayIDD = [52, 53] select isDedicated;
+            private _displayIDD = [53, 52] select !isNull findDisplay 52;
             findDisplay _displayIDD displayCtrl 51 ctrlAddEventHandler ["Draw", {
                 _this select 0 drawPolygon [GVAR(borderPolygon), [1,0,0,1]];
             }];

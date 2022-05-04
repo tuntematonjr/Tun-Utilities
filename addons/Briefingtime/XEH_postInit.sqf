@@ -46,4 +46,4 @@
 
         }] call CBA_fnc_waitUntilAndExecute;
     };
-}, (diag_tickTime + 10)] call CBA_fnc_waitUntilAndExecute;
+}, (diag_tickTime + 3)] call CBA_fnc_waitUntilAndExecute;
