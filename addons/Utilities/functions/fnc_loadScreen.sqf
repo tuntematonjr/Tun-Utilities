@@ -13,7 +13,7 @@
  */
 #include "script_component.hpp"
 LOG("Called desync load screen");
-if (!isMultiplayer) exitWith { LOG("Skip desync load screen in SP"); }; // skip if singleplayer
+if (!isMultiplayer || count allPlayers > 10) exitWith { LOG("Skip desync load screen in SP"); }; // skip if singleplayer
 
 [{!isNull player && !isNull findDisplay 12 && !isNil QGVAR(runLoadScreen)}, {
     if !(GVAR(runLoadScreen)) exitWith { LOG("Desync load screen disabled"); };
