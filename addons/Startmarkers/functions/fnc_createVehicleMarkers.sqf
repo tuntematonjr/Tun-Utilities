@@ -54,15 +54,12 @@ if (playerSide isNotEqualTo civilian) then {
 	if (GVAR(vehicleTextToggle)) then {
 		
 		_text = _texts select 0;
+		private _occupationText = _texts select 1;
 
-		if (GVAR(vehicleOccupationToggle) && {!(_classname isKindOf "thing")} && {!(_classname isKindOf "uav")} ) then {
-			_text = format["%1 - ", _text];
+		if (GVAR(vehicleOccupationToggle) && {!(_classname isKindOf "thing")} && {!(_classname isKindOf "uav")} && {( "" isNotEqualTo _occupationText )}) then {
+			_text = format["%1 - [ %2 ]", _text, _occupationText];
 		};
 	};
-
-	if (GVAR(vehicleOccupationToggle) && {!(_classname isKindOf "thing")} && {!(_classname isKindOf "uav")}) then {
-		_text = format["%1[ %2 ]", _text, _texts select 1];
-	};	
 
 	private _IDC = ((findDisplay GVAR(displayIDD)) displayCtrl 51) ctrlAddEventHandler ["Draw", format ['
 			(_this select 0) drawIcon [

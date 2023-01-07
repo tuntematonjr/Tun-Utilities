@@ -106,7 +106,7 @@ private _vehiclesToCreateMarkers = [];
                 _text1 = _groupsText joinString ", ";
 
             } else {
-                if (true) then {
+                if (GVAR(showUnmanned)) then {
                     _text1 = "Unmanned";
                 };
             };
