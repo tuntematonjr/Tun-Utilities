@@ -37,7 +37,7 @@
                     player removeDiarySubject QGVAR(briefingTimeDiary);
                 };
             }, 1, []] call CBA_fnc_addPerFrameHandler;
-
+            
             player createDiarySubject [QGVAR(briefingTimeDiary),"Briefing Time"];
             player createDiaryRecord [QGVAR(briefingTimeDiary), ["Briefing Time",
             "Request more briefing time. Do not spam!
