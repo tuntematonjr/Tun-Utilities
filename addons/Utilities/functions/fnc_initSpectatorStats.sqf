@@ -15,6 +15,7 @@
 
 private _id = ["ace_spectator_displayLoaded", {
 	[{!isNull findDisplay 60000  && !isNil QGVAR(enableSpectatorStats)}, {
+
 		if !(GVAR(enableSpectatorStats)) exitWith { LOG("Desync load screen disabled"); };
 		LOG("init spectator stats");
 		private _control = findDisplay 60000 ctrlCreate ["tun_utilities_spectatorStatsWest", 1];
@@ -52,14 +53,20 @@ private _id = ["ace_spectator_displayLoaded", {
 			{
 				_x params ["_side", "_aliveCount", "_originalCount", "_respawnTime", "_tickets", "_control", "_awake", "_waitingRespawn", "_waitingRespawnDelayed"];
 				if (_originalCount isNotEqualTo 0) then {
-					private _text = format["%2:%1Alive: %5(%3)/%4%1",endl, _side, _aliveCount, _originalCount, _awake];
+					private _text = format["%2:%1Alive: %3(Uncons: %5)/%4%1",endl, _side, _aliveCount, _originalCount, (_aliveCount - _awake)];
+
+					if (tun_respawn_respawn_type isNotEqualTo "Side tickets") then {
+						_tickets = "Mission not using side tickets";
+					};
 					if (missionNamespace getVariable ["tun_respawn_enable", false]) then {
 						private _time = "None";
 						if (_respawnTime isNotEqualTo 0) then {
 							_time = [ceil (_respawnTime - cba_missiontime), "MM:SS"] call BIS_fnc_secondsToString;
 						};
+
+						private _waitingRespawnCount = count _waitingRespawn + count _waitingRespawnDelayed;
 						
-						_text =  format["%2Respawn:%1Tickets: %4%1Next Wave: %3%1Waiting Respawn: %5 (%6)",endl, _text, _time, _tickets, _waitingRespawn, _waitingRespawnDelayed];
+						_text =  format["%2Respawn:%1Tickets: %4%1Next Wave: %3%1Waiting Respawn: %5",endl, _text, _time, _tickets, _waitingRespawnCount];
 					};
 					(uiNamespace getVariable _control) ctrlSetText _text;
 				};
