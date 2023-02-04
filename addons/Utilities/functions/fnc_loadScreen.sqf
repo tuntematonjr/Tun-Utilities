@@ -13,10 +13,10 @@
  */
 #include "script_component.hpp"
 LOG("Called desync load screen");
-if (!isMultiplayer || count allPlayers > 10) exitWith { LOG("Skip desync load screen in SP"); }; // skip if singleplayer
+if (!isMultiplayer) exitWith { LOG("Skip desync load screen in SP"); }; // skip if singleplayer
 
 [{!isNull player && !isNull findDisplay 12 && !isNil QGVAR(runLoadScreen)}, {
-    if !(GVAR(runLoadScreen)) exitWith { LOG("Desync load screen disabled"); };
+    if !(GVAR(runLoadScreen) || count allPlayers < 10) exitWith { LOG("Desync load screen disabled or under 10 players"); };
     if !(playerside in [west, east, resistance, civilian]) exitWith { LOG("Not in right side, so skip desync load screen"); };
     LOG("Start desync load screen");
 	GVAR(loadScreenTimer) = GVAR(loadScreenTime);
@@ -25,7 +25,7 @@ if (!isMultiplayer || count allPlayers > 10) exitWith { LOG("Skip desync load sc
         GVAR(loadScreenTimer) = (GVAR(loadScreenTime) / 2);
     };
 
-    tun_loadscreen_done = false;
+    GVAR(loadscreenDone) = false;
   
     _camera = "camera" camCreate [(getPos player select 0),(getPos player select 1),100];
     _camera cameraEffect ["internal","back"];
@@ -41,7 +41,7 @@ if (!isMultiplayer || count allPlayers > 10) exitWith { LOG("Skip desync load sc
             titleText [GVAR(loadScreenText), "PLAIN", 5, true];
             titleFadeOut 5;
             [_handle] call CBA_fnc_removePerFrameHandler;
-            tun_loadscreen_done = true;
+            GVAR(loadscreenDone) = true;
         } else {
             titleText [format ["%2\n%1", GVAR(loadScreenTimer), GVAR(loadScreenText)], "PLAIN", 1, true];
             titleFadeOut 5;
@@ -50,7 +50,7 @@ if (!isMultiplayer || count allPlayers > 10) exitWith { LOG("Skip desync load sc
     }, 1] call CBA_fnc_addPerFrameHandler;
 
     // Destroy camera after loadtime is done
-    [{tun_loadscreen_done}, {
+    [{GVAR(loadscreenDone)}, {
         private _camera = _this;
         player cameraEffect ["terminate","back"];
         camDestroy _camera;
