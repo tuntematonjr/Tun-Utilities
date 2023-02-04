@@ -77,12 +77,12 @@ class CfgVehicles {
                 defaultValue = "Warning!<br />You are leaving the combatzone. TURN BACK!";
             };
 
-            class sound {
-                displayName = "Sound";
-                //description = "";
-                typeName = "STRING";
-                defaultValue = "beep_strobe";
-            };
+            // class sound {
+            //     displayName = "Sound";
+            //     //description = "";
+            //     typeName = "STRING";
+            //     defaultValue = "beep_strobe";
+            // };
 
             class sideWest {
                 displayName = "Enable West";
