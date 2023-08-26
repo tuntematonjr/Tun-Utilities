@@ -6,7 +6,7 @@ class CfgPatches
     {
         units[] = { QGVAR(combatZoneModule) };
         weapons[] = {};
-        requiredVersion = 2.04;
+        requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"cba_main","cba_xeh","cba_settings","ace_modules"};
         author = "Tuntematon";
         authorUrl = "https://github.com/tuntematonjr/Tun-Utilities";
