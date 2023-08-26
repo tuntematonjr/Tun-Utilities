@@ -16,7 +16,7 @@
 params ["_open"];
 
 if (_open) then {
-	private _control = findDisplay GVAR(displayIDD) createDisplay "tun_starmakersSettings";
+	private _control = findDisplay TUN_FIND_MAPDISPLAY createDisplay "tun_starmakersSettings";
 	uiNamespace setVariable ["tun_starmakersSettings", _control ];
 	[{!isNull findDisplay 321000}, {
 		private _display = uiNamespace getVariable "tun_starmakersSettings";

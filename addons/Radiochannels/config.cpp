@@ -6,7 +6,7 @@ class CfgPatches
     {
         units[] = {};
         weapons[] = {};
-        requiredVersion = 2.04;
+        requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"cba_main","cba_xeh","cba_settings","ace_common","ace_interaction","ace_interact_menu"};
         author = "Tuntematon";
         authorUrl = "https://github.com/tuntematonjr/Tun-Utilities";

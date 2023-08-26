@@ -46,6 +46,7 @@ if (playerSide isNotEqualTo civilian) then {
 	};
 };
 
+private _display = (findDisplay TUN_FIND_MAPDISPLAY) displayCtrl 51;
 {
 	_x params ["_classname", "_texts", "_pos", "_direction", "_color"];
 	private _text = "";
@@ -61,7 +62,7 @@ if (playerSide isNotEqualTo civilian) then {
 		};
 	};
 
-	private _IDC = ((findDisplay GVAR(displayIDD)) displayCtrl 51) ctrlAddEventHandler ["Draw", format ['
+	private _IDC = _display ctrlAddEventHandler ["Draw", format ['
 			(_this select 0) drawIcon [
 			"%1",
 			%2,

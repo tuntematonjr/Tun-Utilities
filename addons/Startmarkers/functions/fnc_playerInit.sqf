@@ -19,20 +19,19 @@ GVAR(vehicleTextToggle) = true;
 GVAR(vehicleOccupationToggle) = true;
 GVAR(runBFT) = true; //Variable to disable bft for unit in game
 
-[{ (!isNull findDisplay 53 || {!isNull findDisplay 52} || {!isMultiplayer} || {cba_missiontime > 0})}, {
+[{ (!isNil {TUN_FIND_MAPDISPLAY} || {!isMultiplayer} || {cba_missiontime > 0})}, {
 
 	if (isMultiplayer) then {
-		GVAR(displayIDD) = [53, 52] select !isNull findDisplay 52;
 		[] call FUNC(createVehicleMarkers);
 	};
 	
 	[] call FUNC(createSquadMarkers);
 
 	[{
-		GVAR(displayIDD) = 12;
+		//GVAR(displayIDD) = 12;
 		GVAR(vehicleMarkers) = [];
 
-		[{!isNull findDisplay GVAR(displayIDD)}, {
+		[{!isNil {TUN_FIND_MAPDISPLAY} }, {
 			[] call FUNC(createVehicleMarkers);
 		}] call CBA_fnc_waitUntilAndExecute;
 
@@ -81,4 +80,3 @@ GVAR(runBFT) = true; //Variable to disable bft for unit in game
 	player createDiaryRecord ["diary", ["Startpositions & BFT",_text]];
 
 }, nil, 120] call CBA_fnc_waitUntilAndExecute;
-

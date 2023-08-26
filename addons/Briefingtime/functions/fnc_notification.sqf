@@ -27,7 +27,7 @@ if (!isNull (uiNamespace getVariable QGVAR(notificationBox))) exitWith {
 		[_text] call FUNC(notification);
 	}] call CBA_fnc_waitUntilAndExecute;
 };
-private _display = [53, 52] select !isNull findDisplay 52;
+private _display = TUN_FIND_MAPDISPLAY;
 
 private _control = findDisplay _display ctrlCreate [QGVAR(notificationBox), 320006];
 uiNamespace setVariable [QGVAR(notificationBox), _control ];
