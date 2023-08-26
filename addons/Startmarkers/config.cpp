@@ -7,7 +7,7 @@ class CfgPatches
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"cba_main","cba_xeh","cba_settings"};
+        requiredAddons[] = {"cba_main","cba_xeh","cba_settings","ace_common"};
         author = "Tuntematon";
         authorUrl = "https://github.com/tuntematonjr/Tun-Utilities";
     };
@@ -110,3 +110,5 @@ class Cfg3DEN
         };
     };
 };
+
+//Tun_startmarkers_vehicleSide
