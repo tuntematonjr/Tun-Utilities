@@ -79,7 +79,7 @@ class Cfg3DEN
                         tooltip = "Chose side to show this vehicle. Only pick one side per object.";
                         property = "Tun_startmarkers_vehicle_side_west";
                         control = "Checkbox";
-                        expression = "if (_value) then {_this setVariable ['Tun_startmarkers_vehilce_side', west,true]};";
+                        expression = "if (_value) then {_this setVariable ['Tun_startmarkers_vehicleSide', west,true]};";
                         defaultValue = "false";
                         condition = "objectHasInventoryCargo + objectVehicle";
                     };
@@ -87,14 +87,14 @@ class Cfg3DEN
                     {
                         displayName = "Show this to East";
                         property = "Tun_startmarkers_vehicle_side_east";
-                        expression = "if (_value) then {_this setVariable ['Tun_startmarkers_vehilce_side', east,true]};";
+                        expression = "if (_value) then {_this setVariable ['Tun_startmarkers_vehicleSide', east,true]};";
 
                     };
                     class Tun_startmarkers_vehicle_side_ind: Tun_startmarkers_vehicle_side_west
                     {
                         displayName = "Show this to Independent";
                         property = "Tun_startmarkers_vehicle_side_ind";
-                        expression = "if (_value) then {_this setVariable ['Tun_startmarkers_vehilce_side', resistance,true]};";
+                        expression = "if (_value) then {_this setVariable ['Tun_startmarkers_vehicleSide', resistance,true]};";
 
 
                     };
@@ -102,7 +102,7 @@ class Cfg3DEN
                     {
                         displayName = "Show this to Civilian";
                         property = "Tun_startmarkers_vehicle_side_civ";
-                        expression = "if (_value) then { _this setVariable ['Tun_startmarkers_vehilce_side', civilian, true] };";
+                        expression = "if (_value) then { _this setVariable ['Tun_startmarkers_vehicleSide', civilian, true] };";
 
                     };
                 };
@@ -110,5 +110,3 @@ class Cfg3DEN
         };
     };
 };
-
-//Tun_startmarkers_vehicleSide
