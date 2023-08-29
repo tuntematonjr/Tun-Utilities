@@ -13,8 +13,6 @@
  */
 #include "script_component.hpp"
 
-LOG("Deleted all squad markers");
-
 {
 	deleteMarkerLocal _x;
 } forEach GVAR(squadMarkers);
