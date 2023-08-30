@@ -16,28 +16,6 @@ GVAR(allowedSidesBFT) = [];
 ] call CBA_Settings_fnc_init;
 
 [
-    QGVAR(lostContactTime), 
-    "SLIDER", 
-    ["Lost contact time", "After this time is passed without update for marker data, marker alpha will be set to 0.5. (Minutes)"], 
-    "Tun Utilities - Startmakers & BFT", 
-    [1, 60, 5, 0],
-    1,
-    {},
-    true
-] call CBA_Settings_fnc_init;
-
-[
-    QGVAR(deleteMarkerTime), 
-    "SLIDER", 
-    ["Delete marker without update time", "After this time is passed without update for marker data, it will be deleted. (Minutes)"], 
-    "Tun Utilities - Startmakers & BFT", 
-    [1, 60, 15, 0],
-    1,
-    {},
-    true
-] call CBA_Settings_fnc_init;
-
-[
     QGVAR(showAI), 
     "CHECKBOX", 
     ["Add tag if vehicle crew or squad is AI", "Add tag for squad where is only AI units and vehicles which crew is only AI."], 
@@ -263,5 +241,35 @@ GVAR(allowedSidesBFT) = [];
     true
 ] call CBA_Settings_fnc_init;
 
+[
+    QGVAR(lostContactTime), 
+    "SLIDER", 
+    ["Lost contact time", "After this time is passed without update for marker data, marker alpha will be set to 0.5. (Minutes)"], 
+    ["Tun Utilities - Startmakers & BFT","BFT"], 
+    [1, 60, 5, 0],
+    1,
+    {},
+    true
+] call CBA_Settings_fnc_init;
 
+[
+    QGVAR(enableDeleteMarker), 
+    "CHECKBOX", 
+    ["Enable delete non updated markers", "Enable system to delete unupdated markers"], 
+    ["Tun Utilities - Startmakers & BFT","BFT"], 
+    true,
+    1,
+    {},
+    true
+] call CBA_Settings_fnc_init;
 
+[
+    QGVAR(deleteMarkerTime), 
+    "SLIDER", 
+    ["Delete marker without update time", "After this time is passed without update for marker data, it will be deleted. (Minutes)"], 
+    ["Tun Utilities - Startmakers & BFT","BFT"], 
+    [1, 60, 15, 0],
+    1,
+    {},
+    true
+] call CBA_Settings_fnc_init;
