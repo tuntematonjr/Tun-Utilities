@@ -9,10 +9,22 @@
  * None
  *
  * Example:
- * [] call tun_startmarkers_fnc_imanexample
+ * [] call tun_startmarkers_fnc_serverInit
  */
 #include "script_component.hpp"
 
-[{diag_tickTime > _this || is3DENPreview}, {
+LOG("Runned server init starmarkers");
+
+[{diag_tickTime > _this || {(is3DENPreview && !isNull findDisplay 12)}}, {
+	GVAR(squadMarkersWestData) = createHashMap;
+	GVAR(squadMarkersEastData) = createHashMap;
+	GVAR(squadMarkersIndependentData) = createHashMap;
+	GVAR(squadMarkersCivilianData) = createHashMap;
+
+	GVAR(vehicleMarkersWestData) = createHashMap;
+	GVAR(vehicleMarkersEastData) = createHashMap;
+	GVAR(vehicleMarkersIndependentData) = createHashMap;
+	GVAR(vehicleMarkersCivilianData) = createHashMap;
+	
 	[] call FUNC(updateData);
 }, (diag_tickTime + 10)] call CBA_fnc_waitUntilAndExecute;
