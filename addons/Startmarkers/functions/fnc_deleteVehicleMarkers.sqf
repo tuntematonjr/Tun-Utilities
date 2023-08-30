@@ -17,4 +17,5 @@ private _display = (findDisplay TUN_FIND_MAPDISPLAY) displayCtrl 51;
 {
 	_display ctrlRemoveEventHandler ["Draw", _x];
 } forEach GVAR(vehicleMarkers);
+
 GVAR(vehicleMarkers) = [];
