@@ -10,3 +10,6 @@ PREP(serverInit);
 PREP(playerInit);
 PREP(settingsDisplay);
 PREP(filterData);
+PREP(createDiaryRecord);
+PREP(startBFT);
+PREP(sortAllowedSides);
