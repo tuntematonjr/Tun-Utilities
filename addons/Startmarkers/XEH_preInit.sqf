@@ -3,6 +3,8 @@
 
 GVAR(allowedSidesStarmarker) = [];
 GVAR(allowedSidesBFT) = [];
+GVAR(squadMarkers) = [];
+GVAR(vehicleMarkers) = [];
 
 [
     QGVAR(enable), // Unique setting name. Matches resulting variable name <STRING>
@@ -53,13 +55,18 @@ GVAR(allowedSidesBFT) = [];
 ////////////////
 
 [
-    QGVAR(prepTime), 
+    QGVAR(prepTimeSetting), 
     "SLIDER", 
     ["Preparation time (minutes)", "After this time is passed, all markers are auto hidden. You can bring them up again through the settings menu."], 
     ["Tun Utilities - Startmakers & BFT","Startposition"], 
     [1, 60, 15, 0],
     1,
-    { GVAR(prepTime) = (["Afi_safeStart_duration", _this ] call BIS_fnc_getParamValue) * 60; },
+    { 
+        params ["_value"];
+        _value = round _value;
+        GVAR(prepTimeSetting) = _value;
+        GVAR(prepTime) = (["Afi_safeStart_duration", _value ] call BIS_fnc_getParamValue) * 60; 
+    },
     true
 ] call CBA_Settings_fnc_init;
 
@@ -71,7 +78,8 @@ GVAR(allowedSidesBFT) = [];
     true,
     1,
     {
-        if (_this) then {
+        params ["_value"];
+        if (_value) then {
             GVAR(allowedSidesStarmarker) pushBack west;
         };
     },
@@ -86,7 +94,8 @@ GVAR(allowedSidesBFT) = [];
     true,
     1,
     {
-        if (_this) then {
+        params ["_value"];
+        if (_value) then {
             GVAR(allowedSidesStarmarker) pushBack east;
         };
     },
@@ -101,7 +110,8 @@ GVAR(allowedSidesBFT) = [];
     true,
     1,
     {
-        if (_this) then {
+        params ["_value"];
+        if (_value) then {
             GVAR(allowedSidesStarmarker) pushBack resistance;
         };
     },
@@ -116,7 +126,8 @@ GVAR(allowedSidesBFT) = [];
     true,
     1,
     {
-        if (_this) then {
+        params ["_value"];
+        if (_value) then {
             GVAR(allowedSidesStarmarker) pushBack civilian;
         };
     },
@@ -166,18 +177,26 @@ GVAR(allowedSidesBFT) = [];
     ["Tun Utilities - Startmakers & BFT","BFT"], 
     [1, 60, 5, 0],
     1,
-    {},
+    {
+        params ["_value"];
+        GVAR(updateInterval) = round _value;
+    },
     true
 ] call CBA_Settings_fnc_init;
 
 [
-    QGVAR(bftItems), 
+    QGVAR(bftItemsSettings), 
     "EDITBOX", 
     ["Required item", "List of item classnames to allow BFT. Seperate by comas"], 
     ["Tun Utilities - Startmakers & BFT","BFT"], 
     '"ACE_microDAGR", "ItemGPS"',
     1,
-    { GVAR(bftItems) = _this splitString """, """; MAP(GVAR(bftItems), toLower _x);},
+    { 
+        params ["_value"];
+        _value = _value splitString """, """;
+        MAP(_value, toLower _x);
+        GVAR(bftItems) = _value;
+    },
     true
 ] call CBA_Settings_fnc_init;
 
@@ -189,7 +208,8 @@ GVAR(allowedSidesBFT) = [];
     true,
     1,
     {
-        if (_this) then {
+        params ["_value"];
+        if (_value) then {
             GVAR(allowedSidesBFT) pushBack west;
         };
     },
@@ -204,7 +224,8 @@ GVAR(allowedSidesBFT) = [];
     true,
     1,
     {
-        if (_this) then {
+        params ["_value"];
+        if (_value) then {
             GVAR(allowedSidesBFT) pushBack east;
         };
     },
@@ -219,7 +240,8 @@ GVAR(allowedSidesBFT) = [];
     true,
     1,
     {
-        if (_this) then {
+        params ["_value"];
+        if (_value) then {
             GVAR(allowedSidesBFT) pushBack resistance;
         };
     },
@@ -234,7 +256,8 @@ GVAR(allowedSidesBFT) = [];
     true,
     1,
     {
-        if (_this) then {
+        params ["_value"];
+        if (_value) then {
             GVAR(allowedSidesBFT) pushBack civilian;
         };
     },
@@ -248,7 +271,10 @@ GVAR(allowedSidesBFT) = [];
     ["Tun Utilities - Startmakers & BFT","BFT"], 
     [1, 60, 5, 0],
     1,
-    {},
+    {
+        params ["_value"];
+        GVAR(deleteMarkerTime) = round _value;
+    },
     true
 ] call CBA_Settings_fnc_init;
 
@@ -270,6 +296,9 @@ GVAR(allowedSidesBFT) = [];
     ["Tun Utilities - Startmakers & BFT","BFT"], 
     [1, 60, 15, 0],
     1,
-    {},
+    {
+        params ["_value"];
+        GVAR(deleteMarkerTime) = round _value;
+    },
     true
 ] call CBA_Settings_fnc_init;
