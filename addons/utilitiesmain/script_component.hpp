@@ -1,9 +1,9 @@
-#define COMPONENT main
+#define COMPONENT utilitiesMain
 #define PREFIX Tun
 
 #define MAJOR 1
 #define MINOR 2
-#define PATCHLVL 0
+#define PATCHLVL 1
 #define BUILD 31082023
 
 #define VERSION MAJOR.MINOR.PATCHLVL.BUILD
