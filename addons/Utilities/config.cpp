@@ -25,6 +25,11 @@ class Extended_PreInit_EventHandlers {
     };
 };
 
+class  RscPictureKeepAspect;
+class  RscButton;
+class  RscText;
+class  RscXSliderH;
+#include "biggerImage.hpp"
 #include "spectatorStats.hpp"
 
 class CfgFactionClasses
