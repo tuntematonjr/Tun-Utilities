@@ -6,7 +6,7 @@ class CfgPatches
     {
         units[] = { QGVAR(combatZoneModule) };
         weapons[] = {};
-        requiredVersion = 2.04;
+        requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"cba_main","cba_xeh","cba_settings","ace_modules"};
         author = "Tuntematon";
         authorUrl = "https://github.com/tuntematonjr/Tun-Utilities";
@@ -25,6 +25,11 @@ class Extended_PreInit_EventHandlers {
     };
 };
 
+class  RscPictureKeepAspect;
+class  RscButton;
+class  RscText;
+class  RscXSliderH;
+#include "biggerImage.hpp"
 #include "spectatorStats.hpp"
 
 class CfgFactionClasses

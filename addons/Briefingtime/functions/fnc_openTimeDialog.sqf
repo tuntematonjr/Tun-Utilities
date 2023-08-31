@@ -14,7 +14,7 @@
  */
 #include "script_component.hpp"
 
-private _display = [53, 52] select !isNull findDisplay 52;
+private _display = TUN_FIND_MAPDISPLAY;
 private _control = findDisplay _display createDisplay "Tun_Briefingtime_Time";
 uiNamespace setVariable ["Tun_Briefingtime_Time", _control ];
 [{!isNull findDisplay 320000}, {

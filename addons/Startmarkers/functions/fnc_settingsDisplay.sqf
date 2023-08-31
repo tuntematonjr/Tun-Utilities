@@ -16,7 +16,7 @@
 params ["_open"];
 
 if (_open) then {
-	private _control = findDisplay GVAR(displayIDD) createDisplay "tun_starmakersSettings";
+	private _control = findDisplay TUN_FIND_MAPDISPLAY createDisplay "tun_starmakersSettings";
 	uiNamespace setVariable ["tun_starmakersSettings", _control ];
 	[{!isNull findDisplay 321000}, {
 		private _display = uiNamespace getVariable "tun_starmakersSettings";
@@ -25,7 +25,7 @@ if (_open) then {
 		private _vehicleTextTogleButton = (_display displayCtrl 321003);
 		private _vehicleOccupationTogleButton = (_display displayCtrl 321004);
 	
-		(findDisplay 321000 displayCtrl 321001) cbSetChecked GVAR(squadTogle);
+		_squadTogleButton cbSetChecked GVAR(squadTogle);
 		_vehicleTogleButton cbSetChecked GVAR(vehicleTogle);
 		_vehicleTextTogleButton cbSetChecked GVAR(vehicleTextToggle);
 		_vehicleOccupationTogleButton cbSetChecked GVAR(vehicleOccupationToggle);

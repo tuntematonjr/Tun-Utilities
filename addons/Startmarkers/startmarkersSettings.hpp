@@ -115,7 +115,7 @@ class tun_starmakersSettings
 			style = 2;
 			text = "OK";
 			colorBackground[] = {COLOR_ACTIVE_RGBA};	
-			onButtonClick = "(uiNamespace getVariable 'tun_starmakersSettings') closeDisplay 1;";			
+			onMouseButtonClick = QUOTE(ctrlParent (_this select 0) closeDisplay 1);
 		};
 		
 	};

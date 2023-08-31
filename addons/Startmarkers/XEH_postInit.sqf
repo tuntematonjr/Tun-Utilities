@@ -1,8 +1,5 @@
 #include "script_component.hpp"
 
-GVAR(squadMarkers) = [];
-GVAR(vehicleMarkers) = [];
-
 [{!isNil QGVAR(enable)}, {
     if (GVAR(enable)) then {
         if (isServer) then {

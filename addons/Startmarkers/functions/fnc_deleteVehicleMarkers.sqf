@@ -13,7 +13,9 @@
  */
 #include "script_component.hpp"
 
+private _display = (findDisplay TUN_FIND_MAPDISPLAY) displayCtrl 51;
 {
-	(findDisplay GVAR(displayIDD)) displayCtrl 51 ctrlRemoveEventHandler ["Draw", _x];
+	_display ctrlRemoveEventHandler ["Draw", _x];
 } forEach GVAR(vehicleMarkers);
+
 GVAR(vehicleMarkers) = [];

@@ -105,7 +105,7 @@ class Tun_Briefingtime_Time
 			h = safeZoneH * 0.025;
 			style = 0;
 			text = "Cancel";
-			onMouseButtonClick = "(uiNamespace getVariable 'Tun_Briefingtime_Time') closeDisplay 0;";
+			onMouseButtonClick = QUOTE(ctrlParent (_this select 0) closeDisplay 1);
 		};
 		
 	};
