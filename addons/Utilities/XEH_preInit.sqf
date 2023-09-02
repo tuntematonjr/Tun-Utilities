@@ -80,14 +80,3 @@
     {},
     true
 ] call CBA_Settings_fnc_init;
-
-[
-    QGVAR(allowUnconInfo),
-    "CHECKBOX",
-    ["Enable uncon info", "Enanbles uncon to know whats going around them. Own vitals and if friendlies nearby."],
-    ["Tun Utilities - Utilities", "Uncon Info"],
-    true,
-    1,
-    {},
-    true
-] call CBA_Settings_fnc_init;

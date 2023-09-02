@@ -3,7 +3,5 @@
 PREP(loadScreen);
 PREP(combatZone);
 PREP(initSpectatorStats);
-PREP(unconInfo);
 PREP(openBiggerPicture);
 PREP(createBriefingBiggerPicture);
-
