@@ -7,7 +7,7 @@ class CfgPatches
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"cba_xeh","cba_settings"};
+        requiredAddons[] = {"cba_xeh","cba_settings", "ace_main"};
         author = "Tuntematon";
         authorUrl = "https://github.com/tuntematonjr/Tun-Utilities";
     };
@@ -15,7 +15,7 @@ class CfgPatches
 
 class Extended_PostInit_EventHandlers {
     class Tun_unconInfo {
-        init = QUOTE(call COMPILE_FILE(XEH_postInit));
+        clientInit = QUOTE(call COMPILE_FILE(XEH_clientInit));
     };
 };
 
