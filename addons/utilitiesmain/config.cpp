@@ -7,7 +7,7 @@ class CfgPatches
         units[] = { };
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"cba_xeh"};
+        requiredAddons[] = {"ace_main"};
         author = "Tuntematon";
         authorUrl = "https://github.com/tuntematonjr/Tun-Utilities";
     };
