@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Author: [Tuntematon]
  * [Description]
  *
@@ -9,7 +9,7 @@
  * Nothing
  *
  * Example:
- * [] call tun_startmarkers_fnc_sortAllowedSides
+ * [] call tunuti_startmarkers_fnc_sortAllowedSides
  */
 #include "script_component.hpp"
 

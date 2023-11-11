@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Author: [Tuntematon]
  * [Description]
  * Set SR channel
@@ -12,7 +12,7 @@
  * True if changed, false if not
  *
  * Example:
- * [2, "123", false] call tun_radiochannels_fnc_setSRchannel
+ * [2, "123", false] call tunuti_radiochannels_fnc_setSRchannel
  */
 #include "script_component.hpp"
 
@@ -23,25 +23,26 @@ LOG(_debugText);
 if (cba_missionTime isEqualTo 0) exitWith { false };
 if (!(call TFAR_fnc_haveSWRadio)) exitWith { [parseText "You don't have SR radio", 5] call TFAR_fnc_showHint; false };
 
-private _srValues = [];
-private _lrValues = [];
+private _radioValues = GVAR(radioValues) getOrDefault [playerSide, [[],[]]];
+private _srValues = _radioValues select 0;
+private _lrValues = _radioValues select 1;
 private _frequency = "error";
 private _channel = 0;
 
-switch (playerSide) do {
-	case west: { 
-		_srValues = GVAR(srWEST);
-		_lrValues =  GVAR(lrWEST);
-	};
-	case east: { 
-		_srValues = GVAR(srEAST);
-		_lrValues = GVAR(lrEAST);
-	};
-	case independent: { 
-		_srValues = GVAR(srINDEPENDENT);
-		_lrValues = GVAR(lrINDEPENDENT);
-	};
-};
+// switch (playerSide) do {
+// 	case west: { 
+// 		_srValues = GVAR(srWEST);
+// 		_lrValues =  GVAR(lrWEST);
+// 	};
+// 	case east: { 
+// 		_srValues = GVAR(srEAST);
+// 		_lrValues = GVAR(lrEAST);
+// 	};
+// 	case independent: { 
+// 		_srValues = GVAR(srINDEPENDENT);
+// 		_lrValues = GVAR(lrINDEPENDENT);
+// 	};
+// };
 
 if (_setSquadValuest) then {
 	private _values = (group player) getVariable [QGVAR(radioValues), [[],[],[]]];

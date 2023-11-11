@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Author: [Tuntematon]
  * [Description]
  *
@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [] call tun_startmarkers_fnc_serverInit
+ * [] call tunuti_startmarkers_fnc_serverInit
  */
 #include "script_component.hpp"
 

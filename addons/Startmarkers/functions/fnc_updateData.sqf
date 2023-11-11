@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Author: [Tuntematon]
  * [Description]
  *
@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [] call tun_startmarkers_fnc_updateData
+ * [] call tunuti_startmarkers_fnc_updateData
  */
 #include "script_component.hpp"
 
@@ -78,7 +78,7 @@ if (_time < 1) then {
             };
         };
     };
-} forEach allgroups;
+} forEach allgroups; 
 
 private _vehiclesToCreateMarkers = [];
 private _playableUnits = playableUnits + switchableUnits;
@@ -86,7 +86,7 @@ private _showUnmanned = GVAR(showUnmanned);
 //Collect vehicles
 {
     private _vehicle = _x; 
-    private _side = _vehicle getVariable [QGVAR(vehicleSide), sideLogic]; // "Tun_startmarkers_vehicleSide"
+    private _side = _vehicle getVariable [QGVAR(vehicleSide), (_vehicle getVariable ["Tun_startmarkers_vehicleSide", sideLogic])]; // "tunuti_startmarkers_vehicleSide"
     if (!(_vehicle getVariable [QGVAR(noStartMarker), false]) && { _side in _allowedSide } && { alive _vehicle }) then {
 
         private _pos = getPosWorld _vehicle;

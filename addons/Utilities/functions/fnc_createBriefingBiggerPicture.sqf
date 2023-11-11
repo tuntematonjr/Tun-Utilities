@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Author: [Tuntematon]
  * [Description]
  *
@@ -10,7 +10,7 @@
  * The return value <BOOL>
  *
  * Example:
- * [_text, _imagePath] call tun_utilities_fnc_createBriefingBiggerPicture
+ * [_text, _imagePath] call tunuti_utilities_fnc_createBriefingBiggerPicture
  */
 #include "script_component.hpp"
 

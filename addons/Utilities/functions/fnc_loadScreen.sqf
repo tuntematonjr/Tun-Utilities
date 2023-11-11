@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Author: [Tuntematon]
  * [Description]
  * Force players to map view to reduce desync
@@ -9,8 +9,9 @@
  * None
  *
  * Example:
- * [] call tun_utilities_fnc_loadScreen
+ * [] call tunuti_utilities_fnc_loadScreen
  */
+ 
 #include "script_component.hpp"
 LOG("Called desync load screen");
 if (!isMultiplayer) exitWith { LOG("Skip desync load screen in SP"); }; // skip if singleplayer

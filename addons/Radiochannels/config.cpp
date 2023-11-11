@@ -1,26 +1,19 @@
 #include "script_component.hpp"
 
-class CfgPatches
-{
-    class Tun_Radiochannels
-    {
+// information on this addon specifically
+class CfgPatches {
+    class ADDON {
+        name = COMPONENT_NAME;
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"cba_main","cba_xeh","cba_settings","ace_common","ace_interaction","ace_interact_menu"};
+        requiredAddons[] = {"ace_interaction","ace_interact_menu","tfar_core","tunuti_main"};
         author = "Tuntematon";
-        authorUrl = "https://github.com/tuntematonjr/Tun-Utilities";
+        authorUrl = TUN_UTILITY_GITHUBLINK;
+        VERSION_CONFIG;
+        skipWhenMissingDependencies = 1;
     };
 };
 
-class Extended_PostInit_EventHandlers {
-    class Tun_Radiochannels {
-        init = QUOTE(call COMPILE_FILE(XEH_postInit));
-    };
-};
-
-class Extended_PreInit_EventHandlers {
-    class Tun_Radiochannels {
-        init = QUOTE( call COMPILE_FILE(XEH_preInit) );
-    };
-};
+// configs go here
+#include "CfgEventHandlers.hpp"

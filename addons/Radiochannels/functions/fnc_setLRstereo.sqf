@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Author: [Tuntematon]
  * [Description]
  * Set Stereo for radio
@@ -11,7 +11,7 @@
  * True if changed, false if not
  *
  * Example:
- * [0, false] call tun_radiochannels_fnc_setLRstereo
+ * [0, false] call tunuti_radiochannels_fnc_setLRstereo
  */
 #include "script_component.hpp"
 params ["_ear", "_isAdditional"];

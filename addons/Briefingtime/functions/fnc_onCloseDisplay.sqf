@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Author: [Tuntematon]
  * [Description]
  *
@@ -10,11 +10,11 @@
  * None
  *
  * Example:
- * [] call tun_briefingtime_fnc_onCloseDisplay
+ * [] call tunuti_briefingtime_fnc_onCloseDisplay
  */
 #include "script_component.hpp"
 
-private _newTime = sliderPosition ((uiNamespace getVariable "Tun_Briefingtime_Time") displayCtrl 320003);
+private _newTime = sliderPosition ((uiNamespace getVariable QGVAR(Time)) displayCtrl 320003);
 
 //Create notification and admin will modify
 if (IS_ADMIN) then {

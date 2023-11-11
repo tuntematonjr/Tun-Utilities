@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Author: [Tuntematon]
  * [Description]
  *
@@ -9,9 +9,10 @@
  * None
  *
  * Example:
- * [] call tun_startmarkers_fnc_createVehicleMarkers
+ * [] call tunuti_startmarkers_fnc_createVehicleMarkers
  */
 #include "script_component.hpp"
+disableSerialization;
 
 LOG("Runned create vehicle markers");
 
@@ -40,12 +41,37 @@ if (civilian in _allowedSides) then {
 // private _logText = format ["Create vehicle marker data has %1 entries", count _markerData];
 // LOG(_logText);
 
-private _display = (findDisplay TUN_FIND_MAPDISPLAY) displayCtrl 51;
+
 private _vehicleTextToggle = GVAR(vehicleTextToggle);
 private _vehicleOccupationToggle = GVAR(vehicleOccupationToggle);
 private _lastUpdateTime = GVAR(lastDataUpdate);
 private _lostContactTime = GVAR(lostContactTime) * 60;
 private _deleteMarkerTime = GVAR(deleteMarkerTime) * 60;
+
+
+private _displays = [];
+_displays pushBack ((findDisplay TUNUTI_FIND_MAPDISPLAY) displayCtrl 51);
+
+private _minimapDisplay = uiNamespace getVariable ["RscCustomInfoMiniMap", displayNull];
+if (!isNull _minimapDisplay) then {
+	private _miniMapControlGroup = _minimapDisplay displayCtrl 13301;
+	private _miniMap = _miniMapControlGroup controlsGroupCtrl 101;
+	_displays pushBack _miniMap;
+};
+
+//DialogDisplay
+private _dialogDisplay = uiNamespace getVariable [["ace_microdagr_RscTitleDisplay", "ace_microdagr_DialogDisplay"] select (ace_microdagr_currentShowMode == 2), displayNull];
+if (!isNull _dialogDisplay) then {
+	private _microDagrCtrl= [_display displayCtrl 77702, _display displayCtrl 77703] select (!ace_microdagr_mapShowTexture);
+	//private _miniMap = _microDagrDetail controlsGroupCtrl 101;
+	_displays pushBack _microDagrCtrl;
+};
+ 
+
+
+//_displays pushBack _microDagrDetail;
+
+//(uiNamespace getVariable ["ace_microdagr_RscTitleDisplay", displayNull]) displayCtrl 77702
 
 {
 	_x params ["_classname", "_texts", "_pos", "_direction", "_color", "_updateTime"];
@@ -72,23 +98,28 @@ private _deleteMarkerTime = GVAR(deleteMarkerTime) * 60;
 		};
 	};
 
-	private _IDC = _display ctrlAddEventHandler ["Draw", format ['
-			(_this select 0) drawIcon [
-			"%1",
-			%2,
-			%3,
-			30,
-			30,
-			%4,
-			%5,
-			2
-			];',
-			_icon,
-			_color,
-			_pos,
-			_direction,
-			str _text
-		]
-	];
-	GVAR(vehicleMarkers) pushBack _IDC;
+	{
+		private _display = _x;
+		private _drawValues = format ['
+				(_this select 0) drawIcon [
+				"%1",
+				%2,
+				%3,
+				30,
+				30,
+				%4,
+				%5,
+				2
+				];',
+				_icon,
+				_color,
+				_pos,
+				_direction,
+				str _text
+			];
+
+		private _IDC = _display ctrlAddEventHandler ["Draw",_drawValues];
+		GVAR(vehicleMarkers) pushBack [_display, _IDC];
+	} forEach _displays;	
 } forEach _markerData;
+ 

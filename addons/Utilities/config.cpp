@@ -1,30 +1,20 @@
 #include "script_component.hpp"
 
-class CfgPatches
-{
-    class Tun_Utilities
-    {
+// information on this addon specifically
+class CfgPatches {
+    class ADDON {
+        name = COMPONENT_NAME;
         units[] = { QGVAR(combatZoneModule) };
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"cba_main","cba_xeh","cba_settings","ace_modules"};
+        requiredAddons[] = {"cba_main","cba_xeh","cba_settings","ace_modules","tunuti_main"};
         author = "Tuntematon";
-        authorUrl = "https://github.com/tuntematonjr/Tun-Utilities";
+        authorUrl = TUN_UTILITY_GITHUBLINK;
+        VERSION_CONFIG;
     };
 };
-
-class Extended_PostInit_EventHandlers {
-    class Tun_Utilities {
-        init = QUOTE(call COMPILE_FILE(XEH_postInit));
-    };
-};
-
-class Extended_PreInit_EventHandlers {
-    class Tun_Utilities {
-        init = QUOTE( call COMPILE_FILE(XEH_preInit) );
-    };
-};
-
+// configs go here
+#include "CfgEventHandlers.hpp"
 class  RscPictureKeepAspect;
 class  RscButton;
 class  RscText;
@@ -45,7 +35,7 @@ class CfgVehicles {
     class ACE_Module;
     class GVAR(combatZoneModule): ACE_Module {
         author = "Tuntematon";
-        category = QGVAR(category);
+        category = "Tun Utilities";
         displayName = "Tun Combat Zone";
         function = QFUNC(combatZone);
         scope = 2;// Editor visibility; 2 will show it in the menu, 1 will hide it.
@@ -93,30 +83,34 @@ class CfgVehicles {
                 displayName = "Enable West";
                 //description = "";
                 typeName = "BOOL";
-                defaultValue = false;
+                defaultValue = 0;
             };
             
             class sideEast {
                 displayName = "Enable East";
                 //description = "";
                 typeName = "BOOL";
-                defaultValue = false;
+                defaultValue = 0;
             };
             
             class sideResistance {
                 displayName = "Enable Resistance";
                 //description = "";
                 typeName = "BOOL";
-                defaultValue = false;
+                defaultValue = 0;
             };
             
             class sideCiv {
                 displayName = "Enable Civilian";
                 //description = "";
                 typeName = "BOOL";
-                defaultValue = false;
+                defaultValue = 0;
             };
-
         };
+    };
+
+    class tun_utilities_combatZoneModule : GVAR(combatZoneModule) {
+        displayName = "Deprecated";
+        scope = 1;// Editor visibility; 2 will show it in the menu, 1 will hide it.
     };
 };

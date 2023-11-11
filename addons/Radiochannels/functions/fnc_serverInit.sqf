@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Author: [Tuntematon]
  * [Description]
  *
@@ -9,18 +9,18 @@
  * None
  *
  * Example:
- * ["something", player] call tun_radiochannels_fnc_serverInit
+ * [] call tunuti_radiochannels_fnc_serverInit
  */
 #include "script_component.hpp"
 
 LOG("Server init start");
-
-GVAR(srWEST) = [];
-GVAR(srEAST) = [];
-GVAR(srINDEPENDENT) = [];
-GVAR(lrWEST) = [];
-GVAR(lrEAST) = [];
-GVAR(lrINDEPENDENT) = [];
+private _radioValuesHash = createHashMap;
+// GVAR(srWEST) = [];
+// GVAR(srEAST) = [];
+// GVAR(srINDEPENDENT) = [];
+// GVAR(lrWEST) = [];
+// GVAR(lrEAST) = [];
+// GVAR(lrINDEPENDENT) = [];
 
 ISNILS(GVAR(commandElementID),"10");
 ISNILS(GVAR(trimNames),"1234567890 ");
@@ -31,6 +31,8 @@ GVAR(HQelement) = [];
 	GVAR(HQelement) pushBackUnique ([_x] call CBA_fnc_trim);
 } forEach _untrimmed;
 
+private _usedFrequencies = [];
+
 private _sr_west = TFAR_defaultFrequencies_sr_west;
 private _sr_east = TFAR_defaultFrequencies_sr_east;
 private _sr_independent = TFAR_defaultFrequencies_sr_independent;
@@ -39,13 +41,16 @@ private _lr_west = TFAR_defaultFrequencies_lr_west;
 private _lr_east = TFAR_defaultFrequencies_lr_east;
 private _lr_independent = TFAR_defaultFrequencies_lr_independent;
 
-private _groupsWest = allGroups select {side _x isEqualTo west};
-private _groupsEast = allGroups select {side _x isEqualTo east};
-private _groupsIndependent = allGroups select {side _x isEqualTo independent};
+private _playableUnits = playableUnits + switchableUnits;
+private _groupsWest = groups west;
+private _groupsEast = groups east;
+private _groupsIndependent = groups resistance;
+FILTER(_groupsWest,{ if (_x in _playableUnits) exitWith {true}; false } forEach units _x);
+FILTER(_groupsEast,{ if (_x in _playableUnits) exitWith {true}; false } forEach units _x);
+FILTER(_groupsIndependent,{ if (_x in _playableUnits) exitWith {true}; false } forEach units _x);
 
 {
-	private _groups = _x select 0;
-	private _side = _x select 1;
+	_x params ["_groups", "_side"];
 	private _valuesSR = [];
 	private _valuesLR = [];
 	private _valuesSR_final = [];
@@ -92,9 +97,15 @@ private _groupsIndependent = allGroups select {side _x isEqualTo independent};
 
 				if (_channelLR <= 7) then {
 					_lrFrequency = _valuesLR select (_channelLR - 1);
+					_usedFrequencies pushBack _lrFrequency;
 					INC(_currentLRchannel);
 				} else {
-					_lrFrequency = ([0,87,30,10] call TFAR_fnc_generateFrequencies) select 0;
+					while {true} do {
+						_lrFrequency = ([0,87,30,10] call TFAR_fnc_generateFrequencies) select 0;
+						if !(_lrFrequency in _usedFrequencies) exitWith {
+							_usedFrequencies pushBack _lrFrequency;
+						};
+					};
 				};
 				
 				if (_channelLR > 6) then {
@@ -115,8 +126,13 @@ private _groupsIndependent = allGroups select {side _x isEqualTo independent};
 				_srFrequency = _valuesSR select (_channelSR - 1);
 				INC(_currentSRchannel);
 			} else {
-				_srFrequency = ([0,512,30,10] call TFAR_fnc_generateFrequencies) select 0;
 				_channelSR = 7;
+				while {true} do {
+					_srFrequency = ([0,512,30,10] call TFAR_fnc_generateFrequencies) select 0;
+					if !(_srFrequency in _usedFrequencies) exitWith {
+						_usedFrequencies pushBack _srFrequency;
+					};
+				};
 			};
 
 			_srData = [_srFrequency, _channelSR, _squadNameTrimmed, _commandTrimmed];
@@ -127,30 +143,23 @@ private _groupsIndependent = allGroups select {side _x isEqualTo independent};
 		};
 	} forEach _groups;
 
-	switch (_side) do {
-		case west: { 
-			GVAR(srWEST) = _valuesSR_final;
-			GVAR(lrWEST) = _valuesLR_final;
-		};
-		case east: { 
-			GVAR(srEAST) = _valuesSR_final;
-			GVAR(lrEAST) = _valuesLR_final;
-		};
-		case independent: { 
-			GVAR(srINDEPENDENT) = _valuesSR_final;
-			GVAR(lrINDEPENDENT) = _valuesLR_final;
-		};
-	};
+    _radioValuesHash set [_side, [_valuesSR_final,_valuesLR_final]];
 
 } forEach [[_groupsWest, west],[_groupsEast, east], [_groupsIndependent, independent]];
 
-private _Tun_FNC_create_LR_channel = {
+private _tunuti_FNC_create_LR_channel = {
 	params ["_values", "_count"];
 
 	private _valuesLR_final = [];
 	{
 		private _name = _x;
-		private _lrFrequency = ([0,87,30,10] call TFAR_fnc_generateFrequencies) select 0;
+		private _lrFrequency = 0;
+		while {true} do {
+			_lrFrequency = ([0,87,30,10] call TFAR_fnc_generateFrequencies) select 0;
+			if !(_lrFrequency in _usedFrequencies) exitWith {
+				_usedFrequencies pushBack _lrFrequency;
+			};
+		};
 		private _channelLR =_count;
 		INC(_count);
 		if (_channelLR > 6) then {
@@ -163,31 +172,58 @@ private _Tun_FNC_create_LR_channel = {
 	_valuesLR_final
 };
 
-if ((count GVAR(additional_LR_west)) isNotEqualTo 0) then {
-	private _count = (count GVAR(lrWEST)) + 1;
-	private _valuesLR_final = [GVAR(additional_LR_west), _count] call _Tun_FNC_create_LR_channel;
-	GVAR(lrWEST) append _valuesLR_final;
-};
 
-if ((count GVAR(additional_LR_east)) isNotEqualTo 0) then {
-	private _count = (count GVAR(lrEAST)) + 1;
-	private _valuesLR_final = [GVAR(additional_LR_east), _count] call _Tun_FNC_create_LR_channel;
-	GVAR(lrEAST) append _valuesLR_final;
-};
+{
+	_x params ["_side", "_additionalLR"];
+	if ((count _additionalLR) isNotEqualTo 0) then {
+		private _values = _radioValuesHash getOrDefault [west, [[],[]]];
+		private _lrValues = _values select 1;
+		private _srValues = _values select 0;
+		private _count = (count _lrValues) + 1;
+		private _valuesLR_final = [_additionalLR, _count] call _tunuti_FNC_create_LR_channel;
+		_lrValues append _valuesLR_final;
 
-if ((count GVAR(additional_LR_independent)) isNotEqualTo 0) then {
-	private _count = (count GVAR(lrINDEPENDENT)) + 1;
-	private _valuesLR_final = [GVAR(additional_LR_independent), _count] call _Tun_FNC_create_LR_channel;
-	GVAR(lrINDEPENDENT) append _valuesLR_final;
-};
+		_radioValuesHash set [_side, [_srValues,_lrValues]];
+		
+	};
+} forEach [
+			west, GVAR(additional_LR_west),
+			east, GVAR(additional_LR_east),
+			resistance, GVAR(additional_LR_independent)];
 
-publicVariable QGVAR(lrWEST);
-publicVariable QGVAR(lrEAST);
-publicVariable QGVAR(lrINDEPENDENT);
+// if ((count GVAR(additional_LR_west)) isNotEqualTo 0) then {
+// 	private _values = _radioValuesHash getOrDefault [west, [[],[]]];
+// 	private _lrValues = _values select 1;
+// 	private _srValues = _values select 0;
+// 	private _count = (count _lrValues) + 1;
+// 	private _valuesLR_final = [GVAR(additional_LR_west), _count] call _tunuti_FNC_create_LR_channel;
+	
 
-publicVariable QGVAR(srWEST);
-publicVariable QGVAR(srEAST);
-publicVariable QGVAR(srINDEPENDENT);
+// 	_radioValuesHash set [_side, [_valuesSR_final,_valuesLR_final]];
+// 	GVAR(lrWEST) append _valuesLR_final;
+// };
+
+// if ((count GVAR(additional_LR_east)) isNotEqualTo 0) then {
+// 	private _count = (count GVAR(lrEAST)) + 1;
+// 	private _valuesLR_final = [GVAR(additional_LR_east), _count] call _tunuti_FNC_create_LR_channel;
+// 	GVAR(lrEAST) append _valuesLR_final;
+// };
+
+// if ((count GVAR(additional_LR_independent)) isNotEqualTo 0) then {
+// 	private _count = (count GVAR(lrINDEPENDENT)) + 1;
+// 	private _valuesLR_final = [GVAR(additional_LR_independent), _count] call _tunuti_FNC_create_LR_channel;
+// 	GVAR(lrINDEPENDENT) append _valuesLR_final;
+// };
+
+missionNamespace setVariable [QGVAR(radioValues),_radioValuesHash,true];
+
+// publicVariable QGVAR(lrWEST);
+// publicVariable QGVAR(lrEAST);
+// publicVariable QGVAR(lrINDEPENDENT);
+
+// publicVariable QGVAR(srWEST);
+// publicVariable QGVAR(srEAST);
+// publicVariable QGVAR(srINDEPENDENT);
 
 GVAR(serverDone) = true;
 publicVariable QGVAR(serverDone);

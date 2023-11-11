@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Author: [Tuntematon]
  * [Description]
  *
@@ -9,8 +9,9 @@
  * none
  *
  * Example:
- * [] call tun_utilities_fnc_combatZone
+ * [] call tunuti_utilities_fnc_combatZone
  */
+ 
 #include "script_component.hpp"
 private _module = param [0,objNull,[objNull]];
 private _markerPreFix = _module getVariable ["markerPreFix", ""];
@@ -52,7 +53,7 @@ LOG(_debugText);
         };
 
         if (isNull findDisplay 12) then {
-            private _displayIDD = TUN_FIND_MAPDISPLAY;
+            private _displayIDD = TUNUTI_FIND_MAPDISPLAY;
             findDisplay _displayIDD displayCtrl 51 ctrlAddEventHandler ["Draw", {
                 _this select 0 drawPolygon [GVAR(borderPolygon), [1,0,0,1]];
             }];
@@ -61,7 +62,6 @@ LOG(_debugText);
 
         [{ controlNull isNotEqualTo (findDisplay 12 displayCtrl 51) }, {
                 _this params ["_updateInterval", "_hintText"];
-                diag_log "combatzone";
                 findDisplay 12 displayCtrl 51 ctrlAddEventHandler ["Draw", {
                     _this select 0 drawPolygon [GVAR(borderPolygon), [1,0,0,1]];
                 }];
@@ -86,7 +86,7 @@ LOG(_debugText);
                             case 3: { 
                                 playSound3D ['a3\dubbing_f_epa\zone_restriction\A_Warn_No_Leader\zone_restriction_a_warn_no_leader_KER_2.ogg', player];
 
-                                [['SPEAKER', "Wow, I must be way off course. Better check my map.", 0]] spawn BIS_fnc_EXP_camp_playSubtitles;
+                                [[profileName, "Wow, I must be way off course. Better check my map.", 0]] spawn BIS_fnc_EXP_camp_playSubtitles;
                             };
                         };
                         LOG("player out of AO");

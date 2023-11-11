@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Author: [Tuntematon]
  * [Description]
  *
@@ -9,12 +9,12 @@
  * 
  *
  * Example:
- * [_imagePath] call tun_utilities_fnc_openBiggerPicture
+ * [_imagePath] call tunuti_utilities_fnc_openBiggerPicture
  */
 #include "script_component.hpp"
 
 params ["_imagePath"];
-private _display = findDisplay TUN_FIND_MAPDISPLAY;
+private _display = findDisplay TUNUTI_FIND_MAPDISPLAY;
 
 private _control = _display createDisplay QGVAR(biggerPictureInBriefingUI);
 uiNamespace setVariable [QGVAR(biggerPictureInBriefingUI), _control ];

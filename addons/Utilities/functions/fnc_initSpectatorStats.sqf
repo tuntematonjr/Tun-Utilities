@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Author: [Tuntematon]
  * [Description]
  *
@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [] call tun_utilities_fnc_initSpectatorStats
+ * [] call tunuti_utilities_fnc_initSpectatorStats
  */
 #include "script_component.hpp"
 
@@ -18,14 +18,14 @@ private _id = ["ace_spectator_displayLoaded", {
 
 		if !(GVAR(enableSpectatorStats)) exitWith { LOG("Desync load screen disabled"); };
 		LOG("init spectator stats");
-		private _control = findDisplay 60000 ctrlCreate ["tun_utilities_spectatorStatsWest", 1];
-		uiNamespace setVariable ["tun_utilities_spectatorStatsWest", _control ];
+		private _control = findDisplay 60000 ctrlCreate ["tunuti_utilities_spectatorStatsWest", 1];
+		uiNamespace setVariable ["tunuti_utilities_spectatorStatsWest", _control ];
 
-		private _control = findDisplay 60000 ctrlCreate ["tun_utilities_spectatorStatsEast", 2];
-		uiNamespace setVariable ["tun_utilities_spectatorStatsEast", _control ];
+		private _control = findDisplay 60000 ctrlCreate ["tunuti_utilities_spectatorStatsEast", 2];
+		uiNamespace setVariable ["tunuti_utilities_spectatorStatsEast", _control ];
 
-		private _control = findDisplay 60000 ctrlCreate ["tun_utilities_spectatorStatsIndependent", 3];
-		uiNamespace setVariable ["tun_utilities_spectatorStatsIndependent", _control ];
+		private _control = findDisplay 60000 ctrlCreate ["tunuti_utilities_spectatorStatsIndependent", 3];
+		uiNamespace setVariable ["tunuti_utilities_spectatorStatsIndependent", _control ];
 
 		_handle = [{
 			if (isNull findDisplay 60000) exitWith {
@@ -55,10 +55,11 @@ private _id = ["ace_spectator_displayLoaded", {
 				if (_originalCount isNotEqualTo 0) then {
 					private _text = format["%2:%1Alive: %3(Uncons: %5)/%4%1",endl, _side, _aliveCount, _originalCount, (_aliveCount - _awake)];
 
-					if (tun_respawn_respawn_type isNotEqualTo "Side tickets") then {
-						_tickets = "Mission not using side tickets";
-					};
 					if (missionNamespace getVariable ["tun_respawn_enable", false]) then {
+						if (tun_respawn_respawn_type isNotEqualTo "Side tickets") then {
+							_tickets = "Mission not using side tickets";
+						};
+					
 						private _time = "None";
 						if (_respawnTime isNotEqualTo 0) then {
 							_time = [ceil (_respawnTime - cba_missiontime), "MM:SS"] call BIS_fnc_secondsToString;
@@ -70,9 +71,9 @@ private _id = ["ace_spectator_displayLoaded", {
 					};
 					(uiNamespace getVariable _control) ctrlSetText _text;
 				};
-			} forEach [["Blufor", _westCount, GVAR(spectatorInitCountWest), tun_respawn_wait_time_west, tun_respawn_tickets_west, "tun_utilities_spectatorStatsWest", _westCountAwake, tun_respawn_waitingRespawnWest, tun_respawn_waitingRespawnDelayedWest],
-			["Opfor", _eastCount, GVAR(spectatorInitCountEast), tun_respawn_wait_time_east, tun_respawn_tickets_east, "tun_utilities_spectatorStatsEast", _eastCountAwake, tun_respawn_waitingRespawnEast, tun_respawn_waitingRespawnDelayedEast],
-			["Indfor", _independentCount, GVAR(spectatorInitCountIndependent), tun_respawn_wait_time_guer, tun_respawn_tickets_guer, "tun_utilities_spectatorStatsIndependent", _independentCountAwake, tun_respawn_waitingRespawnGuer, tun_respawn_waitingRespawnDelayedGuer]];
+			} forEach [["Blufor", _westCount, GVAR(spectatorInitCountWest), tun_respawn_wait_time_west, tun_respawn_tickets_west, "tunuti_utilities_spectatorStatsWest", _westCountAwake, tun_respawn_waitingRespawnWest, tun_respawn_waitingRespawnDelayedWest],
+			["Opfor", _eastCount, GVAR(spectatorInitCountEast), tun_respawn_wait_time_east, tun_respawn_tickets_east, "tunuti_utilities_spectatorStatsEast", _eastCountAwake, tun_respawn_waitingRespawnEast, tun_respawn_waitingRespawnDelayedEast],
+			["Indfor", _independentCount, GVAR(spectatorInitCountIndependent), tun_respawn_wait_time_guer, tun_respawn_tickets_guer, "tunuti_utilities_spectatorStatsIndependent", _independentCountAwake, tun_respawn_waitingRespawnGuer, tun_respawn_waitingRespawnDelayedGuer]];
 		}, 1, []] call CBA_fnc_addPerFrameHandler;
 	}] call CBA_fnc_waitUntilAndExecute;
 }] call CBA_fnc_addEventHandler;

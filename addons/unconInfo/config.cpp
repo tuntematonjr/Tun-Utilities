@@ -1,26 +1,18 @@
 #include "script_component.hpp"
 
-class CfgPatches
-{
-    class Tun_unconInfo
-    {
+// information on this addon specifically
+class CfgPatches {
+    class ADDON {
+        name = COMPONENT_NAME;
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"cba_xeh","cba_settings", "ace_main"};
+        requiredAddons[] = {"tunuti_main"};
         author = "Tuntematon";
-        authorUrl = "https://github.com/tuntematonjr/Tun-Utilities";
+        authorUrl = TUN_UTILITY_GITHUBLINK;
+        //VERSION_CONFIG;
     };
 };
 
-class Extended_PostInit_EventHandlers {
-    class Tun_unconInfo {
-        clientInit = QUOTE(call COMPILE_FILE(XEH_clientInit));
-    };
-};
-
-class Extended_PreInit_EventHandlers {
-    class Tun_unconInfo {
-        init = QUOTE( call COMPILE_FILE(XEH_preInit) );
-    };
-};
+// configs go here
+#include "CfgEventHandlers.hpp"

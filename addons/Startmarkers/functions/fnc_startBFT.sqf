@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Author: [Tuntematon]
  * [Description]
  * Starts BFT loop
@@ -9,7 +9,7 @@
  * Return Value:
  *
  * Example:
- * [] call tun_startmarkers_fnc_startBFT
+ * [] call tunuti_startmarkers_fnc_startBFT
  */
 #include "script_component.hpp"
 

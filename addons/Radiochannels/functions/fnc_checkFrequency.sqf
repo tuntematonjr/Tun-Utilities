@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Author: [Tuntematon]
  * [Description]
  *
@@ -9,7 +9,7 @@
  * Valid frequency
  *
  * Example:
- * [frequency] call tun_radiochannels_fnc_checkFrequency
+ * [frequency] call tunuti_radiochannels_fnc_checkFrequency
  */
 #include "script_component.hpp"
 params [["_frequency", nil, [""]]];

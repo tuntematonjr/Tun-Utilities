@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Author: [Tuntematon]
  * [Description]
  * Clear additional
@@ -10,7 +10,7 @@
  * True if changed, false if not
  *
  * Example:
- * [true] call tun_radiochannels_fnc_clearAdditional
+ * [true] call tunuti_radiochannels_fnc_clearAdditional
  */
 #include "script_component.hpp"
 params ["_isSR"];

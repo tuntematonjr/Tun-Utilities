@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Author: [Tuntematon]
  * [Description]
  * Filter unused data out
@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * [] call tun_startmarkers_fnc_filterData
+ * [] call tunuti_startmarkers_fnc_filterData
  */
 #include "script_component.hpp"
 

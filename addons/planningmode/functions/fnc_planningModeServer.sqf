@@ -1,0 +1,54 @@
+/*
+ * Author: [Tuntematon]
+ * [Description]
+ *
+ * Arguments:
+ * 0: The first argument <STRING>
+ * 1: The second argument <OBJECT>
+ * 2: Multiple input types <STRING|ARRAY|CODE>
+ * 3: Optional input <BOOL> (default: true)
+ * 4: Optional input with multiple types <CODE|STRING> (default: {true})
+ * 5: Not mandatory input <STRING> (default: nil)
+ *
+ * Return Value:
+ * The return value <BOOL>
+ *
+ * Example:
+ * ["something", player] call tunuti_planningmode_fnc_planningModeServer
+ */
+#include "script_component.hpp"
+if (!isServer) exitWith {LOG("Not Server");};
+
+ISNILS(GVAR(isRunning), false);
+ISNILS(GVAR(playerPositionMarkers), []);
+
+private _newStatus = false; // Default off
+
+if !(GVAR(isRunning)) then { //Start planning mode
+	_newStatus= true;
+	[{
+		params ["_args", "_handle"];
+
+		{ 
+			deleteMarker _x;    
+		} forEach GVAR(playerPositionMarkers); 
+		GVAR(playerPositionMarkers) = []; 
+
+		if (GVAR(isRunning)) then {
+			{ 
+				private _unit = _x; 
+				private _marker = createMarker [format["%1_%2", QGVAR(playerPosMarker),_unit], position _unit]; 
+				_marker setMarkerText name _unit ; 
+				_marker setMarkerType "mil_triangle"; 
+				_marker setMarkerDir direction _unit; 
+				GVAR(playerPositionMarkers) pushBack _marker; 
+			} forEach allPlayers; 
+		} else {
+			_handle call CBA_fnc_removePerFrameHandler;
+		};
+	}, 1] call CBA_fnc_addPerFrameHandler;
+};
+
+[_newStatus] remoteExecCall [QFUNC(planningModeClient), [0, -2] select isDedicated, true];
+
+GVAR(isRunning) = _newStatus;

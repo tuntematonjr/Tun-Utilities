@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Author: [Tuntematon]
  * [Description]
  *
@@ -9,7 +9,7 @@
  * The return value <BOOL>
  *
  * Example:
- * [] call tun_startmarkers_fnc_createDiaryRecord
+ * [] call tunuti_startmarkers_fnc_createDiaryRecord
  */
 #include "script_component.hpp"
 

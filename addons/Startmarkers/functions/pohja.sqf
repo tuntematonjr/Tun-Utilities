@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Author: [Tuntematon]
  * [Description]
  *
@@ -14,6 +14,6 @@
  * The return value <BOOL>
  *
  * Example:
- * ["something", player] call tun_startmarkers_fnc_imanexample
+ * ["something", player] call tunuti_startmarkers_fnc_imanexample
  */
 #include "script_component.hpp"

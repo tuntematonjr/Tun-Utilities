@@ -1,5 +1,9 @@
 #include "script_component.hpp"
-#include "XEH_prep.sqf"
+ADDON = false;
+
+PREP_RECOMPILE_START;
+#include "XEH_PREP.hpp"
+PREP_RECOMPILE_END;
 
 [
     QGVAR(runLoadScreen), // Unique setting name. Matches resulting variable name <STRING>
@@ -80,3 +84,5 @@
     {},
     true
 ] call CBA_Settings_fnc_init;
+
+ADDON = true;

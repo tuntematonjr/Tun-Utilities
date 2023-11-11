@@ -1,5 +1,9 @@
 #include "script_component.hpp"
-#include "XEH_prep.sqf"
+ADDON = false;
+
+PREP_RECOMPILE_START;
+#include "XEH_PREP.hpp"
+PREP_RECOMPILE_END;
 
 GVAR(allowedSidesStarmarker) = [];
 GVAR(allowedSidesBFT) = [];
@@ -302,3 +306,8 @@ GVAR(vehicleMarkers) = [];
     },
     true
 ] call CBA_Settings_fnc_init;
+
+["hint", {
+    hint (_this select 0);
+}, "all"] call CBA_fnc_registerChatCommand;
+ADDON = true;

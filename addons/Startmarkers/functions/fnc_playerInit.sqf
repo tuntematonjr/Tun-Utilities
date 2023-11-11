@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Author: [Tuntematon]
  * [Description]
  *
@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [] call tun_startmarkers_fnc_imanexample
+ * [] call tunuti_startmarkers_fnc_imanexample
  */
 #include "script_component.hpp"
 
@@ -21,12 +21,12 @@ GVAR(runBFT) = true; //Variable to disable bft for unit in game
 
 LOG("Initialized player init starmarkers");
 
-[{ (!isNil {TUN_FIND_MAPDISPLAY} || {!isMultiplayer} || {cba_missiontime > 0})}, {
+[{ (!isNil {TUNUTI_FIND_MAPDISPLAY} || {!isMultiplayer} || {cba_missiontime > 0})}, {
 	LOG("Briefing player init");
 
 	[] call FUNC(sortAllowedSides);
 
-	if (TUN_FIND_MAPDISPLAY isNotEqualTo 12) then {
+	if (TUNUTI_FIND_MAPDISPLAY isNotEqualTo 12) then {
 		[] call FUNC(createVehicleMarkers);
 	} else {
 		LOG("Skipped running createvehicle, due to skiping briefing");
@@ -41,7 +41,7 @@ LOG("Initialized player init starmarkers");
 
 		GVAR(vehicleMarkers) = [];
 
-		[{!isNil {TUN_FIND_MAPDISPLAY} }, {
+		[{!isNil {TUNUTI_FIND_MAPDISPLAY} }, {
 			[] call FUNC(createVehicleMarkers);
 		}] call CBA_fnc_waitUntilAndExecute;
 

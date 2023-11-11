@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Author: [Tuntematon]
  * [Description]
  * Set SR channel
@@ -12,7 +12,7 @@
  * True if changed, false if not
  *
  * Example:
- * [2, "123", false]] call tun_radiochannels_fnc_setLRchannel
+ * [2, "123", false]] call tunuti_radiochannels_fnc_setLRchannel
  */
 #include "script_component.hpp"
 
@@ -23,11 +23,8 @@ LOG(_debugText);
 if (cba_missionTime isEqualTo 0) exitWith { };
 if (!(call TFAR_fnc_haveLRRadio)) exitWith { [parseText "You don't have LR radio", 5] call TFAR_fnc_showHint; };
 
-private _lrValues = switch (playerSide) do {
-	case west: { GVAR(lrWEST) };
-	case east: { GVAR(lrEAST) };
-	case independent: { GVAR(lrINDEPENDENT) };
-};
+private _radioValues = GVAR(radioValues) getOrDefault [playerSide, [[],[]]];
+private _lrValues = _radioValues select 1;
 
 if (_setSquadValues) then {
 	private _values = (group player) getVariable [QGVAR(radioValues), [[],[],[]]];

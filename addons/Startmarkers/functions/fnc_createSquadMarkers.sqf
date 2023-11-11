@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Author: [Tuntematon]
  * [Description]
  *
@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [] call tun_startmarkers_fnc_createSquadMarkers
+ * [] call tunuti_startmarkers_fnc_createSquadMarkers
  */
 #include "script_component.hpp"
 
@@ -64,7 +64,7 @@ private _deleteMarkerTime = GVAR(deleteMarkerTime) * 60;
 		_alpha = 0;
 	};
 
-	private _name = format["Tun_startmarkers_%1", _group];
+	private _name = format["tun_startmarkers_%1", _group];
 	
 	if (_showAI && { units _group findIf {_x in _playableUnits} isEqualTo -1 }) then {
 		_text = format["%1 (AI)", _text];
@@ -80,4 +80,3 @@ private _deleteMarkerTime = GVAR(deleteMarkerTime) * 60;
 
 	GVAR(squadMarkers) pushBack _marker;
 } forEach _markerData;
-

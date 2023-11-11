@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Author: [Tuntematon]
  * [Description]
  *
@@ -9,13 +9,13 @@
  * None
  *
  * Example:
- * [] call tun_startmarkers_fnc_deleteVehicleMarkers
+ * [] call tunuti_startmarkers_fnc_deleteVehicleMarkers
  */
 #include "script_component.hpp"
 
-private _display = (findDisplay TUN_FIND_MAPDISPLAY) displayCtrl 51;
 {
-	_display ctrlRemoveEventHandler ["Draw", _x];
+	_x params ["_display", "_idc"];
+	_display ctrlRemoveEventHandler ["Draw", _idc];
 } forEach GVAR(vehicleMarkers);
 
 GVAR(vehicleMarkers) = [];

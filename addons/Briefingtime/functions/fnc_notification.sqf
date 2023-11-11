@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Author: [Tuntematon]
  * [Description]
  *
@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * ["Hello World!"] call tun_briefingtime_fnc_notification
+ * ["Hello World!"] call tunuti_briefingtime_fnc_notification
  */
 #include "script_component.hpp"
 
@@ -27,7 +27,7 @@ if (!isNull (uiNamespace getVariable QGVAR(notificationBox))) exitWith {
 		[_text] call FUNC(notification);
 	}] call CBA_fnc_waitUntilAndExecute;
 };
-private _display = TUN_FIND_MAPDISPLAY;
+private _display = TUNUTI_FIND_MAPDISPLAY;
 
 private _control = findDisplay _display ctrlCreate [QGVAR(notificationBox), 320006];
 uiNamespace setVariable [QGVAR(notificationBox), _control ];

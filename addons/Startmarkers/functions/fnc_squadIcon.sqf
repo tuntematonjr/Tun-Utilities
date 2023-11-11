@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Author: KoffeinFlummi. Modified by Tuntematon
  * Get the apropriate marker for a group.
  * 
@@ -10,7 +10,7 @@
  * Marker Type <STRING>
  *
  * Example:
- * [_group] call Tun_startmarkers_fnc_squadIcon
+ * [_group] call tunuti_startmarkers_fnc_squadIcon
  */
 #include "script_component.hpp"
 

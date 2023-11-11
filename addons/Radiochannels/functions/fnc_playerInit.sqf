@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Author: [Tuntematon]
  * [Description]
  *
@@ -9,31 +9,34 @@
  * None
  *
  * Example:
- * [] call tun_radiochannels_fnc_playerInit
+ * [] call tunuti_radiochannels_fnc_playerInit
  */
 #include "script_component.hpp"
 
-if (playerSide isEqualTo civilian) exitWith { };
+if ([west,east,resistance] find playerSide isEqualTo -1) exitWith { };
 
 LOG("Player init start");
-private _srValues = [];
-private _lrValues = [];
+
+private _radioValues = GVAR(radioValues) getOrDefault [playerSide, [[],[]]];
+private _srValues = _radioValues select 0;
+private _lrValues = _radioValues select 1;
+
 private _text = "<font face='PuristaBold' size='20'>Long Range Net(s)</font><br/><br/>";
 
-switch (playerSide) do {
-	case west: { 
-		_srValues = GVAR(srWEST);
-		_lrValues =  GVAR(lrWEST);
-	};
-	case east: { 
-		_srValues = GVAR(srEAST);
-		_lrValues = GVAR(lrEAST);
-	};
-	case independent: { 
-		_srValues = GVAR(srINDEPENDENT);
-		_lrValues = GVAR(lrINDEPENDENT);
-	};
-};
+// switch (playerSide) do {
+// 	case west: { 
+// 		_srValues = GVAR(srWEST);
+// 		_lrValues =  GVAR(lrWEST);
+// 	};
+// 	case east: { 
+// 		_srValues = GVAR(srEAST);
+// 		_lrValues = GVAR(lrEAST);
+// 	};
+// 	case independent: { 
+// 		_srValues = GVAR(srINDEPENDENT);
+// 		_lrValues = GVAR(lrINDEPENDENT);
+// 	};
+// };
 
 { 
 	_x params ["_frequency", "_channel", "_name"];
@@ -65,10 +68,10 @@ private _commandTrimmedLast = "";
 
 _text = format ["%1<br/><br/><execute expression='[true] call %2;'>Clear SR additional</execute> - <execute expression='[false] call %2;'>Clear LR additional</execute>", _text, QFUNC(clearAdditional)];
 
-_text = format ["%1<br/><br/>Radio channels are set automatically after mission start.<br/>It will try to find LR net for you, if you are in Alpha platoon, it will set LR to Alpha LR net if found, if not found no LR set.<br/>If you dont have LR, it will set your command net to your SR additional.<br/><br/>Buttons will start to work after the game begins.<br/>Channel 7 is reserved for separately defined frequencies.<br/>Channel 8 is for additional channels.<br/><br/><font color='#4F4F4F' size='11'>Powered By TuntematonEngine v%2.%3.%4</font>", _text, MAJOR, MINOR, PATCHLVL];
+_text = format ["%1<br/><br/>Radio channels are set automatically after mission start.<br/>It will try to find LR net for you, if you are in Alpha platoon, it will set LR to Alpha LR net if found, if not found no LR set.<br/>If you dont have LR, it will set your command net to your SR additional.<br/><br/>Buttons will start to work after the game begins.<br/>Channel 7 is reserved for separately defined frequencies.<br/>Channel 8 is for additional channels.<br/><br/><font color='#4F4F4F' size='11'>Powered By TuntematonEngine v%2.%3.%4</font>", _text, MAJOR, MINOR, PATCH];
 
 player createDiaryRecord ["Diary",["Command & Signal",_text]];
-player createDiarySubject ["Command & Signal","Command & Signal", QPATHTOF(kuvat\Radiot.paa)];
+player createDiarySubject ["Command & Signal","Command & Signal", QPATHTOF(images\Radiot.paa)];
 player createDiaryRecord ["Command & Signal",["Command & Signal",_text]];
 
 [{ cba_missionTime > 1 && !isNull player  && TFAR_core_SettingsInitialized}, {

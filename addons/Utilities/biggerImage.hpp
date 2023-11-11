@@ -6,10 +6,10 @@ class GVAR(biggerPictureInBriefingUI)
 	{
 		class GVAR(BiggerPictureBackground): RscText
 		{
-			x = 0.175156 * safezoneW + safezoneX;
-			y = 0.148 * safezoneH + safezoneY;
-			w = 0.665156 * safezoneW;
-			h = 0.704 * safezoneH;
+			x = "safeZoneW + safeZoneX * 0.175156";
+			y = "safeZoneH + safeZoneY * 0.148";
+			w = "safeZoneW * 0.665156";
+			h = "safeZoneH * 0.704";
 			style = 0;	
 			colorBackground[] = {0.2, 0.2, 0.2, 0.75};
 		};
@@ -20,20 +20,20 @@ class GVAR(biggerPictureInBriefingUI)
 		class GVAR(biggerPictureImage) : RscPictureKeepAspect
 		{
 			idc = 330001;
-			x = 0.175156 * safezoneW + safezoneX;
-			y = 0.148 * safezoneH + safezoneY;
-			w = 0.665156 * safezoneW;
-			h = 0.704 * safezoneH;
+			x = "safeZoneW + safeZoneX * 0.175156";
+			y = "safeZoneH + safeZoneY * 0.148";
+			w = "safeZoneW * 0.665156";
+			h = "safeZoneH * 0.704";
 			text = "";
 		};
 
 		class GVAR(exitButton) : RscButton
 		{
 			idc = 330002;
-			x = 0.783593 * safezoneW + safezoneX;
-			y = 0.148 * safezoneH + safezoneY;
-			w = 0.0515625 * safezoneW;
-			h = 0.044 * safezoneH;
+			x = "safeZoneW + safeZoneX * 0.783593";
+			y = "safeZoneH + safeZoneY * 0.148";
+			w = "safeZoneW * 0.0515625";
+			h = "safeZoneH * 0.044";
 			//style = 0+2;
 			text = "Close";
 			onMouseButtonClick = QUOTE(ctrlParent (_this select 0) closeDisplay 1);
