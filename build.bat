@@ -1,3 +1,3 @@
 @echo off
-hemtt.exe build --no-bin -vv -versio
+hemtt.exe build --no-bin -vv
 pause
