@@ -14,18 +14,20 @@
  * The return value <BOOL>
  *
  * Example:
- * ["something", player] call tunuti_planningmode_fnc_planningModeClient
+ * ["something", player] call tunuti_planningmode_fnc_teleport
  */
 #include "script_component.hpp"
-if (!hasInterface) exitWith {LOG("Not Client");};
-params ["_state"];
+params ["_enable"];
 
-
-hint format["Planning mode: %1", ["Disabled", "Enabled"] select _state];
-
-[_state] call FUNC(losCheck);
-[_state] call FUNC(teleport);
-
-if (GVAR(sideChatIsDisabledDefault)) then { // update sidechat, if disabled by default
-	[_state] call FUNC(updateChat);
+if (_enable) then {
+	onMapSingleClick {_shift};
+	GVAR(tpEH) = addMissionEventHandler ["MapSingleClick", {
+		params ["_units", "_pos", "_alt", "_shift"];
+		if (_alt) then {
+			player setPos _pos;
+		};
+	}];
+} else {
+	onMapSingleClick "";
+	removeMissionEventHandler ["MapSingleClick", GVAR(tpEH)];
 };
