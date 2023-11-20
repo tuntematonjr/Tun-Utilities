@@ -191,39 +191,5 @@ private _tunuti_FNC_create_LR_channel = {
 			east, GVAR(additional_LR_east),
 			resistance, GVAR(additional_LR_independent)];
 
-// if ((count GVAR(additional_LR_west)) isNotEqualTo 0) then {
-// 	private _values = _radioValuesHash getOrDefault [west, [[],[]]];
-// 	private _lrValues = _values select 1;
-// 	private _srValues = _values select 0;
-// 	private _count = (count _lrValues) + 1;
-// 	private _valuesLR_final = [GVAR(additional_LR_west), _count] call _tunuti_FNC_create_LR_channel;
-	
-
-// 	_radioValuesHash set [_side, [_valuesSR_final,_valuesLR_final]];
-// 	GVAR(lrWEST) append _valuesLR_final;
-// };
-
-// if ((count GVAR(additional_LR_east)) isNotEqualTo 0) then {
-// 	private _count = (count GVAR(lrEAST)) + 1;
-// 	private _valuesLR_final = [GVAR(additional_LR_east), _count] call _tunuti_FNC_create_LR_channel;
-// 	GVAR(lrEAST) append _valuesLR_final;
-// };
-
-// if ((count GVAR(additional_LR_independent)) isNotEqualTo 0) then {
-// 	private _count = (count GVAR(lrINDEPENDENT)) + 1;
-// 	private _valuesLR_final = [GVAR(additional_LR_independent), _count] call _tunuti_FNC_create_LR_channel;
-// 	GVAR(lrINDEPENDENT) append _valuesLR_final;
-// };
-
-missionNamespace setVariable [QGVAR(radioValues),_radioValuesHash,true];
-
-// publicVariable QGVAR(lrWEST);
-// publicVariable QGVAR(lrEAST);
-// publicVariable QGVAR(lrINDEPENDENT);
-
-// publicVariable QGVAR(srWEST);
-// publicVariable QGVAR(srEAST);
-// publicVariable QGVAR(srINDEPENDENT);
-
-GVAR(serverDone) = true;
-publicVariable QGVAR(serverDone);
+missionNamespace setVariable [QGVAR(radioValues),_radioValuesHash, true];
+missionNamespace setVariable [QGVAR(serverDone), true, true];

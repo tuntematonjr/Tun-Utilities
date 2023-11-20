@@ -38,9 +38,6 @@ if (civilian in _allowedSides) then {
 	_markerData append values GVAR(squadMarkersCivilianData);
 };
 
-// private _logText = format ["Create squad marker data has %1 entries", count _markerData];
-// LOG(_logText);
-
 private _playableUnits = playableUnits + switchableUnits;
 private _lastUpdateTime = GVAR(lastDataUpdate);
 private _showAI = GVAR(showAI);

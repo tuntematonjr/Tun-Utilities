@@ -1,9 +1,5 @@
 //Exported via Arma Dialog Creator (https://github.com/kayler-renslow/arma-dialog-creator)
 
-class  RscButton;
-class  RscText;
-class  RscXSliderH;
-
 class GVAR(timeText) : RscText
 {
 	type = 0;

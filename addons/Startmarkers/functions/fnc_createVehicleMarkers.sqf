@@ -38,16 +38,11 @@ if (civilian in _allowedSides) then {
 	_markerData append values GVAR(vehicleMarkersCivilianData);
 };
 
-// private _logText = format ["Create vehicle marker data has %1 entries", count _markerData];
-// LOG(_logText);
-
-
 private _vehicleTextToggle = GVAR(vehicleTextToggle);
 private _vehicleOccupationToggle = GVAR(vehicleOccupationToggle);
 private _lastUpdateTime = GVAR(lastDataUpdate);
 private _lostContactTime = GVAR(lostContactTime) * 60;
 private _deleteMarkerTime = GVAR(deleteMarkerTime) * 60;
-
 
 private _displays = [];
 _displays pushBack ((findDisplay TUNUTI_FIND_MAPDISPLAY) displayCtrl 51);
@@ -66,12 +61,6 @@ if (!isNull _dialogDisplay) then {
 	//private _miniMap = _microDagrDetail controlsGroupCtrl 101;
 	_displays pushBack _microDagrCtrl;
 };
- 
-
-
-//_displays pushBack _microDagrDetail;
-
-//(uiNamespace getVariable ["ace_microdagr_RscTitleDisplay", displayNull]) displayCtrl 77702
 
 {
 	_x params ["_classname", "_texts", "_pos", "_direction", "_color", "_updateTime"];

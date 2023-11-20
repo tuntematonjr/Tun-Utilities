@@ -15,5 +15,8 @@ class CfgPatches {
 };
 
 // configs go here
+class  RscButton;
+class  RscText;
+class  RscXSliderH;
 #include "CfgEventHandlers.hpp"
 #include "briafingTime.hpp"

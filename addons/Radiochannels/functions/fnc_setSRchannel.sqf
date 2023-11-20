@@ -29,21 +29,6 @@ private _lrValues = _radioValues select 1;
 private _frequency = "error";
 private _channel = 0;
 
-// switch (playerSide) do {
-// 	case west: { 
-// 		_srValues = GVAR(srWEST);
-// 		_lrValues =  GVAR(lrWEST);
-// 	};
-// 	case east: { 
-// 		_srValues = GVAR(srEAST);
-// 		_lrValues = GVAR(lrEAST);
-// 	};
-// 	case independent: { 
-// 		_srValues = GVAR(srINDEPENDENT);
-// 		_lrValues = GVAR(lrINDEPENDENT);
-// 	};
-// };
-
 if (_setSquadValuest) then {
 	private _values = (group player) getVariable [QGVAR(radioValues), [[],[],[]]];
 	_values = _values select _isLR;
