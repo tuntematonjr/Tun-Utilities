@@ -26,23 +26,6 @@ if (_enable) then {
 	GVAR(losCheckerEH) = addMissionEventHandler ["MapSingleClick", {
 		params ["_units", "_endPos", "_alt", "_shift"];
 
-		private _tun_fnc_createLine = {
-			params ["_lineStart", "_lineEnd", "_color"];
-			private _lineDistance = (_lineEnd distance2D _lineStart) / 2;
-			private _lineDir = _lineStart getDir _lineEnd;
-			private _lineMiddlePos = _lineStart getPos [_lineDistance, _lineDir];
-			private _markerLine = createMarkerLocal [format["%%3_%1-%2", _lineStart, _lineEnd, QGVAR(losCheckMarker)], _lineMiddlePos];
-			_markerLine setMarkerDirLocal _lineDir;
-			_markerLine setMarkerShapeLocal "RECTANGLE";
-			_markerLine setMarkerBrushLocal "SolidBorder";
-			_markerLine setMarkerSizeLocal [0.5, _lineDistance];
-			_markerLine setMarkerColorLocal _color;
-			_markerLine setMarkerDrawPriority -1000;
-			_markerLine setMarkerShadowLocal false;
-
-			_markerLine
-		};
-
 		{
 			deleteMarkerLocal _x;
 		} forEach GVAR(losMarkers);
@@ -72,7 +55,7 @@ if (_enable) then {
 				private _pos = _x select 0;
 				private _obj = _x select 2;
 
-				private _markerLine = [_lineStart, _pos, _color] call _tun_fnc_createLine;
+				private _markerLine = [_lineStart, _pos, _color] call FUNC(createLine);
 				
 				_lineStart = _pos;
 
@@ -93,7 +76,7 @@ if (_enable) then {
 
 			} forEach _intersections;
 
-			private _markerLine = [_lineStart, _endPos, _color] call _tun_fnc_createLine;
+			private _markerLine = [_lineStart, _endPos, _color] call FUNC(createLine);
 			GVAR(losMarkers) pushBack _markerLine;
 		};
 	}];
