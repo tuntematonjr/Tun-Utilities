@@ -62,4 +62,3 @@ if (_isAdditional) then {
 };
 
 [(call TFAR_fnc_activeLrRadio), true] call TFAR_fnc_ShowRadioInfo;
-

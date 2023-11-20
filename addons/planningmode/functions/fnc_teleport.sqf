@@ -1,20 +1,15 @@
 /*
  * Author: [Tuntematon]
  * [Description]
- *
+ * Teleport player to clicked position while holding ALT
  * Arguments:
- * 0: The first argument <STRING>
- * 1: The second argument <OBJECT>
- * 2: Multiple input types <STRING|ARRAY|CODE>
- * 3: Optional input <BOOL> (default: true)
- * 4: Optional input with multiple types <CODE|STRING> (default: {true})
- * 5: Not mandatory input <STRING> (default: nil)
+ * 0: Toggle enable/disable <BOOL>
  *
  * Return Value:
- * The return value <BOOL>
+ * Nothing
  *
  * Example:
- * ["something", player] call tunuti_planningmode_fnc_teleport
+ * [true] call tunuti_planningmode_fnc_teleport
  */
 #include "script_component.hpp"
 params ["_enable"];

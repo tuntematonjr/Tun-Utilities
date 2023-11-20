@@ -15,12 +15,6 @@
 
 LOG("Server init start");
 private _radioValuesHash = createHashMap;
-// GVAR(srWEST) = [];
-// GVAR(srEAST) = [];
-// GVAR(srINDEPENDENT) = [];
-// GVAR(lrWEST) = [];
-// GVAR(lrEAST) = [];
-// GVAR(lrINDEPENDENT) = [];
 
 ISNILS(GVAR(commandElementID),"10");
 ISNILS(GVAR(trimNames),"1234567890 ");

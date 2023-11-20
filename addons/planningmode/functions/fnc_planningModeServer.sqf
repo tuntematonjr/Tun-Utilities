@@ -1,20 +1,15 @@
 /*
  * Author: [Tuntematon]
  * [Description]
- *
+ * Starst/Ends planning mode for clients. Creates markers on player positions.
  * Arguments:
- * 0: The first argument <STRING>
- * 1: The second argument <OBJECT>
- * 2: Multiple input types <STRING|ARRAY|CODE>
- * 3: Optional input <BOOL> (default: true)
- * 4: Optional input with multiple types <CODE|STRING> (default: {true})
- * 5: Not mandatory input <STRING> (default: nil)
+ * None
  *
  * Return Value:
- * The return value <BOOL>
+ * None
  *
  * Example:
- * ["something", player] call tunuti_planningmode_fnc_planningModeServer
+ * [] call tunuti_planningmode_fnc_planningModeServer
  */
 #include "script_component.hpp"
 if (!isServer) exitWith {LOG("Not Server");};
