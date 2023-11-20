@@ -19,7 +19,7 @@
 #include "script_component.hpp"
 params ["_enable"];
 
-if (isDedicated) exitWith {LOG("Is Dedicated");};
+if (isDedicated) exitWith {LOG("Not Dedicated");};
 
 1 enableChannel [false, _enable];
 
