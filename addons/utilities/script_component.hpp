@@ -13,3 +13,8 @@
 #endif
 
 #include "\x\tunuti\addons\main\script_macros.hpp"
+
+#define BIGGER_PICTURE_MAIN_IDD 333333
+#define BIGGER_PICTURE_IMAGE_IDC 333334
+#define BIGGER_PICTURE_BUTTON_IDC 333335
+
