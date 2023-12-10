@@ -4,7 +4,7 @@
 class CfgPatches {
     class ADDON {
         name = COMPONENT_NAME;
-        units[] = { QGVAR(combatZoneModule) };
+        units[] = { QGVAR(combatZoneModule), "tun_utilities_combatZoneModule" };
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"cba_main","cba_xeh","cba_settings","ace_modules","tunuti_main"};
@@ -35,7 +35,7 @@ class CfgVehicles {
     class ACE_Module;
     class GVAR(combatZoneModule): ACE_Module {
         author = "Tuntematon";
-        category = "Tun Utilities";
+        category = QGVAR(category);
         displayName = "Tun Combat Zone";
         function = QFUNC(combatZone);
         scope = 2;// Editor visibility; 2 will show it in the menu, 1 will hide it.
@@ -110,7 +110,7 @@ class CfgVehicles {
     };
 
     class tun_utilities_combatZoneModule : GVAR(combatZoneModule) {
-        displayName = "Deprecated";
+        displayName = "Deprecated - But works";
         scope = 1;// Editor visibility; 2 will show it in the menu, 1 will hide it.
     };
 };
