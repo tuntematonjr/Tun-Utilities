@@ -35,3 +35,6 @@ if (_open) then {
 	[] call FUNC(createSquadMarkers);
 	[] call FUNC(createVehicleMarkers);
 };
+
+
+
