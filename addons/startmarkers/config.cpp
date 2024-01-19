@@ -36,14 +36,13 @@ class Cfg3DEN
                 collapsed = 1; // When 1, the category is collapsed by default
                 class Attributes
                 {
-
                     class tunuti_startmarkers_enable_marker_inf
                     {
-                        displayName = "Enable startpos and BFT";
-                        tooltip = "Enables start position marker and BFT for this group";
+                        displayName = "Enable startpos and BFT for squad";
+                        tooltip = "Enables start position marker and BFT for this group. To disable, toggle it from group leaders attributes";
                         property = "tunuti_startmarkers_enable_marker_inf";
                         control = "Checkbox";
-                        expression = QUOTE((group _this) setVariable [ARR_3(QQGVAR(enableMarker),_value,true)];);
+                        expression = QUOTE((group _this) setVariable [ARR_3(QQGVAR(enableMarker),_value,true)]);
                         defaultValue = "true";
                         unique = 0;
                         condition = "objectBrain";
@@ -51,8 +50,10 @@ class Cfg3DEN
 
                     class tunuti_startmarkers_enable_marker_vehicle: tunuti_startmarkers_enable_marker_inf
                     {
+                        displayName = "Enable startpos and BFT for vehicle";
+                        tooltip = "Enables start position marker and BFT for this group.";
                         property = "tunuti_startmarkers_enable_marker_vehicle";
-                        expression = QUOTE((_this setVariable [ARR_3(QQGVAR(enable_marker),_value,true)];));
+                        expression = QUOTE(_this setVariable [ARR_3(QQGVAR(enableMarker),_value,true)]);
                         condition =  "objectHasInventoryCargo + objectVehicle";
                     };
 
@@ -73,7 +74,7 @@ class Cfg3DEN
                         tooltip = "Select which side this vehicle is shown.";
                         property = QGVAR(vehicle_side_west);
                         control = "combo";
-                        expression = QUOTE(ARR_6(if (_value isNotEqualTo -1) then {private _side = [west,east,resistance,civilian] select _value; _this setVariable [QQGVAR(vehicleSide),_side,true];}));
+                        expression = QUOTE(if (_value isNotEqualTo -1) then {private _side = [ARR_4(west,east,resistance,civilian)] select _value; _this setVariable [ARR_3(QQGVAR(vehicleSide),_side,true)]});
                         defaultValue = -1;
                         condition = "objectHasInventoryCargo + objectVehicle";
                         typeName = "NUMBER";
