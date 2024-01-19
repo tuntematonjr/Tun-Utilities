@@ -40,7 +40,7 @@ class Cfg3DEN
                         tooltip = "When true, does not create any channels for this squad. Only group leaders setting has effect";
                         property = QGVAR(skipSquadRadiochannel);
                         control = "Checkbox";
-                        expression = QUOTE(if(leader group _this isEqualTo _this) then {(group _this) setVariable [ARR_3(QQGVAR(skipSquad),_value,true)];};);
+                        expression = QUOTE(if(leader group _this isEqualTo _this) then {(group _this) setVariable [ARR_3(QQGVAR(skipSquad),_value,true)]});
                         defaultValue = "false";
                         unique = 0;
                         condition = "objectBrain";
