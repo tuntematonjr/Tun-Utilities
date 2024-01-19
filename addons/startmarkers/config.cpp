@@ -38,8 +38,8 @@ class Cfg3DEN
                 {
                     class tunuti_startmarkers_enable_marker_inf
                     {
-                        displayName = "Enable startpos and BFT";
-                        tooltip = "Enables start position marker and BFT for this group";
+                        displayName = "Enable startpos and BFT for squad";
+                        tooltip = "Enables start position marker and BFT for this group. To disable, toggle it from group leaders attributes";
                         property = "tunuti_startmarkers_enable_marker_inf";
                         control = "Checkbox";
                         expression = QUOTE((group _this) setVariable [ARR_3(QQGVAR(enableMarker),_value,true)]);
@@ -50,8 +50,10 @@ class Cfg3DEN
 
                     class tunuti_startmarkers_enable_marker_vehicle: tunuti_startmarkers_enable_marker_inf
                     {
+                        displayName = "Enable startpos and BFT for vehicle";
+                        tooltip = "Enables start position marker and BFT for this group.";
                         property = "tunuti_startmarkers_enable_marker_vehicle";
-                        expression = QUOTE(_this setVariable [ARR_3(QQGVAR(enable_marker),_value,true)]);
+                        expression = QUOTE(_this setVariable [ARR_3(QQGVAR(enableMarker),_value,true)]);
                         condition =  "objectHasInventoryCargo + objectVehicle";
                     };
 
