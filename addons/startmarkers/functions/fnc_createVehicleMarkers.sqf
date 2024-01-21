@@ -57,7 +57,7 @@ if (!isNull _minimapDisplay) then {
 //DialogDisplay
 private _dialogDisplay = uiNamespace getVariable [["ace_microdagr_RscTitleDisplay", "ace_microdagr_DialogDisplay"] select (ace_microdagr_currentShowMode == 2), displayNull];
 if (!isNull _dialogDisplay) then {
-	private _microDagrCtrl= [_display displayCtrl 77702, _display displayCtrl 77703] select (!ace_microdagr_mapShowTexture);
+	private _microDagrCtrl= [_dialogDisplay displayCtrl 77702, _dialogDisplay displayCtrl 77703] select (ace_microdagr_mapShowTexture);
 	//private _miniMap = _microDagrDetail controlsGroupCtrl 101;
 	_displays pushBack _microDagrCtrl;
 };
@@ -94,8 +94,8 @@ if (!isNull _dialogDisplay) then {
 				"%1",
 				%2,
 				%3,
-				30,
-				30,
+				25,
+				25,
 				%4,
 				%5,
 				2
@@ -111,4 +111,3 @@ if (!isNull _dialogDisplay) then {
 		GVAR(vehicleMarkers) pushBack [_display, _IDC];
 	} forEach _displays;	
 } forEach _markerData;
- 
