@@ -143,7 +143,6 @@ FILTER(_groupsIndependent,{ if (_x in _playableUnits) exitWith {true}; false } f
 
 private _tunuti_FNC_create_LR_channel = {
 	params ["_values", "_count"];
-
 	private _valuesLR_final = [];
 	{
 		private _name = _x;
@@ -181,9 +180,9 @@ private _tunuti_FNC_create_LR_channel = {
 		
 	};
 } forEach [
-			west, GVAR(additional_LR_west),
-			east, GVAR(additional_LR_east),
-			resistance, GVAR(additional_LR_independent)];
+			[west, GVAR(additional_LR_west)],
+			[east, GVAR(additional_LR_east)],
+			[resistance, GVAR(additional_LR_independent)]];
 
 missionNamespace setVariable [QGVAR(radioValues),_radioValuesHash, true];
 missionNamespace setVariable [QGVAR(serverDone), true, true];
