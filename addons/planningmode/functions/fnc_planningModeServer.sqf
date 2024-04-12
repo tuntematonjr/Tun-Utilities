@@ -14,8 +14,8 @@
 #include "script_component.hpp"
 if (!isServer) exitWith {LOG("Not Server");};
 
-ISNILS(GVAR(isRunning), false);
-ISNILS(GVAR(playerPositionMarkers), []);
+ISNILS(GVAR(isRunning),false);
+ISNILS(GVAR(playerPositionMarkers),[]);
 
 private _newStatus = false; // Default off
 

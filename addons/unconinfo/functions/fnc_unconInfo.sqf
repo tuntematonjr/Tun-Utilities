@@ -51,7 +51,7 @@ if (GVAR(allowNearestUnit)) then {
 
 	private _distance = GVAR(unconInfoNearestUnitDistance);
 	private _nearUnits = (player nearEntities ["CAManBase", _distance]) - [player];
-	FILTER(_nearUnits, playerside isEqualTo side _x);
+	FILTER(_nearUnits,playerside isEqualTo side _x);
 	private _closestUnit = objNull;
 	private _closestMedic = objNull;
 	private _closestUnitDistance = _distance;

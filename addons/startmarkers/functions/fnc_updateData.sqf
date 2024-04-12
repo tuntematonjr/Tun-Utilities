@@ -52,7 +52,7 @@ if (_time < 1) then {
 
         if (_time > 0) then {
             private _items = assignedItems _leader + items _leader;
-            MAP(_items, toLower _x);
+            MAP(_items,toLower _x);
             _hasGPS = (( GVAR(bftItems) findIf {_x in _items} ) isNotEqualTo -1 || (getNumber (configOf vehicle _leader >> "enableGPS") isEqualTo 1));
         };
 

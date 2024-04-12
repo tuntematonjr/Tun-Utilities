@@ -22,7 +22,7 @@
 		_handle = [{
 			if (GVAR(runBFT) && GVAR(lastDataUpdate) < cba_missiontime) then {
 				private _items = (assignedItems player + items player);
-				MAP(_items, toLower _x);
+				MAP(_items,toLower _x);
 				if ((getNumber (configOf vehicle player >> "enableGPS") isEqualTo 1 || (GVAR(bftItems) findIf {_x in _items} ) isNotEqualTo -1 || GVAR(bftAlwaysOn))) then {
 					LOG("BFT update");
 					
