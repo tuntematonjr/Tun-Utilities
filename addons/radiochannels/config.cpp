@@ -50,6 +50,3 @@ class Cfg3DEN
         };
     };
 };
-
-
-

@@ -198,7 +198,7 @@ GVAR(vehicleMarkers) = [];
     { 
         params ["_value"];
         _value = _value splitString """, """;
-        MAP(_value, toLower _x);
+        MAP(_value,toLower _x);
         GVAR(bftItems) = _value;
     },
     true

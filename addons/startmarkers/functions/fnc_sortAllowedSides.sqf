@@ -16,8 +16,8 @@
 private _playerSide = playerSide;
 if (_playerSide isNotEqualTo civilian) then {
 	LOG("Briefing player init: Normal");
-	REM(GVAR(allowedSidesBFT), civilian);
-	REM(GVAR(allowedSidesStarmarker), civilian);
+	REM(GVAR(allowedSidesBFT),civilian);
+	REM(GVAR(allowedSidesStarmarker),civilian);
 	{
 		private _side = _x;
 		if (_side in GVAR(allowedSidesBFT) && { [_side, _playerSide] call BIS_fnc_sideIsEnemy }) then {
