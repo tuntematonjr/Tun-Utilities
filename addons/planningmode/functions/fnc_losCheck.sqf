@@ -30,9 +30,7 @@ if (_enable) then {
 			private _newZ = (getTerrainHeightASL _endPos + 1);
 			_endPos set [2, _newZ];
 			private _intersections = lineIntersectsSurfaces [_startPos, _endPos, player, objNull, true, -1];
-			private _markerStart = createMarkerLocal [QGVAR(losCheckMarker_start), _startPos];
-			_markerStart setMarkerTextLocal "Start"; 
-			_markerStart setMarkerTypeLocal "hd_start";
+	
 			_markerStart setMarkerShadowLocal false;
 
 			private _markerEnd = createMarkerLocal [QGVAR(losCheckMarker_end), _endPos]; 
@@ -41,7 +39,7 @@ if (_enable) then {
 			_markerEnd setMarkerTextLocal format["End. Distances: 2D = %1 - 3D = %2", _distance2D, _distance]; 
 			_markerEnd setMarkerTypeLocal "mil_end";
 			_markerEnd setMarkerShadowLocal false;
-			GVAR(losMarkers) append [_markerStart, _markerEnd];
+			GVAR(losMarkers) pushBack _markerEnd;
 			
 			private _lineStart = _startPos;
 			private _color = "ColorGreen";
