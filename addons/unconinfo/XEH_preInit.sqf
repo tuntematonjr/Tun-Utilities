@@ -83,6 +83,28 @@ PREP_RECOMPILE_END;
 ] call CBA_Settings_fnc_init;
 
 [
+    QGVAR(enableShowDetailedTreatment),
+    "CHECKBOX",
+    [localize "STR_TunCon_CBA_enableShowDetailedTreatment", localize "STR_TunCon_CBA_enableShowDetailedTreatmentTooltip"],
+    ["Tun Utilities - Uncon Info", "Uncon Info"],
+    true,
+    1,
+    {},
+    true
+] call CBA_Settings_fnc_init;
+
+[
+    QGVAR(enableShowIfTreatedConcious),
+    "CHECKBOX",
+    [localize "STR_TunCon_CBA_enableShowIfTreatedConcious", localize "STR_TunCon_CBA_enableShowIfTreatedConciousTooltip"],
+    ["Tun Utilities - Uncon Info", "Uncon Info"],
+    true,
+    1,
+    {},
+    true
+] call CBA_Settings_fnc_init;
+
+[
     QGVAR(allowNearestUnit),
     "CHECKBOX",
     [localize "STR_TunCon_CBA_enableShowingNearestUnit", localize "STR_TunCon_CBA_enableShowingNearestUnitTooltip"],
@@ -105,7 +127,7 @@ PREP_RECOMPILE_END;
 ] call CBA_Settings_fnc_init;
 
 [
-    QGVAR(unconInfoNearestUnitDistance), 
+    QGVAR(unconinfoNearestUnitDistance), 
     "SLIDER", 
     [localize "STR_TunCon_CBA_distanceToLookFriendlies", localize "STR_TunCon_CBA_distanceToLookFriendliesTooltip"], 
     ["Tun Utilities - Uncon Info", "Uncon Info"],
@@ -114,7 +136,7 @@ PREP_RECOMPILE_END;
     { 
         params ["_value"];
         _value = round _value;
-        GVAR(unconInfoNearestUnitDistance) = _value; 
+        GVAR(unconinfoNearestUnitDistance) = _value; 
     },
     true
 ] call CBA_Settings_fnc_init;
