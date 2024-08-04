@@ -68,7 +68,7 @@ LOG(_debugText);
                 LOG("Create combatzone for main screen");
             _handle = [{
                 _args params ["_hintText"];
-                if ( player isKindOf "man" && {alive player} && {!(player isKindOf "ace_spectator_virtual")} && {playerSide in [west,east,resistance,civilian]} && {!(vehicle player isKindOf "air")} && {!(player getVariable ["tun_respawn_waiting_respawn", false])} ) then {
+                if ( player isKindOf "man" && {alive player} && {!(player isKindOf "ace_spectator_virtual")} && {playerSide in [west,east,resistance,civilian]} && {!(vehicle player isKindOf "air")} && {!(player getVariable ["tunres_Respawn_isWaitingRespawn", false])} ) then {
                     private _player_pos = getpos player;
                     if !( _player_pos inPolygon GVAR(borderPolygon)) then {
                         [(format["<t color='#ff0000' size = '.8'>%1</t>",_hintText]),-1,-1,4,1,0,789] spawn BIS_fnc_dynamicText;
