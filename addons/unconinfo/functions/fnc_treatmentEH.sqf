@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * [1, player, player, "Head", "BasicBandage"] call tunuti_unconInfo__fnc_treatmentEH
+ * [1, player, player, "Head", "BasicBandage"] call tunuti_unconInfo_fnc_treatmentEH
  */
 #include "script_component.hpp"
 

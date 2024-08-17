@@ -3,7 +3,7 @@
 //Add uncon info EH
 private _id = ["ace_unconscious", {
 	_this params ["_unit", "_state"];
-	if ( _state && _unit isEqualTo ace_player && GVAR(enableUnconInfo)) then {
+	if ( _state && _unit isEqualTo player && GVAR(enableUnconInfo)) then {
 		GVAR(isBeingHelped) = false;
 		GVAR(treatments) = [];
 
@@ -14,12 +14,12 @@ private _id = ["ace_unconscious", {
 				GVAR(isBeingHelped) = false;
 			};
 
-			if (!(ace_player getVariable ["ACE_isUnconscious", false]) || {!alive ace_player}) exitWith {
+			if (!(player getVariable ["ACE_isUnconscious", false]) || {!alive player}) exitWith {
 				cutText ["", "PLAIN NOFADE", -1, false, true];
 				[_handle] call CBA_fnc_removePerFrameHandler; 
 			};
-
-			[ace_player, round random 2] call FUNC(moan);
+			
+			[player, round random 2] call FUNC(moan);
 
 			//Dont run at curator screen
 			if (isnull curatorCamera) then {

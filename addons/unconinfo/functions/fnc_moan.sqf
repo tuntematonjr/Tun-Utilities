@@ -18,9 +18,9 @@
 params [["_unit", objNull, [objNull]]];
 
 // Check delay between sounds
-if (_unit getVariable [QGVAR(delayTime_moan), -1] > CBA_missionTime) exitWith {};
-private delayTime = (floor random 30) + 10;
-_unit setVariable [QGVAR(delayTime_moan), CBA_missionTime + delayTime];
+if (_unit getVariable [QGVAR(delayTime_moan), -1] > CBA_missionTime) exitWith { };
+private _delayTime = (floor random 30) + 10;
+_unit setVariable [QGVAR(delayTime_moan), (CBA_missionTime + _delayTime)];
 
 // Get units speaker
 private _speaker = speaker _unit;
