@@ -46,7 +46,7 @@ if (_time < 1) then {
     _updateTime = -1;
 };
 
-{   
+{
     private _group = _x;
     private _side = side _group;
     if (_side in _allowedSide) then {
@@ -56,6 +56,8 @@ if (_time < 1) then {
         if (_time > 0) then {
             {
                 private _unit = _x;
+                //skip units in respawn
+                if !(_unit getVariable ["tunres_Respawn_isWaitingRespawn", false]) then { continue };
                 private _items = assignedItems _unit + items _unit;
                 MAP(_items,toLower _x);
                 _hasGPS = CHECKGPS(_gpsItems,_items,_unit);
