@@ -15,6 +15,8 @@
 
 LOG("Runned update data");
 
+#define CHECKGPS(GPSITEMS,UNITITEMS,UNIT)    ((GPSITEMS findIf {_x in UNITITEMS} ) isNotEqualTo -1 || (getNumber (configOf vehicle UNIT >> "enableGPS") isEqualTo 1))
+
 private _westSquadHash = GVAR(squadMarkersWestData);
 private _eastSquadHash = GVAR(squadMarkersEastData);
 private _resistanceSquadHash = GVAR(squadMarkersIndependentData);
@@ -34,8 +36,9 @@ private _updateTime = _time;
 
 private _allowedSide = GVAR(allowedSidesStarmarker);
 private _bftAlwaysOn = GVAR(bftAlwaysOn);
+private _gpsItems = GVAR(bftItems);
 
-if (!isServer || (cba_missiontime > 0) && GVAR(enableBFT)) then {
+if (!isServer || (_time > 0) && GVAR(enableBFT)) then {
     _allowedSide = GVAR(allowedSidesBFT);
 };
 
@@ -49,11 +52,17 @@ if (_time < 1) then {
     if (_side in _allowedSide) then {
         private _leader = leader _group;
         private _hasGPS = true; //True to make sure data is collected at briefing
-
+        private _units = (units _group);
         if (_time > 0) then {
-            private _items = assignedItems _leader + items _leader;
-            MAP(_items,toLower _x);
-            _hasGPS = (( GVAR(bftItems) findIf {_x in _items} ) isNotEqualTo -1 || (getNumber (configOf vehicle _leader >> "enableGPS") isEqualTo 1));
+            {
+                private _unit = _x;
+                private _items = assignedItems _unit + items _unit;
+                MAP(_items,toLower _x);
+                _hasGPS = CHECKGPS(_gpsItems,_items,_unit);
+                if (_hasGPS) exitWith {
+                    _leader = _unit;
+                };
+            } forEach _units;
         };
 
         if (_group getVariable [QGVAR(enableMarker), true] && {_hasGPS || _bftAlwaysOn}) then {
