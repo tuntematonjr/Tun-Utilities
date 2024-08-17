@@ -46,9 +46,9 @@ private _id = ["ace_spectator_displayLoaded", {
 				GVAR(spectatorInitCountIndependent) = _independentCount;
 			};
 
-			private _westCountAwake = { playerSide isEqualTo west && [_x] call ace_common_fnc_isAwake; } count allPlayers;
-			private _eastCountAwake = { playerSide isEqualTo east && [_x] call ace_common_fnc_isAwake; } count allPlayers;
-			private _independentCountAwake = { playerSide isEqualTo resistance && [_x] call ace_common_fnc_isAwake; } count allPlayers;
+			private _westCountAwake = { side _x isEqualTo west && [_x] call ace_common_fnc_isAwake; } count allPlayers;
+			private _eastCountAwake = { side _x isEqualTo east && [_x] call ace_common_fnc_isAwake; } count allPlayers;
+			private _independentCountAwake = { side _x isEqualTo resistance && [_x] call ace_common_fnc_isAwake; } count allPlayers;
 
 			{
 				_x params ["_side", "_aliveCount", "_originalCount", "_respawnTime", "_tickets", "_control", "_awake", "_waitingRespawn", "_waitingRespawnDelayed"];
