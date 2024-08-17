@@ -18,14 +18,14 @@ private _id = ["ace_spectator_displayLoaded", {
 
 		if !(GVAR(enableSpectatorStats)) exitWith { LOG("Desync load screen disabled"); };
 		LOG("init spectator stats");
-		private _control = findDisplay 60000 ctrlCreate ["tunuti_utilities_spectatorStatsWest", 1];
-		uiNamespace setVariable ["tunuti_utilities_spectatorStatsWest", _control ];
+		private _control = findDisplay 60000 ctrlCreate [QGVAR(spectatorStatsWest), 1];
+		uiNamespace setVariable [QGVAR(spectatorStatsWest), _control ];
 
-		private _control = findDisplay 60000 ctrlCreate ["tunuti_utilities_spectatorStatsEast", 2];
-		uiNamespace setVariable ["tunuti_utilities_spectatorStatsEast", _control ];
+		private _control = findDisplay 60000 ctrlCreate [QGVAR(spectatorStatsEast), 2];
+		uiNamespace setVariable [QGVAR(spectatorStatsEast), _control ];
 
-		private _control = findDisplay 60000 ctrlCreate ["tunuti_utilities_spectatorStatsIndependent", 3];
-		uiNamespace setVariable ["tunuti_utilities_spectatorStatsIndependent", _control ];
+		private _control = findDisplay 60000 ctrlCreate [QGVAR(spectatorStatsResistance), 3];
+		uiNamespace setVariable [QGVAR(spectatorStatsResistance), _control ];
 
 		_handle = [{
 			if (isNull findDisplay 60000) exitWith {

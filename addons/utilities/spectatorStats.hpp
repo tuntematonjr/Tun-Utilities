@@ -1,6 +1,6 @@
 //Exported via Arma Dialog Creator (https://github.com/kayler-renslow/arma-dialog-creator)
 
-class tunuti_utilities_spectatorStatsWest : RscText
+class GVAR(spectatorStatsWest) : RscText
 {
 	type = 0;
 	idc = -1;
@@ -15,13 +15,13 @@ class tunuti_utilities_spectatorStatsWest : RscText
 	//sizeEx = GUI_TEXT_SIZE_SMALL;
 };
 
-class tunuti_utilities_spectatorStatsIndependent : tunuti_utilities_spectatorStatsWest
+class GVAR(spectatorStatsResistance : GVAR(spectatorStatsWest)
 {
 	colorText[] = {0,0.5,0,1};
 	x = "safeZoneX + safeZoneW * 0.70104167";
 };
 
-class tunuti_utilities_spectatorStatsEast : tunuti_utilities_spectatorStatsWest
+class GVAR(spectatorStatsEast) : GVAR(spectatorStatsWest)
 {
 	colorText[] = {0.5,0,0,1};
 	x = "safeZoneX + safeZoneW * 0.61197917";
