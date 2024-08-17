@@ -13,10 +13,15 @@
  */
 #include "script_component.hpp"
 
+
+GVAR(spectatorInitCountHash) = createHashMap;
+GVAR(spectatorControHash) = createHashMapFromArray [[west, QGVAR(spectatorStatsWest)], [east, QGVAR(spectatorStatsEast], [resistance, QGVAR(spectatorStatsResistance)]];
+
+
 private _id = ["ace_spectator_displayLoaded", {
 	[{!isNull findDisplay 60000  && !isNil QGVAR(enableSpectatorStats)}, {
 
-		if !(GVAR(enableSpectatorStats)) exitWith { LOG("Desync load screen disabled"); };
+		if !(GVAR(enableSpectatorStats)) exitWith { LOG("spectator stats disabled"); };
 		LOG("init spectator stats");
 		private _control = findDisplay 60000 ctrlCreate [QGVAR(spectatorStatsWest), 1];
 		uiNamespace setVariable [QGVAR(spectatorStatsWest), _control ];
@@ -31,49 +36,50 @@ private _id = ["ace_spectator_displayLoaded", {
 			if (isNull findDisplay 60000) exitWith {
 				_handle call CBA_fnc_removePerFrameHandler;
 			};
-			private _westCount = playersNumber west;
-			if (_westCount > GVAR(spectatorInitCountWest)) then {
-				GVAR(spectatorInitCountWest) = _westCount;
-			};
 
-			private _eastCount = playersNumber east;
-			if (_eastCount > GVAR(spectatorInitCountEast)) then {
-				GVAR(spectatorInitCountEast) = _eastCount;
-			};
-
-			private _independentCount = playersNumber independent;
-			if (_independentCount > GVAR(spectatorInitCountIndependent)) then {
-				GVAR(spectatorInitCountIndependent) = _independentCount;
-			};
-
-			private _westCountAwake = { side _x isEqualTo west && [_x] call ace_common_fnc_isAwake; } count allPlayers;
-			private _eastCountAwake = { side _x isEqualTo east && [_x] call ace_common_fnc_isAwake; } count allPlayers;
-			private _independentCountAwake = { side _x isEqualTo resistance && [_x] call ace_common_fnc_isAwake; } count allPlayers;
+			private _hashWaitTime = tunres_Respawn_nextWaveTimesHash;
+			private _allowRespawnHash = tunres_Respawn_allowRespawnHash;
+			private _waitingRespawnListHash = tunres_Respawn_allowRespawnHash;
+			private _waitingRespawnDelayedListHash = tunres_Respawn_allowRespawnHash;
 
 			{
-				_x params ["_side", "_aliveCount", "_originalCount", "_respawnTime", "_tickets", "_control", "_awake", "_waitingRespawn", "_waitingRespawnDelayed"];
-				if (_originalCount isNotEqualTo 0) then {
-					private _text = format["%2:%1Alive: %3(Uncons: %5)/%4%1",endl, _side, _aliveCount, _originalCount, (_aliveCount - _awake)];
+				_x params ["_side"];
 
-					if (missionNamespace getVariable ["tun_respawn_enable", false]) then {
-						if (tun_respawn_respawn_type isNotEqualTo "Side tickets") then {
-							_tickets = "Mission not using side tickets";
-						};
-					
-						private _time = "None";
-						if (_respawnTime isNotEqualTo 0) then {
-							_time = [ceil (_respawnTime - cba_missiontime), "MM:SS"] call BIS_fnc_secondsToString;
+				private _unitCountNew = { side _x isEqualTo _side && alive _x } count allPlayers;
+				private _unitCount = GVAR(spectatorInitCountHash) getOrDefault [_side, 0];
+				if (_unitCountNew > _unitCount) then {
+					GVAR(spectatorInitCountHash) set [_side,_unitCountNew];
+					_unitCount =_unitCountNew;
+				};
+				
+				private _awakeCount = { side _x isEqualTo _side && [_x] call ace_common_fnc_isAwake } count allPlayers;
+				private _unconCount = { side _x isEqualTo _side && alive _x  && _x getVariable ["ACE_isUnconscious", false] } count allPlayers;
+
+				if (_unitCount isNotEqualTo 0) then {
+					private _text = format["%2:%1Alive: %3(Uncons: %5)/%4%1",endl, _side, _awakeCount, _unitCount, _unconCount];
+
+					if (missionNamespace getVariable ["tunres_Respawn_enable", false]) then {
+						private _ticketCount = "Not using side tickets";
+						if (tunres_Respawn_respawnType isEqualTo 1) then {
+							private _hash = tunres_Respawn_ticketsHash;
+							_ticketCount = str(_hash get _side);
 						};
 
-						private _waitingRespawnCount = count _waitingRespawn + count _waitingRespawnDelayed;
+						private _waitingRespawnCount = count (_waitingRespawnListHash getOrDefault [_side, []]) + count (_waitingRespawnDelayedListHash getOrDefault [_side, []];)
+						private _allowRespawn = _allowRespawnHash get _side;
+						private _time = "Disabled";
+						if (_allowRespawn) then {
+							private _waitTime = _hashWaitTime get _side;
+							_time = [ceil (_waitTime - cba_missiontime), "MM:SS"] call BIS_fnc_secondsToString;
+						};
 						
-						_text =  format["%2Respawn:%1Tickets: %4%1Next Wave: %3%1Waiting Respawn: %5",endl, _text, _time, _tickets, _waitingRespawnCount];
+						_text =  format["%2Respawn:%1Tickets: %4%1Next Wave: %3%1Waiting Respawn: %5",endl, _text, _time, _ticketCount, _waitingRespawnCount];
 					};
+					
+					private _control = GVAR(spectatorControHash) get _side;
 					(uiNamespace getVariable _control) ctrlSetText _text;
 				};
-			} forEach [["Blufor", _westCount, GVAR(spectatorInitCountWest), tun_respawn_wait_time_west, tun_respawn_tickets_west, "tunuti_utilities_spectatorStatsWest", _westCountAwake, tun_respawn_waitingRespawnWest, tun_respawn_waitingRespawnDelayedWest],
-			["Opfor", _eastCount, GVAR(spectatorInitCountEast), tun_respawn_wait_time_east, tun_respawn_tickets_east, "tunuti_utilities_spectatorStatsEast", _eastCountAwake, tun_respawn_waitingRespawnEast, tun_respawn_waitingRespawnDelayedEast],
-			["Indfor", _independentCount, GVAR(spectatorInitCountIndependent), tun_respawn_wait_time_guer, tun_respawn_tickets_guer, "tunuti_utilities_spectatorStatsIndependent", _independentCountAwake, tun_respawn_waitingRespawnGuer, tun_respawn_waitingRespawnDelayedGuer]];
+			} forEach [west,east,resistance];
 		}, 1, []] call CBA_fnc_addPerFrameHandler;
 	}] call CBA_fnc_waitUntilAndExecute;
 }] call CBA_fnc_addEventHandler;
