@@ -15,7 +15,7 @@
 
 
 GVAR(spectatorInitCountHash) = createHashMap;
-GVAR(spectatorControHash) = createHashMapFromArray [[west, QGVAR(spectatorStatsWest)], [east, QGVAR(spectatorStatsEast], [resistance, QGVAR(spectatorStatsResistance)]];
+GVAR(spectatorControHash) = createHashMapFromArray [[west, QGVAR(spectatorStatsWest)], [east, QGVAR(spectatorStatsEast)], [resistance, QGVAR(spectatorStatsResistance)]];
 
 
 private _id = ["ace_spectator_displayLoaded", {
@@ -32,7 +32,7 @@ private _id = ["ace_spectator_displayLoaded", {
 		private _control = findDisplay 60000 ctrlCreate [QGVAR(spectatorStatsResistance), 3];
 		uiNamespace setVariable [QGVAR(spectatorStatsResistance), _control ];
 
-		_handle = [{
+		private _handle = [{
 			if (isNull findDisplay 60000) exitWith {
 				_handle call CBA_fnc_removePerFrameHandler;
 			};
@@ -65,7 +65,7 @@ private _id = ["ace_spectator_displayLoaded", {
 							_ticketCount = str(_hash get _side);
 						};
 
-						private _waitingRespawnCount = count (_waitingRespawnListHash getOrDefault [_side, []]) + count (_waitingRespawnDelayedListHash getOrDefault [_side, []];)
+						private _waitingRespawnCount = count (_waitingRespawnListHash getOrDefault [_side, []]) + count (_waitingRespawnDelayedListHash getOrDefault [_side, []]);
 						private _allowRespawn = _allowRespawnHash get _side;
 						private _time = "Disabled";
 						if (_allowRespawn) then {

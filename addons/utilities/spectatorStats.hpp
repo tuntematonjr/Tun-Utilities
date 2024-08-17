@@ -15,7 +15,7 @@ class GVAR(spectatorStatsWest) : RscText
 	//sizeEx = GUI_TEXT_SIZE_SMALL;
 };
 
-class GVAR(spectatorStatsResistance : GVAR(spectatorStatsWest)
+class GVAR(spectatorStatsResistance) : GVAR(spectatorStatsWest)
 {
 	colorText[] = {0,0.5,0,1};
 	x = "safeZoneX + safeZoneW * 0.70104167";
