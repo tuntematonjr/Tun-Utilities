@@ -87,7 +87,7 @@ private _showUnmanned = GVAR(showUnmanned);
 {
     private _vehicle = _x; 
     private _side = _vehicle getVariable [QGVAR(vehicleSide), (_vehicle getVariable ["Tun_startmarkers_vehicleSide", sideLogic])]; // "tunuti_startmarkers_vehicleSide"
-    if ( _vehicle getVariable [QGVAR(enableMarker), true] && { _side in _allowedSide } && { alive _vehicle }) then {
+    if ( _vehicle getVariable [QGVAR(enableMarker), true] && { _side in _allowedSide } && { alive _vehicle } && {!(_vehicle getVariable ["tunres_MSP_isMSP", false])}) then {
 
         private _pos = getPosWorld _vehicle;
         private _direction = getDir _vehicle;
