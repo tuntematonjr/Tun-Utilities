@@ -54,7 +54,7 @@ if (_enable) then {
 
 				private _markerBlock = createMarkerLocal [format["%2_%1", _forEachIndex, _prefixText], _pos];
 				
-				if (!isnull _obj) then {
+				if (!isNull _obj) then {
 					private _name =  getText(configOf _obj >> "Displayname");
 					_markerBlock setMarkerTextLocal "Block";
 					_color = "ColorYellow";

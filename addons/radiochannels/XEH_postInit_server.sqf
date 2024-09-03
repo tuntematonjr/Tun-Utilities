@@ -8,7 +8,7 @@ if (GVAR(enable)) then {
 	!isNil "TFAR_defaultFrequencies_lr_east" && 
 	!isNil "TFAR_defaultFrequencies_lr_independent" && 
 	ADDON &&
-	!isnil "cba_missiontime" }, {
+	!isNil "cba_missiontime" }, {
 		[] call FUNC(serverInit);
 	}, (diag_tickTime + 10)] call CBA_fnc_waitUntilAndExecute;
 };

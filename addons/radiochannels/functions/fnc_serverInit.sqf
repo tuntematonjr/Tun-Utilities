@@ -74,8 +74,8 @@ FILTER(_groupsIndependent,{ if (_x in _playableUnits) exitWith {true}; false } f
 	{
 		private _group = _x;
 		private _isCommandElement = _group getVariable [QGVAR(isCommandElement), false];
-		private _commandTrimmed = ((groupID _group) splitString GVAR(trimNames)) select 0;
-		private _squadNameTrimmed = (groupID _group);
+		private _commandTrimmed = ((groupId _group) splitString GVAR(trimNames)) select 0;
+		private _squadNameTrimmed = (groupId _group);
 		private _lrFrequency = nil;
 		private _srFrequency = nil;
 		private _lrData = [];

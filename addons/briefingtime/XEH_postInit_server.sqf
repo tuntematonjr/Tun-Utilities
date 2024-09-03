@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 
 if (isMultiplayer) then {
-    [{ ADDON && !isnil "cba_missiontime" }, {
+    [{ ADDON && !isNil "cba_missiontime" }, {
         if (GVAR(enable)) then {
 
             _handle = [{

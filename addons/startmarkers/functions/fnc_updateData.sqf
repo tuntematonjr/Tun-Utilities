@@ -89,7 +89,7 @@ if (_time < 1) then {
             };
         };
     };
-} forEach allgroups; 
+} forEach allGroups; 
 
 private _vehiclesToCreateMarkers = [];
 private _playableUnits = playableUnits + switchableUnits;

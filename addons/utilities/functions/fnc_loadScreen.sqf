@@ -18,7 +18,7 @@ if (!isMultiplayer) exitWith { LOG("Skip desync load screen in SP"); }; // skip 
 
 [{!isNull player && !isNull findDisplay 12 && !isNil QGVAR(runLoadScreen)}, {
     if (!GVAR(runLoadScreen) || (count allPlayers < 10)) exitWith { LOG("Desync load screen disabled or under 10 players"); };
-    if !(playerside in [west, east, resistance, civilian]) exitWith { LOG("Not in right side, so skip desync load screen"); };
+    if !(playerSide in [west, east, resistance, civilian]) exitWith { LOG("Not in right side, so skip desync load screen"); };
     LOG("Start desync load screen");
 	GVAR(loadScreenTimer) = GVAR(loadScreenTime);
 
@@ -30,7 +30,7 @@ if (!isMultiplayer) exitWith { LOG("Skip desync load screen in SP"); }; // skip 
   
     _camera = "camera" camCreate [(getPos player select 0),(getPos player select 1),100];
     _camera cameraEffect ["internal","back"];
-    _camera camSetFOV 0.700;
+    _camera camSetFov 0.700;
     _camera camSetTarget player;
     _camera camCommit 0;
 	openMap [true, true];
