@@ -27,6 +27,7 @@ if (!isMultiplayer) exitWith { LOG("Skip desync load screen in SP"); }; // skip 
     };
 
     GVAR(loadscreenDone) = false;
+    player enableSimulationGlobal false;
     
     private _camera = "camera" camCreate [(getPos player select 0),(getPos player select 1),100];
     _camera cameraEffect ["internal","back"];
@@ -60,6 +61,8 @@ if (!isMultiplayer) exitWith { LOG("Skip desync load screen in SP"); }; // skip 
 		if (GVAR(rulesHintEnable)) then {
 		    GVAR(rulesTitleText) hintC GVAR(rulesMessageText);
 		};
+        
+        player enableSimulationGlobal true;
         private _debugText = format ["Desync load screen end time: %1", cba_missiontime]; 
         INFO(_debugText);
     }, _camera] call CBA_fnc_waitUntilAndExecute;
