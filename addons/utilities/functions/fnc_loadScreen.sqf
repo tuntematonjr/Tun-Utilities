@@ -13,13 +13,13 @@
  */
  
 #include "script_component.hpp"
-LOG("Called desync load screen");
+INFO("Called desync load screen");
 if (!isMultiplayer) exitWith { LOG("Skip desync load screen in SP"); }; // skip if singleplayer
 
 [{!isNull player && !isNull findDisplay 12 && !isNil QGVAR(runLoadScreen)}, {
-    if (!GVAR(runLoadScreen) || (count allPlayers < 10)) exitWith { LOG("Desync load screen disabled or under 10 players"); };
-    if !(playerSide in [west, east, resistance, civilian]) exitWith { LOG("Not in right side, so skip desync load screen"); };
-    LOG("Start desync load screen");
+    if (!GVAR(runLoadScreen) || (count allPlayers < 10)) exitWith { INFO("Desync load screen disabled or under 10 players"); };
+    if !(playerSide in [west, east, resistance, civilian]) exitWith { INFO("Not in right side, so skip desync load screen"); };
+    INFO("Start desync load screen");
 	GVAR(loadScreenTimer) = GVAR(loadScreenTime);
 
     if (cba_missiontime > GVAR(loadScreenTime)) then {
@@ -27,8 +27,8 @@ if (!isMultiplayer) exitWith { LOG("Skip desync load screen in SP"); }; // skip 
     };
 
     GVAR(loadscreenDone) = false;
-  
-    _camera = "camera" camCreate [(getPos player select 0),(getPos player select 1),100];
+    
+    private _camera = "camera" camCreate [(getPos player select 0),(getPos player select 1),100];
     _camera cameraEffect ["internal","back"];
     _camera camSetFov 0.700;
     _camera camSetTarget player;
@@ -36,7 +36,7 @@ if (!isMultiplayer) exitWith { LOG("Skip desync load screen in SP"); }; // skip 
 	openMap [true, true];
     //Run loadscreen text loop
     private _debugText = format ["Desync load screen start time: %1", cba_missiontime]; 
-    LOG(_debugText);
+    INFO(_debugText);
     [{
         if (GVAR(loadScreenTimer) <= 0) then {
             titleText [GVAR(loadScreenText), "PLAIN", 5, true];
@@ -61,7 +61,7 @@ if (!isMultiplayer) exitWith { LOG("Skip desync load screen in SP"); }; // skip 
 		    GVAR(rulesTitleText) hintC GVAR(rulesMessageText);
 		};
         private _debugText = format ["Desync load screen end time: %1", cba_missiontime]; 
-        LOG(_debugText);
+        INFO(_debugText);
     }, _camera] call CBA_fnc_waitUntilAndExecute;
 
 }] call CBA_fnc_waitUntilAndExecute;
