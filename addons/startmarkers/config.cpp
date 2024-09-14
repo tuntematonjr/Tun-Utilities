@@ -7,9 +7,9 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"tunuti_main"};
+        requiredAddons[] = {MAIN_ADDON_STR};
         author = "Tuntematon";
-        authorUrl = TUN_UTILITY_GITHUBLINK;
+        authorUrl = GITHUBLINK;
         VERSION_CONFIG;
     };
 };
