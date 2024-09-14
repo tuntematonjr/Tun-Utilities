@@ -7,9 +7,9 @@ class CfgPatches {
         units[] = { QGVAR(combatZoneModule), "tun_utilities_combatZoneModule" };
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"cba_main","cba_xeh","cba_settings","ace_modules","tunuti_main"};
+        requiredAddons[] = {"cba_main","cba_xeh","cba_settings","ace_modules",MAIN_ADDON_STR};
         author = "Tuntematon";
-        authorUrl = TUN_UTILITY_GITHUBLINK;
+        authorUrl = GITHUBLINK;
         VERSION_CONFIG;
     };
 };
