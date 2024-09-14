@@ -17,8 +17,9 @@
 #include "script_component.hpp"
 params [["_unit", objNull, [objNull]]];
 
+LOG("Start Moan");
 // Check delay between sounds
-if (_unit getVariable [QGVAR(delayTime_moan), -1] > CBA_missionTime) exitWith { };
+if (_unit getVariable [QGVAR(delayTime_moan), -1] > CBA_missionTime) exitWith {LOG("Exit moan. Too soon")};
 private _delayTime = (floor random 30) + 10;
 _unit setVariable [QGVAR(delayTime_moan), (CBA_missionTime + _delayTime)];
 

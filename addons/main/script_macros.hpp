@@ -11,4 +11,4 @@
 #define TUNUTI_FIND_MAPDISPLAY ([53, 52, 37, 12, nil] select ([53, 52, 37, 12] findIf {!isNull findDisplay _x}))
 
 #define GITHUBLINK             "https://github.com/tuntematonjr/Tun-Utilities"
-#define MAIN_ADDON_STR         QUOTE(MAIN_ADDON);
+#define MAIN_ADDON_STR         QUOTE(MAIN_ADDON)
