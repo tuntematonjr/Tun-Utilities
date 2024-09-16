@@ -165,10 +165,10 @@ PREP_RECOMPILE_END;
 
 [
     QGVAR(updateInterval), 
-    "SLIDER", 
+    "TIME", 
     [localize "STR_TunCon_CBA_updateInterval", localize "STR_TunCon_CBA_updateIntervalTooltip"], 
     ["Tun Utilities - Uncon Info", "Uncon Info"],
-    [1, 60, 5, 0],
+    [1, 60, 1, 0],
     1,
     { 
         params ["_value"];
