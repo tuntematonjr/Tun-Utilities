@@ -14,7 +14,7 @@ PREP_RECOMPILE_END;
     1, // 1: all clients share the same setting, 2: setting can't be overwritten (optional, default: 0) <ARRAY>
     {}, // Script to execute when setting is changed. (optional) <CODE>
     true //Setting will be marked as needing mission restart after being changed. (optional, default false) <BOOL>
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(loadScreenTime),
@@ -28,7 +28,7 @@ PREP_RECOMPILE_END;
         GVAR(loadScreenTime) = round _value;
     },
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(loadScreenText),
@@ -39,7 +39,7 @@ PREP_RECOMPILE_END;
     1,
     {  },
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(rulesHintEnable),
@@ -50,7 +50,7 @@ PREP_RECOMPILE_END;
     1,
     {},
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(rulesTitleText),
@@ -61,7 +61,7 @@ PREP_RECOMPILE_END;
     1,
     {  },
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(rulesMessageText),
@@ -72,7 +72,7 @@ PREP_RECOMPILE_END;
     1,
     { GVAR(rulesMessageText) = call compile _this},
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(enableSpectatorStats),
@@ -83,6 +83,6 @@ PREP_RECOMPILE_END;
     1,
     {},
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 ADDON = true;

@@ -14,7 +14,7 @@ PREP_RECOMPILE_END;
     1, // 1: all clients share the same setting, 2: setting can't be overwritten (optional, default: 0) <ARRAY>
     {}, // Script to execute when setting is changed. (optional) <CODE>
     true //Setting will be marked as needing mission restart after being changed. (optional, default false) <BOOL>
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(enableAutoSetup),
@@ -25,7 +25,7 @@ PREP_RECOMPILE_END;
     0,
     {},
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(enableAutoSetup),
@@ -36,7 +36,7 @@ PREP_RECOMPILE_END;
     0,
     {},
     false
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(commandElementID),
@@ -47,7 +47,7 @@ PREP_RECOMPILE_END;
     1,
     {},
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(trimNames),
@@ -58,7 +58,7 @@ PREP_RECOMPILE_END;
     1,
     {},
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(additional_LR_west),
@@ -69,7 +69,7 @@ PREP_RECOMPILE_END;
     1,
     { GVAR(additional_LR_west) = (_this splitString ",")},
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(additional_LR_east),
@@ -80,7 +80,7 @@ PREP_RECOMPILE_END;
     1,
     { GVAR(additional_LR_east) = (_this splitString ",")},
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(additional_LR_independent),
@@ -91,6 +91,6 @@ PREP_RECOMPILE_END;
     1,
     { GVAR(additional_LR_independent) = (_this splitString ",")},
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 ADDON = true;
