@@ -19,7 +19,7 @@ GVAR(vehicleMarkers) = [];
     1, // 1: all clients share the same setting, 2: setting can't be overwritten (optional, default: 0) <ARRAY>
     {}, // Script to execute when setting is changed. (optional) <CODE>
     true //Setting will be marked as needing mission restart after being changed. (optional, default false) <BOOL>
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(showAI), 
@@ -30,7 +30,7 @@ GVAR(vehicleMarkers) = [];
     1,
     {},
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(showUnmanned), 
@@ -41,7 +41,7 @@ GVAR(vehicleMarkers) = [];
     1,
     {},
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(commandElementID), 
@@ -52,7 +52,7 @@ GVAR(vehicleMarkers) = [];
     1,
     {},
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 ////////////////
 //StartMarkers//
@@ -72,7 +72,7 @@ GVAR(vehicleMarkers) = [];
         GVAR(prepTime) = (["Afi_safeStart_duration", _value ] call BIS_fnc_getParamValue) * 60; 
     },
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(allowMarkersWest), 
@@ -88,7 +88,7 @@ GVAR(vehicleMarkers) = [];
         };
     },
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(allowMarkerEast), 
@@ -104,7 +104,7 @@ GVAR(vehicleMarkers) = [];
         };
     },
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(allowMarkerInd), 
@@ -120,7 +120,7 @@ GVAR(vehicleMarkers) = [];
         };
     },
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(allowMarkerCivilian), 
@@ -136,7 +136,7 @@ GVAR(vehicleMarkers) = [];
         };
     },
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 ///////
 //BFT//
@@ -150,7 +150,7 @@ GVAR(vehicleMarkers) = [];
     1,
     {},
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(bftAlwaysOn), 
@@ -161,7 +161,7 @@ GVAR(vehicleMarkers) = [];
     1,
     {},
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(addAllVehicles), 
@@ -172,7 +172,7 @@ GVAR(vehicleMarkers) = [];
     1,
     {},
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(updateInterval), 
@@ -186,7 +186,7 @@ GVAR(vehicleMarkers) = [];
         GVAR(updateInterval) = round _value;
     },
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(bftItemsSettings), 
@@ -202,7 +202,7 @@ GVAR(vehicleMarkers) = [];
         GVAR(bftItems) = _value;
     },
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(allowBftWest), 
@@ -218,7 +218,7 @@ GVAR(vehicleMarkers) = [];
         };
     },
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(allowBftEast), 
@@ -234,7 +234,7 @@ GVAR(vehicleMarkers) = [];
         };
     },
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(allowBftInd), 
@@ -250,7 +250,7 @@ GVAR(vehicleMarkers) = [];
         };
     },
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(allowBftCivilian), 
@@ -266,7 +266,7 @@ GVAR(vehicleMarkers) = [];
         };
     },
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(lostContactTime), 
@@ -280,7 +280,7 @@ GVAR(vehicleMarkers) = [];
         GVAR(deleteMarkerTime) = round _value;
     },
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(enableDeleteMarker), 
@@ -291,7 +291,7 @@ GVAR(vehicleMarkers) = [];
     1,
     {},
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(deleteMarkerTime), 
@@ -305,7 +305,7 @@ GVAR(vehicleMarkers) = [];
         GVAR(deleteMarkerTime) = round _value;
     },
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 ["hint", {
     hint (_this select 0);

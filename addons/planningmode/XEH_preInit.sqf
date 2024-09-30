@@ -14,7 +14,7 @@ PREP_RECOMPILE_END;
     1,
     {},
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(sideChatIsDisabledDefault),
@@ -25,7 +25,7 @@ PREP_RECOMPILE_END;
     1,
     {},
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(enableBriefingText),
@@ -36,6 +36,6 @@ PREP_RECOMPILE_END;
     1,
     {},
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 ADDON = true;
