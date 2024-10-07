@@ -29,7 +29,7 @@ if (!isNull (uiNamespace getVariable QGVAR(notificationBox))) exitWith {
 };
 private _display = TUNUTI_FIND_MAPDISPLAY;
 
-private _control = findDisplay _display ctrlCreate [QGVAR(notificationBox), 320006];
+private _control = findDisplay _display ctrlCreate [QGVAR(notificationBox), NOTIFICATION_BOX_IDC];
 uiNamespace setVariable [QGVAR(notificationBox), _control ];
 LOG("create display");
 

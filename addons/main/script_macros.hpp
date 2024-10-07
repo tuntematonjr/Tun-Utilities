@@ -2,13 +2,16 @@
 
 #ifdef DISABLE_COMPILE_CACHE
     #undef PREP
-    #define PREP(fncName) DFUNC(fncName) = compile preprocessFileLineNumbers QPATHTOF(functions\DOUBLES(fnc,fncName).sqf)
+    #define PREP(fncName)		DFUNC(fncName) = compile preprocessFileLineNumbers QPATHTOF(functions\DOUBLES(fnc,fncName).sqf)
 #else
     #undef PREP
-    #define PREP(fncName) [QPATHTOF(functions\DOUBLES(fnc,fncName).sqf), QFUNC(fncName)] call CBA_fnc_compileFunction
+    #define PREP(fncName)		[QPATHTOF(functions\DOUBLES(fnc,fncName).sqf), QFUNC(fncName)] call CBA_fnc_compileFunction
 #endif
 
-#define TUNUTI_FIND_MAPDISPLAY ([53, 52, 37, 12, nil] select ([53, 52, 37, 12] findIf {!isNull findDisplay _x}))
+#define TUNUTI_FIND_MAPDISPLAY	([53, 52, 37, 12, nil] select ([53, 52, 37, 12] findIf {!isNull findDisplay _x}))
 
-#define GITHUBLINK             "https://github.com/tuntematonjr/Tun-Utilities"
-#define MAIN_ADDON_STR         QUOTE(MAIN_ADDON)
+#define GITHUBLINK				"https://github.com/tuntematonjr/Tun-Utilities"
+#define MAIN_ADDON_STR			QUOTE(MAIN_ADDON)
+
+//This forces debug on everything.
+#define DEBUG_ENABLED_MAIN
