@@ -53,7 +53,7 @@ private _commandTrimmedLast = "";
 
 _text = format ["%1<br/><br/><execute expression='[true] call %2;'>Clear SR additional</execute> - <execute expression='[false] call %2;'>Clear LR additional</execute>", _text, QFUNC(clearAdditional)];
 
-_text = format ["%1<br/><br/>Radio channels are set automatically after mission start.<br/>It will try to find LR net for you, if you are in Alpha platoon, it will set LR to Alpha LR net if found, if not found no LR set.<br/>If you dont have LR, it will set your command net to your SR additional.<br/><br/>Buttons will start to work after the game begins.<br/>Channel 7 is reserved for separately defined frequencies.<br/>Channel 8 is for additional channels.<br/><br/><font color='#4F4F4F' size='11'>Powered By TuntematonEngine v%2.%3.%4</font>", _text, MAJOR, MINOR, PATCH];
+_text = format ["%1<br/><br/>Radio channels are set automatically after mission start.<br/>It will try to find LR net for you, if you are in Alpha platoon, it will set LR to Alpha LR net if found, if not found no LR set.<br/>If you dont have LR, it will set your command net to your SR additional.<br/><br/>Buttons will start to work after the game begins.<br/>Channel 7 is reserved for separately defined frequencies.<br/>Channel 8 is for additional channels.<br/><br/><font color='#4F4F4F' size='11'>Powered By TuntematonEngine v%2.%3.%4.%5</font>", _text, MAJOR, MINOR, PATCH, BUILD];
 
 player createDiaryRecord ["Diary",["Command & Signal",_text]];
 player createDiarySubject ["Command & Signal","Command & Signal", QPATHTOF(images\TunUti_Radios.paa)];
