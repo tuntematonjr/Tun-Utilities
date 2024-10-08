@@ -41,8 +41,8 @@ if (civilian in _allowedSides) then {
 private _vehicleTextToggle = GVAR(vehicleTextToggle);
 private _vehicleOccupationToggle = GVAR(vehicleOccupationToggle);
 private _lastUpdateTime = GVAR(lastDataUpdate);
-private _lostContactTime = GVAR(lostContactTime) * 60;
-private _deleteMarkerTime = GVAR(deleteMarkerTime) * 60;
+private _lostContactTime = GVAR(lostContactTime);
+private _deleteMarkerTime = GVAR(deleteMarkerTime);
 
 private _displays = [];
 _displays pushBack ((findDisplay TUNUTI_FIND_MAPDISPLAY) displayCtrl 51);

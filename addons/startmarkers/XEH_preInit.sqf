@@ -60,16 +60,16 @@ GVAR(vehicleMarkers) = [];
 
 [
     QGVAR(prepTimeSetting), 
-    "SLIDER", 
+    "TIME", 
     ["Preparation time (minutes)", "After this time is passed, all markers are auto hidden. You can bring them up again through the settings menu."], 
     ["Tun Utilities - Startmakers & BFT","Startposition"], 
-    [1, 60, 15, 0],
+    [1, 60*60, 15*60],
     1,
     { 
         params ["_value"];
         _value = round _value;
         GVAR(prepTimeSetting) = _value;
-        GVAR(prepTime) = (["Afi_safeStart_duration", _value ] call BIS_fnc_getParamValue) * 60; 
+        GVAR(prepTime) = (["Afi_safeStart_duration", _value ] call BIS_fnc_getParamValue); 
     },
     true
 ] call CBA_fnc_addSetting;
@@ -176,10 +176,10 @@ GVAR(vehicleMarkers) = [];
 
 [
     QGVAR(updateInterval), 
-    "SLIDER", 
-    ["BFT update interval (seconds)", "Time between updates (seconds)"], 
+    "TIME", 
+    ["BFT update interval", "Time between updates"], 
     ["Tun Utilities - Startmakers & BFT","BFT"], 
-    [1, 60, 5, 0],
+    [1, 60, 5],
     1,
     {
         params ["_value"];
@@ -270,10 +270,10 @@ GVAR(vehicleMarkers) = [];
 
 [
     QGVAR(lostContactTime), 
-    "SLIDER", 
-    ["Lost contact time", "After this time is passed without update for marker data, marker alpha will be set to 0.5. (Minutes)"], 
+    "TIME", 
+    ["Lost contact time", "After this time is passed without update for marker data, marker alpha will be set to 0.5."], 
     ["Tun Utilities - Startmakers & BFT","BFT"], 
-    [1, 60, 5, 0],
+    [1, 60*60, 5*60],
     1,
     {
         params ["_value"];
@@ -295,10 +295,10 @@ GVAR(vehicleMarkers) = [];
 
 [
     QGVAR(deleteMarkerTime), 
-    "SLIDER", 
-    ["Delete marker without update time", "After this time is passed without update for marker data, it will be deleted. (Minutes)"], 
+    "TIME", 
+    ["Delete marker without update time", "After this time is passed without update for marker data, it will be deleted."], 
     ["Tun Utilities - Startmakers & BFT","BFT"], 
-    [1, 60, 15, 0],
+    [1, 60*60, 15*60],
     1,
     {
         params ["_value"];

@@ -20,7 +20,9 @@ private _text = "<font face='PuristaBold' size='15'>This missions uses automatic
 if (GVAR(enableBFT)) then {
 	_text = _text + "<br/>This mission uses BFT, same settings apply for it.";
 	if (GVAR(enableDeleteMarker)) then {
-		_text = _text + format["<br/>- If squad leader dies or vehicle gets destroyed, they will become semi transparrent after %1 min and they will be deleted from map after %2m",GVAR(lostContactTime), GVAR(deleteMarkerTime)];
+		private _deleteMarkerTime = [GVAR(deleteMarkerTime), "M:SS"] call CBA_fnc_formatElapsedTime;
+		private _lostContactTime = [GVAR(lostContactTime), "M:SS"] call CBA_fnc_formatElapsedTime;
+		_text = _text + format["<br/>- If squad leader dies or vehicle gets destroyed, they will become semi transparrent after %1 and they will be deleted from map after %2",_lostContactTime, _deleteMarkerTime];
 	};
 };
 

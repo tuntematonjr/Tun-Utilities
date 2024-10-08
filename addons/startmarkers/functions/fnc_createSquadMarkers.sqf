@@ -41,8 +41,8 @@ if (civilian in _allowedSides) then {
 private _playableUnits = playableUnits + switchableUnits;
 private _lastUpdateTime = GVAR(lastDataUpdate);
 private _showAI = GVAR(showAI);
-private _lostContactTime = GVAR(lostContactTime) * 60;
-private _deleteMarkerTime = GVAR(deleteMarkerTime) * 60;
+private _lostContactTime = GVAR(lostContactTime);
+private _deleteMarkerTime = GVAR(deleteMarkerTime)
 
 {
 	_x params ["_icon", "_pos", "_color", "_group", "_text", "_updateTime", "_hide"];

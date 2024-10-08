@@ -18,10 +18,10 @@ PREP_RECOMPILE_END;
 
 [
     QGVAR(loadScreenTime),
-    "SLIDER",
-    ["Load screen time", "Duration for load screen (Seconds)"],
+    "TIME",
+    ["Load screen time", "Duration for load screen"],
     ["Tun Utilities - Utilities", "Load Screen"],
-    [15, 120, 20, 0],
+    [15, 120, 20],
     1,
     {
         params ["_value"];
