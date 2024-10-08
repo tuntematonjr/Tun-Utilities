@@ -20,8 +20,8 @@ private _newTime = sliderPosition ((uiNamespace getVariable QGVAR(Time)) display
 if (IS_ADMIN) then {
 	//Update time
 	_newTime = _newTime * 60;
-	GVAR(value) = _newTime;
-	publicVariable QGVAR(value);
+	GVAR(briefingTime) = _newTime;
+	publicVariable QGVAR(briefingTime);
 	private _debugText = format ["set new time: %1", _newTime];
 	LOG(_debugText);
 	["Briefing time has been modified"] remoteExecCall [QFUNC(notification), [0,-2] select isDedicated, false];
