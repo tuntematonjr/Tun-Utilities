@@ -277,7 +277,7 @@ GVAR(vehicleMarkers) = [];
     1,
     {
         params ["_value"];
-        GVAR(deleteMarkerTime) = round _value;
+        GVAR(lostContactTime) = round _value;
     },
     true
 ] call CBA_fnc_addSetting;
