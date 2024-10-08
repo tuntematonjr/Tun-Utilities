@@ -1,12 +1,5 @@
 //Exported via Arma Dialog Creator (https://github.com/kayler-renslow/arma-dialog-creator)
 
-//#include "\a3\3DEN\UI\macros.inc"
-//#include "\a3\3DEN\UI\macroexecs.inc"
-//#include "\a3\ui_f\hpp\definedikcodes.inc"
-#include "\a3\ui_f\hpp\definecommoncolors.inc"
-//#include "\a3\ui_f\hpp\definecommongrids.inc"
-//#include "\a3\ui_f\hpp\defineresincl.inc"
-
 class tunuti_starmakersSettings
 {
 	idd = 321000;
