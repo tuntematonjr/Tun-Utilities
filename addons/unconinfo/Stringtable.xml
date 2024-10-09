@@ -144,8 +144,6 @@
                 <English>Delay before information is displayed after a player becomes unconscious</English>
                 <Original>Delay before information is displayed after a player becomes unconscious</Original>
             </Key>
-        </Container>
-        <Container name="cba">
             <Key ID="STR_TunCon_CBA_enableUnconInfo">
                 <Original>Enable uncon info</Original>
                 <English>Enable uncon info</English>
