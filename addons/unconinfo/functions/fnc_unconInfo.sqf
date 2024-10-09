@@ -77,25 +77,24 @@ if (GVAR(allowNearestUnit)) then {
 	} forEach _nearUnits;
 
 	if (_closestUnit isNotEqualTo objNull) then {
-		if (_closestMedic isNotEqualTo objNull) then {
-			if (_closestUnit isEqualTo _closestMedic) then {
-				if (_nearestUnitDistanceAllowed) then {
-					_text = format [localize "STR_TunCon_closestUnitWithDistance",_text, name _closestUnit,  _closestUnitDistance];
-				} else {
-					_text = format [localize "STR_TunCon_closestUnitWithOutDistance",_text, name _closestUnit];
-				};
-			} else {
-				if (_nearestUnitDistanceAllowed) then {
-					_text = format [localize "STR_TunCon_closestUnitAndMedicWithDistance",_text, name _closestUnit,  _closestUnitDistance, name _closestMedic,  _closestMedicDistance];
-				} else {
-					_text = format [localize "STR_TunCon_closestUnitAndMedicWithOutDistance",_text, name _closestUnit, name _closestMedic];
-				};
+		if (_closestUnit isEqualTo _closestMedic) then {
+			_text = _text + (format [localize "STR_TunCon_closestUnitIsMedic", name _closestUnit]);
+			if (_nearestUnitDistanceAllowed) then {
+				_text = _text + format[" (%1m)", _closestUnitDistance];
 			};
 		} else {
+			private _closestUnitText = format [localize "STR_TunCon_closestUnit", name _closestUnit];
+			private _closestMedicText = format [localize "STR_TunCon_closestMedic", name _closestMedic];
 			if (_nearestUnitDistanceAllowed) then {
-				_text = format [localize "STR_TunCon_closestUnitNoMedicWithDistance",_text, name _closestUnit,  _closestUnitDistance];
+				_closestUnitText = _closestUnitText + format[" (%1m)", _closestUnitDistance];
+				_closestMedicText = _closestMedicText + format[" (%1m)", _closestMedicDistance];
+			};
+			_text = _text + _closestUnitText + "<br/>";
+
+			if (_closestMedic isNotEqualTo objNull) then {
+				_text = _text + localize "STR_TunCon_noMedicsNear";
 			} else {
-				_text = format [localize "STR_TunCon_closestUnitNoMedicWithOutDistance",_text, name _closestUnit];
+				_text = _text + _closestMedicText;
 			};
 		};
 	} else {

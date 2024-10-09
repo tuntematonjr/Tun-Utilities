@@ -50,41 +50,29 @@
                 <Spanish>No hay aliados cerca</Spanish>
                 <Japanese>友軍は付近に居ないようです</Japanese>
             </Key>
-            <Key ID="STR_TunCon_closestUnitWithDistance">
-                <Original>%1Closest unit is %2 and %2 is medic (%3m)</Original>
-                <English>%1Closest unit is %2 and %2 is medic (%3m)</English>
-                <Spanish>%1El aliado mas cercano es %2 y es medico (%3m)</Spanish>
-                <Japanese>%1最も近い友軍は %2 で衛生兵です (%3m)</Japanese>
+            <Key ID="STR_TunCon_closestUnitIsMedic">
+                <Original>Medic %1 is the nearest soldier</Original>
+                <English>Medic %1 is the nearest soldier</English>
+                <Spanish>El aliado mas cercano es %1 y es medico</Spanish>
+                <Japanese>最も近い友軍は %1 で衛生兵です</Japanese>
             </Key>
-            <Key ID="STR_TunCon_closestUnitWithOutDistance">
-                <Original>%1Closest unit is %2 and %2 is medic</Original>
-                <English>%1Closest unit is %2 and %2 is medic</English>
-                <Spanish>%1El aliado mas cercano es %2 y tambien es medico</Spanish>
-                <Japanese>%1最も近い友軍は %2 で衛生兵です</Japanese>
+            <Key ID="STR_TunCon_closestUnit">
+                <Original>The closest friendly soldier is %1</Original>
+                <English>The closest friendly soldier is %1</English>
+                <Spanish>El aliado mas cercano es %1</Spanish>
+                <Japanese>最も近い友軍は %1 です</Japanese>
             </Key>
-            <Key ID="STR_TunCon_closestUnitAndMedicWithDistance">
-                <Original>%1Closest unit is %2 (%3m)&lt;br/&gt;Closest medic is %4 (%5m)</Original>
-                <English>%1Closest unit is %2 (%3m)&lt;br/&gt;Closest medic is %4 (%5m)</English>
-                <Spanish>%1El aliado mas cercano es %2 (%3m)&lt;br/&gt;El medico mas cercano es %4 (%5m)</Spanish>
-                <Japanese>%1最も近い友軍は %2 です (%3m)&lt;br/&gt;最も近い衛生兵は %4 です (%5m)</Japanese>
+            <Key ID="STR_TunCon_closestMedic">
+                <Original>The nearest medic is %1</Original>
+                <English>The nearest medic is %1</English>
+                <Spanish>El medico mas cercano es %1</Spanish>
+                <Japanese>最も近い衛生兵は %1 です</Japanese>
             </Key>
-            <Key ID="STR_TunCon_closestUnitAndMedicWithOutDistance">
-                <Original>%1Closest unit is %2&lt;br/&gt;Closest medic is %3</Original>
-                <English>%1Closest unit is %2&lt;br/&gt;Closest medic is %3</English>
-                <Spanish>%1El aliado mas cercano es %2&lt;br/&gt;El medico mas cercano es %3</Spanish>
-                <Japanese>%1最も近い友軍は %2 です&lt;br/&gt;最も近い衛生兵は %3 です</Japanese>
-            </Key>
-            <Key ID="STR_TunCon_closestUnitNoMedicWithDistance">
-                <Original>%1Closest unit is %2 (%3m), but no medics nearby</Original>
-                <English>%1Closest unit is %2 (%3m), but no medics nearby</English>
-                <Spanish>%1El aliado mas cercano es %2 (%3m), pero no hay ningun medico cerca</Spanish>
-                <Japanese>%1最も近い友軍は %2 です (%3m), しかし付近に衛生兵はいません</Japanese>
-            </Key>
-            <Key ID="STR_TunCon_closestUnitNoMedicWithOutDistance">
-                <Original>%1Closest unit is %2, but no medics nearby</Original>
-                <English>%1Closest unit is %2, but no medics nearby</English>
-                <Spanish>%1El aliado mas cercano es %2, pero no hay ningun medico cerca</Spanish>
-                <Japanese>%1最も近い友軍は %2 です, しかし付近に衛生兵はいません</Japanese>
+            <Key ID="STR_TunCon_noMedicsNear">
+                <Original>but no medics nearby</Original>
+                <English>but no medics nearby</English>
+                <Spanish>pero no hay ningun medico cerca</Spanish>
+                <Japanese>しかし付近に衛生兵はいません</Japanese>
             </Key>
             <Key ID="STR_TunCon_isBeingHelpedText">
                 <Original>You are being helped!</Original>
