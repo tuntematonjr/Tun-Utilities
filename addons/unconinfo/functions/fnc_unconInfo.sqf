@@ -87,7 +87,7 @@ if (GVAR(allowNearestUnit)) then {
 		};
 		
 		if (_closestUnit isEqualTo _closestMedic) then {
-			_text = _text + (format [localize "STR_TunCon_closestUnitIsMedic", name _closestUnit]) + _closestUnitInVehicleText;
+			_text = _text + (format [localize "STR_TunCon_closestUnitIsMedic", name _closestUnit]) + " " + _closestUnitInVehicleText;
 
 			if (_nearestUnitDistanceAllowed) then {
 				_text = _text + format[" (%1m)", _closestUnitDistance];
