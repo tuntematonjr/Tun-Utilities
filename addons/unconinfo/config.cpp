@@ -7,7 +7,7 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {MAIN_ADDON_STR};
+        requiredAddons[] = {MAIN_ADDON_STR, "ace_medical_feedback"};
         author = "Tuntematon";
         authorUrl = GITHUBLINK;
         //VERSION_CONFIG;
