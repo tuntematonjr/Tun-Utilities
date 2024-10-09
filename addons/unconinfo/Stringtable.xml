@@ -257,6 +257,10 @@
                 <Original>Enable showing if player has stable or unstable vitals</Original>
                 <English>Enable showing if player has stable or unstable vitals</English>
             </Key>
+            <Key ID="STR_TunCon_isInVehicle">
+                <English>and is inside %1</English>
+                <Original>and is inside %1</Original>
+            </Key>
         </Container>
     </Package>
 </Project>
