@@ -56,7 +56,7 @@ if (GVAR(allowNearestUnit)) then {
 	private _distance = GVAR(unconInfoNearestUnitDistance);
 	private _pos = ASLToAGL getPosASL ace_player;
 	private _nearUnits = ([_pos, _distance, _distance, 0, false] nearEntities [["CAManBase"], false, true, true]) - [ace_player];
-	FILTER(_nearUnits,playerSide isEqualTo side _x);
+	FILTER(_nearUnits,playerSide isEqualTo side _x && [_x] call ace_common_fnc_isAwake && !(unitIsUAV _x));
 	private _closestUnit = objNull;
 	private _closestMedic = objNull;
 	private _closestUnitDistance = _distance;
@@ -65,7 +65,8 @@ if (GVAR(allowNearestUnit)) then {
 	{
 		private _unit = _x;
 		private _distance = ace_player distance _unit;
-		if (_distance <= _closestUnitDistance && {[_unit] call ace_common_fnc_isAwake}) then {
+		
+		if (_distance <= _closestUnitDistance) then {
 			_closestUnit = _unit;
 			_closestUnitDistance = round _distance;
 		};
