@@ -137,7 +137,7 @@ FILTER(_groupsIndependent,{ if (_x in _playableUnits) exitWith {true}; false } f
 		};
 	} forEach _groups;
 
-    _radioValuesHash set [_side, [_valuesSR_final,_valuesLR_final]];
+	_radioValuesHash set [_side, [_valuesSR_final,_valuesLR_final]];
 
 } forEach [[_groupsWest, west],[_groupsEast, east], [_groupsIndependent, independent]];
 

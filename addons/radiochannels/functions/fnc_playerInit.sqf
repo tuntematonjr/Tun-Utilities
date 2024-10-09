@@ -71,7 +71,7 @@ player createDiaryRecord ["Command & Signal",["Command & Signal",_text]];
 					if ((count (_this select 1) > 0)) then {
 						LOG("Auto set LR");
 						[nil, false, true] call FUNC(setLRchannel);
-					};    
+					};
 				};
 
 				private _timeoutCodeLR = {
@@ -80,7 +80,7 @@ player createDiaryRecord ["Command & Signal",["Command & Signal",_text]];
 						LOG("Auto set LR to SR");
 						//LR skipped, try to put those so SR
 						[nil, 2, true, true] call FUNC(setSRchannel);
-					};    
+					};
 				};
 
 				private _srStatement = {
