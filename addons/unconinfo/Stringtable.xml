@@ -51,8 +51,8 @@
                 <Japanese>友軍は付近に居ないようです</Japanese>
             </Key>
             <Key ID="STR_TunCon_closestUnitIsMedic">
-                <Original>Medic %1 is the nearest soldier</Original>
-                <English>Medic %1 is the nearest soldier</English>
+                <Original>%1 is medic and the nearest soldier</Original>
+                <English>%1 is medic and the nearest soldier</English>
                 <Spanish>El aliado mas cercano es %1 y es medico</Spanish>
                 <Japanese>最も近い友軍は %1 で衛生兵です</Japanese>
             </Key>
