@@ -65,7 +65,7 @@ if (GVAR(allowNearestUnit)) then {
 	{
 		private _unit = _x;
 		private _distance = ace_player distance _unit;
-		if (_distance <= _closestUnitDistance && {!(_unit getVariable ["ACE_isUnconscious", false])}) then {
+		if (_distance <= _closestUnitDistance && {[_unit] call ace_common_fnc_isAwake}) then {
 			_closestUnit = _unit;
 			_closestUnitDistance = round _distance;
 		};
