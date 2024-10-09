@@ -6,7 +6,7 @@ class tunuti_starmakersSettings
 	
 	class ControlsBackground
 	{
-		class background : RscText
+		class GVAR(background) : RscText
 		{
 			type = 0;
 			idc = -1;
@@ -22,8 +22,9 @@ class tunuti_starmakersSettings
 	};
 	class Controls
 	{
-		class toggle_squadMarkersText : RscText
+		class GVAR(toggle_squadMarkersText) : RscText
 		{
+			idc = -1;
 			x = "safeZoneX + safeZoneW * 0.35";
 			y = "safeZoneY + safeZoneH * 0.425";
 			w = "safeZoneW * 0.125";
@@ -31,27 +32,27 @@ class tunuti_starmakersSettings
 			text = "Toggle squad markers";
 			
 		};
-		class toggle_vehicleMarkersText : toggle_squadMarkersText
+		class GVAR(toggle_vehicleMarkersText) : GVAR(toggle_squadMarkersText)
 		{
 			idc = -1;
 			y = "safeZoneY + safeZoneH * 0.475";
 			text = "Toggle vehicle markers";
 			
 		};
-		class toggle_textTovehiclesText : toggle_squadMarkersText
+		class GVAR(toggle_textToVehiclesText) : GVAR(toggle_squadMarkersText)
 		{
 			idc = -1;
 			y = "safeZoneY + safeZoneH * 0.525";
 			text = "Toggle vehicle text";
 		};
-		class toggle_vehicleOccupationText : toggle_squadMarkersText
+		class GVAR(toggle_vehicleOccupationText) : GVAR(toggle_squadMarkersText)
 		{
 			idc = -1;
 			y = "safeZoneY + safeZoneH * 0.575";
 			text = "Toggle vehicle occupation";
 			
 		};
-		class header : RscText
+		class GVAR(header) : RscText
 		{
 			idc = -1;
 			x = "safeZoneX + safeZoneW * 0.35";
@@ -63,9 +64,9 @@ class tunuti_starmakersSettings
 			colorBackground[] = GUI_BCG_COLOR;
 			
 		};
-		class toggle_squadMarkers_button : RscCheckBox
+		class GVAR(toggle_squadMarkers_button) : RscCheckBox
 		{
-			idc = 321001;
+			idc = SQUADMARKER_BUTTON_IDC;
 			x = "safeZoneX + safeZoneW * 0.5";
 			y = "safeZoneY + safeZoneH * 0.425";
 			w = "safeZoneW * 0.015";
@@ -73,26 +74,26 @@ class tunuti_starmakersSettings
 			onCheckedChanged = "params ['_control', '_checked']; tunuti_startmarkers_squadTogle = ([false, true] select _checked);";
 			
 		};
-		class toggle_vehicleMarkers_button : toggle_squadMarkers_button
+		class GVAR(toggle_vehicleMarkers_button) : GVAR(toggle_squadMarkers_button)
 		{
-			idc = 321002;
+			idc = VEHICLEMARKR_BUTTON_IDC;
 			y = "safeZoneY + safeZoneH * 0.475";	
 			onCheckedChanged = "params ['_control', '_checked']; tunuti_startmarkers_vehicleTogle = ([false, true] select _checked);";
 		};
-		class toggle_vehicleText_button : toggle_squadMarkers_button
+		class GVAR(toggle_vehicleText_button) : GVAR(toggle_squadMarkers_button)
 		{
-			idc = 321003;
+			idc = VEHICLETEXT_BUTTON_IDC;
 			y = "safeZoneY + safeZoneH * 0.525";
 			onCheckedChanged = "params ['_control', '_checked']; tunuti_startmarkers_vehicleTextToggle = ([false, true] select _checked);";
 
 		};
-		class toggle_vehicleOccupation_button : toggle_squadMarkers_button
+		class GVAR(toggle_vehicleOccupation_button) : GVAR(toggle_squadMarkers_button)
 		{
-			idc = 321004;
+			idc = VEHICLOCCUPATION_BUTTON_IDC;
 			y = "safeZoneY + safeZoneH * 0.575";	
 			onCheckedChanged = "params ['_control', '_checked']; tunuti_startmarkers_vehicleOccupationToggle = ([false, true] select _checked);";
 		};
-		class toggle_ok_button : RscButton
+		class GVAR(toggle_ok_button) : RscButton
 		{
 			idc = 321005;
 			x = "safeZoneX + safeZoneW * 0.6";
@@ -104,7 +105,5 @@ class tunuti_starmakersSettings
 			colorBackground[] = GUI_BCG_COLOR;	
 			onMouseButtonClick = QUOTE(ctrlParent (_this select 0) closeDisplay 1);
 		};
-		
 	};
-	
 };

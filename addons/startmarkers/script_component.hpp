@@ -6,7 +6,14 @@
 //#define DISABLE_COMPILE_CACHE
 
 #ifdef DEBUG_ENABLED_MAIN
-    #define DEBUG_MODE_FULL
+	#define DEBUG_MODE_FULL
 #endif
 
 #include "\x\tunuti\addons\main\script_macros.hpp"
+
+#define STARTMARKER_IDD					321000
+#define SQUADMARKER_BUTTON_IDC			321001
+#define VEHICLEMARKR_BUTTON_IDC			321002
+#define VEHICLETEXT_BUTTON_IDC			321003
+#define VEHICLOCCUPATION_BUTTON_IDC		321004
+#define OK_BUTTON_IDC					321005
