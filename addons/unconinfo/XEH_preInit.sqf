@@ -13,7 +13,7 @@ PREP_RECOMPILE_END;
 	true,
 	1,
 	{},
-	true
+	false
 ] call CBA_fnc_addSetting;
 
 [
@@ -24,7 +24,7 @@ PREP_RECOMPILE_END;
 	true,
 	1,
 	{},
-	true
+	false
 ] call CBA_fnc_addSetting;
 
 [
@@ -35,7 +35,7 @@ PREP_RECOMPILE_END;
 	true,
 	1,
 	{},
-	true
+	false
 ] call CBA_fnc_addSetting;
 
 [
@@ -46,7 +46,7 @@ PREP_RECOMPILE_END;
 	true,
 	1,
 	{},
-	true
+	false
 ] call CBA_fnc_addSetting;
 
 [
@@ -57,7 +57,7 @@ PREP_RECOMPILE_END;
 	true,
 	1,
 	{},
-	true
+	false
 ] call CBA_fnc_addSetting;
 
 [
@@ -68,7 +68,7 @@ PREP_RECOMPILE_END;
 	true,
 	1,
 	{},
-	true
+	false
 ] call CBA_fnc_addSetting;
 
 [
@@ -79,7 +79,7 @@ PREP_RECOMPILE_END;
 	true,
 	1,
 	{},
-	true
+	false
 ] call CBA_fnc_addSetting;
 
 [
@@ -90,7 +90,7 @@ PREP_RECOMPILE_END;
 	true,
 	1,
 	{},
-	true
+	false
 ] call CBA_fnc_addSetting;
 
 [
@@ -101,7 +101,7 @@ PREP_RECOMPILE_END;
 	true,
 	1,
 	{},
-	true
+	false
 ] call CBA_fnc_addSetting;
 
 [
@@ -112,7 +112,7 @@ PREP_RECOMPILE_END;
 	true,
 	1,
 	{},
-	true
+	false
 ] call CBA_fnc_addSetting;
 
 [
@@ -123,7 +123,7 @@ PREP_RECOMPILE_END;
 	true,
 	1,
 	{},
-	true
+	false
 ] call CBA_fnc_addSetting;
 
 [
@@ -134,7 +134,7 @@ PREP_RECOMPILE_END;
 	true,
 	1,
 	{},
-	true
+	false
 ] call CBA_fnc_addSetting;
 
 [
@@ -149,7 +149,7 @@ PREP_RECOMPILE_END;
 		_value = round _value;
 		GVAR(unconinfoNearestUnitDistance) = _value; 
 	},
-	true
+	false
 ] call CBA_fnc_addSetting;
 
 [
@@ -160,7 +160,7 @@ PREP_RECOMPILE_END;
 	"Your current situation is not looking very good, you could wait or feel free to just press Esc -> Respawn.",
 	1,
 	{},
-	true
+	false
 ] call CBA_fnc_addSetting;
 
 [
@@ -175,7 +175,7 @@ PREP_RECOMPILE_END;
 		_value = round _value;
 		GVAR(updateInterval) = _value; 
 	},
-	true
+	false
 ] call CBA_fnc_addSetting;
 
 [
@@ -190,7 +190,7 @@ PREP_RECOMPILE_END;
 		_value = round _value;
 		GVAR(detailedTreatmentDelay) = _value; 
 	},
-	true
+	false
 ] call CBA_fnc_addSetting;
 
 [
