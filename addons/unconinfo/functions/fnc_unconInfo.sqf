@@ -51,6 +51,14 @@ if (ace_player getVariable ["ace_medical_inCardiacArrest", false]) then {
 	};
 };
 
+if (GVAR(enableShowIsInVehicle)) then {
+	private _closestUnitVehicle = vehicle ace_player;
+	if (_closestUnitVehicle isNotEqualTo ace_player) then {
+		private _vehicleName = _closestUnitVehicle getVariable ["displayName", getText (configOf _closestUnitVehicle >> "displayName")];
+		_text = _text + (format[localize "STR_TunCon_insideVehicle", _vehicleName]) + "<br/>";
+	};
+};
+
 if (GVAR(allowNearestUnit)) then {
 
 	private _distance = GVAR(unconInfoNearestUnitDistance);
@@ -78,6 +86,7 @@ if (GVAR(allowNearestUnit)) then {
 	} forEach _nearUnits;
 
 	if (_closestUnit isNotEqualTo objNull) then {
+		private _showInVehicleAllowed = GVAR(enableShowIsOthersInVehicle);
 		private _closestUnitVehicle = vehicle _closestUnit;
 		private _closestUnitInVehicle = _closestUnitVehicle isNotEqualTo _closestUnit;
 		private _closestUnitInVehicleText = "";
@@ -87,14 +96,22 @@ if (GVAR(allowNearestUnit)) then {
 		};
 		
 		if (_closestUnit isEqualTo _closestMedic) then {
-			_text = _text + (format [localize "STR_TunCon_closestUnitIsMedic", name _closestUnit]) + " " + _closestUnitInVehicleText;
+			_text = _text + (format [localize "STR_TunCon_closestUnitIsMedic", name _closestUnit]);
+			
+			if (_closestUnitInVehicle && _showInVehicleAllowed) then {
+				_text = _text + " " + _closestUnitInVehicleText;
+			};
 
 			if (_nearestUnitDistanceAllowed) then {
 				_text = _text + format[" (%1m)", _closestUnitDistance];
 			};
 		} else {
-			private _closestUnitText = (format [localize "STR_TunCon_closestUnit", name _closestUnit]) + " " +  _closestUnitInVehicleText;
+			private _closestUnitText = (format [localize "STR_TunCon_closestUnit", name _closestUnit]);
 			private _closestMedicText = format [localize "STR_TunCon_closestMedic", name _closestMedic];
+
+			if (_closestUnitInVehicle && _showInVehicleAllowed) then {
+				_closestUnitText = _closestUnitText + " " + _closestUnitInVehicleText;
+			};
 
 			if (_nearestUnitDistanceAllowed) then {
 				_closestUnitText = _closestUnitText + format[" (%1m)", _closestUnitDistance];
@@ -106,7 +123,7 @@ if (GVAR(allowNearestUnit)) then {
 				private _closestMedicVehicle = vehicle _closestMedic;
 				private _closestMedicInVehicle = _closestMedicVehicle isNotEqualTo _closestMedic;
 				
-				if (_closestMedicInVehicle) then {
+				if (_closestMedicInVehicle && _showInVehicleAllowed) then {
 					private _vehicleName = _closestMedicVehicle getVariable ["displayName", getText (configOf _closestMedicVehicle >> "displayName")];
 					_closestMedicText = _closestMedicText + " " + (format [localize "STR_TunCon_isInVehicle", _vehicleName]);
 				};

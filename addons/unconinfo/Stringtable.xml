@@ -258,8 +258,28 @@
                 <English>Enable showing if player has stable or unstable vitals</English>
             </Key>
             <Key ID="STR_TunCon_isInVehicle">
-                <English>and is inside %1</English>
-                <Original>and is inside %1</Original>
+                <English> inside of a %1</English>
+                <Original> inside of a %1</Original>
+            </Key>
+            <Key ID="STR_TunCon_CBA_enableShowIsInVehicle">
+                <English>Enable showing player is in vehicle</English>
+                <Original>Enable showing player is in vehicle</Original>
+            </Key>
+            <Key ID="STR_TunCon_CBA_enableShowIsInVehicleTooltip">
+                <English>Enable displaying whether the player is inside vehicle</English>
+                <Original>Enable displaying whether the player is inside vehicle</Original>
+            </Key>
+            <Key ID="STR_TunCon_insideVehicle">
+                <English>You are inside %1</English>
+                <Original>You are inside %1</Original>
+            </Key>
+            <Key ID="STR_TunCon_CBA_enableShowIsInVehicleOthers">
+                <English>Enable showing others are in vehicle</English>
+                <Original>Enable showing others are in vehicle</Original>
+            </Key>
+            <Key ID="STR_TunCon_CBA_enableShowIsInVehicleOthersTooltip">
+                <English>Enable displaying whether the friendly units are inside vehicle</English>
+                <Original>Enable displaying whether the friendly units are inside vehicle</Original>
             </Key>
         </Container>
     </Package>

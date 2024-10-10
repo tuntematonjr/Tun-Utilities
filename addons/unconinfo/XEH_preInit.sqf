@@ -205,7 +205,29 @@ PREP_RECOMPILE_END;
 		_value = round _value;
         GVAR(delayForUnconInfoTexts) = _value; 
     },
-    true
+    false
+] call CBA_fnc_addSetting;
+
+[
+	QGVAR(enableShowIsInVehicle),
+	"CHECKBOX",
+	[localize "STR_TunCon_CBA_enableShowIsInVehicle", localize "STR_TunCon_CBA_enableShowIsInVehicleTooltip"],
+	["Tun Utilities - Uncon Info", "Uncon Info"],
+	true,
+	1,
+	{},
+	false
+] call CBA_fnc_addSetting;
+
+[
+	QGVAR(enableShowIsOthersInVehicle),
+	"CHECKBOX",
+	[localize "STR_TunCon_CBA_enableShowIsInVehicleOthers", localize "STR_TunCon_CBA_enableShowIsInVehicleOthersTooltip"],
+	["Tun Utilities - Uncon Info", "Uncon Info"],
+	true,
+	1,
+	{},
+	false
 ] call CBA_fnc_addSetting;
 
 ADDON = true;
