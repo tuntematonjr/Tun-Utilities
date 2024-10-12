@@ -51,8 +51,9 @@ class GVAR(Time)
 			w = "safeZoneW * 0.1625";
 			h = "safeZoneH * 0.02962963";
 			style = 1024;
-			onSliderPosChanged = QUOTE(LINKFUNC(SliderPosUpdated)); 
+			onSliderPosChanged = QUOTE(_this call FUNC(SliderPosUpdated)); 
 			sliderStep = 1;
+			sliderRange[] = {0, 30};
 		};
 
 		class GVAR(sliderTimeText) : RscText

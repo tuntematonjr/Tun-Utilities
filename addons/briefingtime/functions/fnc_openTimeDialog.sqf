@@ -17,11 +17,9 @@
 private _display = TUNUTI_FIND_MAPDISPLAY;
 private _control = findDisplay _display createDisplay QGVAR(Time);
 uiNamespace setVariable [QGVAR(Time), _control ];
-[{!isNull findDisplay BACKGROUND_IDC}, {
+[{!isNull findDisplay TUNUTI_FIND_MAPDISPLAY}, {
 	privateAll;
 	_sliderControl = (uiNamespace getVariable QGVAR(Time)) displayCtrl SLIDER_IDC;
-	_sliderControl sliderSetRange [0, 30];
-	_sliderControl sliderSetSpeed [1, 1];
 
 	_text = ["Requesting additional time:", "Set briefing time to:"] select IS_ADMIN;
 	_value = [0, round(GVAR(briefingTime) / 60)] select IS_ADMIN;
