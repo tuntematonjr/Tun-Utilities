@@ -17,7 +17,8 @@
 
 	if (GVAR(enableBFT)) then {
 		LOG("BFT Started");
-
+		GVAR(squadTogle) = true;
+		GVAR(vehicleTogle) = true;
 		//BFT PFH
 		_handle = [{
 			if (GVAR(runBFT) && GVAR(lastDataUpdate) < cba_missiontime) then {
