@@ -59,7 +59,7 @@ player createDiaryRecord ["Diary",["Command & Signal",_text]];
 player createDiarySubject ["Command & Signal","Command & Signal", QPATHTOF(images\TunUti_Radios.paa)];
 player createDiaryRecord ["Command & Signal",["Command & Signal",_text]];
 
-[{ cba_missionTime > 1 && !isNull player  && TFAR_core_SettingsInitialized}, {
+[{ cba_missionTime > 0 && {!isNull player}  && {TFAR_core_SettingsInitialized}}, {
 	LOG("Player start auto set radios");
 	if (GVAR(enableAutoSetup)) then {
 		[{

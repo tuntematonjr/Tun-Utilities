@@ -165,7 +165,6 @@ private _tunuti_FNC_create_LR_channel = {
 	_valuesLR_final
 };
 
-
 {
 	_x params ["_side", "_additionalLR"];
 	if ((count _additionalLR) isNotEqualTo 0) then {
