@@ -169,7 +169,7 @@ private _tunuti_FNC_create_LR_channel = {
 {
 	_x params ["_side", "_additionalLR"];
 	if ((count _additionalLR) isNotEqualTo 0) then {
-		private _values = _radioValuesHash getOrDefault [west, [[],[]]];
+		private _values = _radioValuesHash getOrDefault [_side, [[],[]]];
 		private _lrValues = _values select 1;
 		private _srValues = _values select 0;
 		private _count = (count _lrValues) + 1;
