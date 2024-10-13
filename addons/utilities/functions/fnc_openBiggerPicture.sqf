@@ -18,7 +18,6 @@ private _display = uiNamespace getVariable [QGVAR(biggerPictureInBriefingUI), di
 
 if (!isNull _display) then {
 	_display closeDisplay 1;
-	diag_log "suljettiin vanha";
 };
 
 private _control = findDisplay TUNUTI_FIND_MAPDISPLAY createDisplay QGVAR(biggerPictureInBriefingUI);
@@ -28,5 +27,4 @@ uiNamespace setVariable [QGVAR(biggerPictureInBriefingUI), _control];
 	private _imagePath = _this;
 	_textControl = (uiNamespace getVariable QGVAR(biggerPictureInBriefingUI)) displayCtrl BIGGER_PICTURE_IMAGE_IDC;
 	_textControl ctrlSetText _imagePath;
-
 }, _imagePath] call CBA_fnc_waitUntilAndExecute; 
