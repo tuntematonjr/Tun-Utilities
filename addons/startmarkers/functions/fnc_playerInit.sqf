@@ -17,6 +17,8 @@ GVAR(squadTogle) = true;
 GVAR(vehicleTogle) = true;
 GVAR(vehicleTextToggle) = true;
 GVAR(vehicleOccupationToggle) = true;
+GVAR(otherToggle) = true;
+GVAR(otherTextToggle) = true;
 GVAR(runBFT) = true; //Variable to disable bft for unit in game
 
 LOG("Initialized player init starmarkers");
@@ -28,6 +30,7 @@ LOG("Initialized player init starmarkers");
 
 	if (TUNUTI_FIND_MAPDISPLAY isNotEqualTo 12) then {
 		[] call FUNC(createVehicleMarkers);
+		[] call FUNC(createOthereMarkers);
 	} else {
 		LOG("Skipped running createvehicle, due to skiping briefing");
 	};
@@ -40,13 +43,15 @@ LOG("Initialized player init starmarkers");
 		LOG("Ingame player init starmarkers");
 
 		GVAR(vehicleMarkers) = [];
+		GVAR(otherMarkers) = [];
 
 		[{!isNil {TUNUTI_FIND_MAPDISPLAY} }, {
 			[] call FUNC(createVehicleMarkers);
+			[] call FUNC(createOthereMarkers);
 		}] call CBA_fnc_waitUntilAndExecute;
 
 		[] call FUNC(startBFT);
 
-	}, [], 3] call CBA_fnc_waitAndExecute;
+	}, [], 2] call CBA_fnc_waitAndExecute;
 
 }, nil, 120] call CBA_fnc_waitUntilAndExecute;

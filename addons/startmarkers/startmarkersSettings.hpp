@@ -16,7 +16,7 @@ class tunuti_starmakersSettings
 			h = "safeZoneH * 0.3";
 			style = 0;	
 			colorBackground[] = {0.2, 0.2, 0.2, 0.75};
-			onDestroy = "[false] call tunuti_startmarkers_fnc_settingsDisplay;";
+			onDestroy = QUOTE([false] call FUNC(settingsDisplay););
 		};
 		
 	};
@@ -25,7 +25,7 @@ class tunuti_starmakersSettings
 		class GVAR(toggle_squadMarkersText) : RscText
 		{
 			idc = -1;
-			x = "safeZoneX + safeZoneW * 0.35";
+			x = "safeZoneX + safeZoneW * 0.37";
 			y = "safeZoneY + safeZoneH * 0.425";
 			w = "safeZoneW * 0.125";
 			h = "safeZoneH * 0.025";
@@ -52,6 +52,20 @@ class tunuti_starmakersSettings
 			text = "Toggle vehicle occupation";
 			
 		};
+		class GVAR(toggle_otherMarkers) : GVAR(toggle_squadMarkersText)
+		{
+			idc = -1;
+			x = "safeZoneX + safeZoneW * 0.5";
+			y = "safeZoneY + safeZoneH * 0.425";
+			text = "Toggle other markers";
+			tooltip = "Show boxes etc";
+		};
+		class GVAR(toggle_otherMarkersText) : GVAR(toggle_otherMarkers)
+		{
+			idc = -1;
+			y = "safeZoneY + safeZoneH * 0.475";
+			text = "Toggle other text";
+		};
 		class GVAR(header) : RscText
 		{
 			idc = -1;
@@ -67,31 +81,46 @@ class tunuti_starmakersSettings
 		class GVAR(toggle_squadMarkers_button) : RscCheckBox
 		{
 			idc = SQUADMARKER_BUTTON_IDC;
-			x = "safeZoneX + safeZoneW * 0.5";
+			x = "safeZoneX + safeZoneW * 0.35";
 			y = "safeZoneY + safeZoneH * 0.425";
 			w = "safeZoneW * 0.015";
 			h = "safeZoneH * 0.025";
-			onCheckedChanged = "params ['_control', '_checked']; tunuti_startmarkers_squadTogle = ([false, true] select _checked);";
+			onCheckedChanged = QUOTE(params [ARR_2('_control','_checked)']; GVAR(squadTogle) = ([ARR_2(false,true)] select _checked););
 			
 		};
 		class GVAR(toggle_vehicleMarkers_button) : GVAR(toggle_squadMarkers_button)
 		{
-			idc = VEHICLEMARKR_BUTTON_IDC;
+			idc = VEHICLEMARKER_BUTTON_IDC;
 			y = "safeZoneY + safeZoneH * 0.475";	
-			onCheckedChanged = "params ['_control', '_checked']; tunuti_startmarkers_vehicleTogle = ([false, true] select _checked);";
+			onCheckedChanged = QUOTE(params [ARR_2('_control','_checked)']; GVAR(vehicleTogle) = ([ARR_2(false,true)] select _checked););
 		};
 		class GVAR(toggle_vehicleText_button) : GVAR(toggle_squadMarkers_button)
 		{
 			idc = VEHICLETEXT_BUTTON_IDC;
 			y = "safeZoneY + safeZoneH * 0.525";
-			onCheckedChanged = "params ['_control', '_checked']; tunuti_startmarkers_vehicleTextToggle = ([false, true] select _checked);";
+			onCheckedChanged = QUOTE(params [ARR_2('_control','_checked)']; GVAR(vehicleTextToggle) = ([ARR_2(false,true)] select _checked););
 
 		};
 		class GVAR(toggle_vehicleOccupation_button) : GVAR(toggle_squadMarkers_button)
 		{
 			idc = VEHICLOCCUPATION_BUTTON_IDC;
-			y = "safeZoneY + safeZoneH * 0.575";	
-			onCheckedChanged = "params ['_control', '_checked']; tunuti_startmarkers_vehicleOccupationToggle = ([false, true] select _checked);";
+			y = "safeZoneY + safeZoneH * 0.575";
+			onCheckedChanged = QUOTE(params [ARR_2('_control','_checked)']; GVAR(vehicleOccupationToggle) = ([ARR_2(false,true)] select _checked););
+		};
+		class GVAR(toggle_otherMarkers_button) : GVAR(toggle_squadMarkers_button)
+		{
+			idc = OTHERMARKER_BUTTON_IDC;
+			x = "safeZoneX + safeZoneW * 0.48";
+			y = "safeZoneY + safeZoneH * 0.425";
+			onCheckedChanged = QUOTE(params [ARR_2('_control','_checked)']; GVAR(otherToggle) = ([ARR_2(false,true)] select _checked););
+			tooltip = "Show boxes etc";
+		};
+		class GVAR(toggle_otherText_button) : GVAR(toggle_otherMarkers_button)
+		{
+			idc = OTHERTEXT_BUTTON_IDC;
+			y = "safeZoneY + safeZoneH * 0.475";
+			onCheckedChanged = QUOTE(params [ARR_2('_control','_checked)']; GVAR(otherTextToggle) = ([ARR_2(false,true)] select _checked););
+
 		};
 		class GVAR(toggle_ok_button) : RscButton
 		{

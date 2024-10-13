@@ -25,6 +25,11 @@ LOG("Runned server init starmarkers");
 	GVAR(vehicleMarkersEastData) = createHashMap;
 	GVAR(vehicleMarkersIndependentData) = createHashMap;
 	GVAR(vehicleMarkersCivilianData) = createHashMap;
+
+	GVAR(otherMarkersWestData) = createHashMap;
+	GVAR(otherMarkersEastData) = createHashMap;
+	GVAR(otherMarkersIndependentData) = createHashMap;
+	GVAR(otherMarkersCivilianData) = createHashMap;
 	
 	[] call FUNC(updateData);
 }, (diag_tickTime + 10)] call CBA_fnc_waitUntilAndExecute;

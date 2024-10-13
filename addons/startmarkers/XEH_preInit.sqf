@@ -9,6 +9,7 @@ GVAR(allowedSidesStarmarker) = [];
 GVAR(allowedSidesBFT) = [];
 GVAR(squadMarkers) = [];
 GVAR(vehicleMarkers) = [];
+GVAR(otherMarkers) = [];
 
 [
 	QGVAR(enable), // Unique setting name. Matches resulting variable name <STRING>

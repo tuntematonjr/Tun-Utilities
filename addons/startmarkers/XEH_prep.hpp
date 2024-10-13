@@ -1,6 +1,9 @@
 PREP(createDiaryRecord);
+PREP(createOthereMarkers);
 PREP(createSquadMarkers);
+PREP(createVehicleIcon);
 PREP(createVehicleMarkers);
+PREP(deleteOtherMarkers);
 PREP(deleteSquadMarkers);
 PREP(deleteVehicleMarkers);
 PREP(filterData);

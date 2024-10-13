@@ -19,6 +19,7 @@
 		LOG("BFT Started");
 		GVAR(squadTogle) = true;
 		GVAR(vehicleTogle) = true;
+		GVAR(otherToggle) = true;
 		//BFT PFH
 		_handle = [{
 			if (GVAR(runBFT) && GVAR(lastDataUpdate) < cba_missiontime) then {
@@ -31,6 +32,7 @@
 					[] call FUNC(updateData);
 					[] call FUNC(createSquadMarkers);
 					[] call FUNC(createVehicleMarkers);
+					[] call FUNC(createOthereMarkers);
 				};
 			};
 		}, GVAR(updateInterval)] call CBA_fnc_addPerFrameHandler;
@@ -49,6 +51,7 @@
 		[{
 			GVAR(squadTogle) = false;
 			GVAR(vehicleTogle) = false;
+			GVAR(otherToggle) = false;
 			[] call FUNC(createSquadMarkers);
 			[] call FUNC(createVehicleMarkers);	
 		}, [], GVAR(prepTime)] call CBA_fnc_waitAndExecute;
