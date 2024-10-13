@@ -2,7 +2,7 @@
 
 class tunuti_starmakersSettings
 {
-	idd = 321000;
+	idd = STARTMARKER_IDD;
 	
 	class ControlsBackground
 	{
@@ -95,7 +95,7 @@ class tunuti_starmakersSettings
 		};
 		class GVAR(toggle_ok_button) : RscButton
 		{
-			idc = 321005;
+			idc = -1;
 			x = "safeZoneX + safeZoneW * 0.6";
 			y = "safeZoneY + safeZoneH * 0.55";
 			w = "safeZoneW * 0.04010417";
