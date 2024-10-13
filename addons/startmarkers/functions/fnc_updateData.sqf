@@ -54,7 +54,7 @@ if (_time < 1) then {
         private _hasGPS = true; //True to make sure data is collected at briefing
         private _units = (units _group);
 
-        if (cont _units isEqualTo 0) exitWith { }; //Skip empty squads
+        if (count _units isEqualTo 0) exitWith { }; //Skip empty squads
 
         if (_time > 0) then {
             {
