@@ -18,14 +18,14 @@ PREP_RECOMPILE_END;
 
 [
     QGVAR(valueSettings),
-    "SLIDER",
+    "TIME",
     ["Briefingtime", "How much there is briefing time at start"],
     "Tun Utilities - Briefingtime",
-    [0, 30, 17, 0],
+    [0, 60, 17*60, 0],
     1,
     {
         params ["_value"];
-        GVAR(value) = round _value * 60;
+        GVAR(briefingTime) = round _value;
     },
     true
 ] call CBA_fnc_addSetting;

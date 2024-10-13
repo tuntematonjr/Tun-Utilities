@@ -5,9 +5,9 @@ if (isMultiplayer) then {
         if (GVAR(enable)) then {
 
             _handle = [{
-                if (GVAR(value) > 0) then {
-                    DEC(GVAR(value));
-                    publicVariable QGVAR(value);
+                if (GVAR(briefingTime) > 0) then {
+                    DEC(GVAR(briefingTime));
+                    publicVariable QGVAR(briefingTime);
                 };
 
                 if (cba_missiontime > 0) then {

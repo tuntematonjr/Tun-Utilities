@@ -9,13 +9,13 @@
  * None
  *
  * Example:
- * [] call tunuti_startmarkers_fnc_deleteVehicleMarkers
+ * [] call tunuti_startmarkers_fnc_deleteOtherMarkers
  */
 #include "script_component.hpp"
-LOG("Runned delete vehicle markers");
+LOG("Runned delete other markers");
 {
 	_x params ["_display", "_idc"];
 	_display ctrlRemoveEventHandler ["Draw", _idc];
-} forEach GVAR(vehicleMarkers);
+} forEach GVAR(otherMarkers);
 
-GVAR(vehicleMarkers) = [];
+GVAR(otherMarkers) = [];

@@ -27,6 +27,11 @@ private _eastVehicleHash = GVAR(vehicleMarkersEastData);
 private _resistanceVehicleHash = GVAR(vehicleMarkersIndependentData);
 private _civilianVehicleHash = GVAR(vehicleMarkersCivilianData);
 
+private _westOtherHash = GVAR(otherMarkersWestData);
+private _eastOtherHash =  GVAR(otherMarkersEastData);
+private _resistanceOthereHash = GVAR(otherMarkersIndependentData);
+private _civilianOtherHash = GVAR(otherMarkersCivilianData);
+
 private _colorWEST = "ColorWEST";
 private _colorEAST = "ColorEAST";
 private _colorINDEPENDENT = "ColorGUER";
@@ -53,6 +58,9 @@ if (_time < 1) then {
         private _leader = leader _group;
         private _hasGPS = true; //True to make sure data is collected at briefing
         private _units = (units _group);
+
+        if (count _units isEqualTo 0) exitWith { }; //Skip empty squads
+
         if (_time > 0) then {
             {
                 private _unit = _x;
@@ -106,8 +114,9 @@ private _showUnmanned = GVAR(showUnmanned);
         private _text = "";
         private _text1 = "";
         _text = _vehicle getVariable ["displayName", getText (configOf _vehicle >> "displayName")];
+        private _isThing = _vehicle isKindOf "thing";
 
-        if (!(_vehicle isKindOf "thing") && {!(_vehicle isKindOf "uav")}) then {
+        if (!_isThing && {!(_vehicle isKindOf "uav")}) then {
             private _vehicleCrew = crew _vehicle;
             if (count _vehicleCrew > 0) then {
                 private _groups = [];
@@ -139,17 +148,21 @@ private _showUnmanned = GVAR(showUnmanned);
         private _data = [hashValue _vehicle, [_classname, [_text, _text1], _pos, _direction, _color, _updateTime]];
 
         switch (_side) do {
-            case west: { 
-                _westVehicleHash set _data;
+            case west: {
+                private _hash = [_westVehicleHash,_westOtherHash] select _isThing;
+                _hash set _data;
             };
             case east: { 
-                _eastVehicleHash set _data;
+                private _hash = [_eastVehicleHash,_eastOtherHash] select _isThing;
+                _hash set _data;
             };
-            case independent: { 
-                _resistanceVehicleHash set _data;
+            case independent: {
+                private _hash = [_resistanceVehicleHash,_resistanceOthereHash] select _isThing;
+                _hash set _data;
             };
-            default { 
-                _civilianVehicleHash set _data;
+            default {
+                private _hash = [_civilianVehicleHash,_civilianOtherHash] select _isThing;
+                _hash set _data;
             };
         };
     };
@@ -167,6 +180,11 @@ if (isServer) then {
     publicVariable QGVAR(vehicleMarkersEastData);
     publicVariable QGVAR(vehicleMarkersIndependentData);
     publicVariable QGVAR(vehicleMarkersCivilianData);
+
+    publicVariable QGVAR(otherMarkersWestData);
+    publicVariable QGVAR(otherMarkersEastData);
+    publicVariable QGVAR(otherMarkersIndependentData);
+    publicVariable QGVAR(otherMarkersCivilianData);
 
     publicVariable QGVAR(lastDataUpdate);
 

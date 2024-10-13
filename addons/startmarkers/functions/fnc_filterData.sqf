@@ -25,7 +25,7 @@ private _resistanceVehicleHash = GVAR(vehicleMarkersIndependentData);
 private _civilianVehicleHash = GVAR(vehicleMarkersCivilianData);
 
 private _lastUpdateTime = GVAR(lastDataUpdate);
-private _deleteMarkerTime = GVAR(deleteMarkerTime) * 60;
+private _deleteMarkerTime = GVAR(deleteMarkerTime);
 
 {
 	private _hash = _x;

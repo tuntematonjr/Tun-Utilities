@@ -7,12 +7,12 @@ if (isMultiplayer) then {
 
             [{ !isNull findDisplay 53 || !isNull findDisplay 52 }, {
 				private _display = TUNUTI_FIND_MAPDISPLAY;
-				private _control = findDisplay _display ctrlCreate [QGVAR(timeText), 320001];
+				private _control = findDisplay _display ctrlCreate [QGVAR(timeText), TIME_TEXT_IDC];
 				uiNamespace setVariable [QGVAR(timeText), _control ];
 
 				_handle = [{
-					private _time = [GVAR(value), "M:SS"] call CBA_fnc_formatElapsedTime;
-					private _realTime = ((systemTime select 3) * 60 * 60) + ((systemTime select 4) * 60) + (systemTime select 5) + GVAR(value); 
+					private _time = [GVAR(briefingTime), "M:SS"] call CBA_fnc_formatElapsedTime;
+					private _realTime = ((systemTime select 3) * 60 * 60) + ((systemTime select 4) * 60) + (systemTime select 5) + GVAR(briefingTime); 
 					if (_realTime > 86400) then {
 						_realTime = _realTime - 86400;
 					};

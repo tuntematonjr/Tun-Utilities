@@ -137,7 +137,7 @@ FILTER(_groupsIndependent,{ if (_x in _playableUnits) exitWith {true}; false } f
 		};
 	} forEach _groups;
 
-    _radioValuesHash set [_side, [_valuesSR_final,_valuesLR_final]];
+	_radioValuesHash set [_side, [_valuesSR_final,_valuesLR_final]];
 
 } forEach [[_groupsWest, west],[_groupsEast, east], [_groupsIndependent, independent]];
 
@@ -165,11 +165,10 @@ private _tunuti_FNC_create_LR_channel = {
 	_valuesLR_final
 };
 
-
 {
 	_x params ["_side", "_additionalLR"];
 	if ((count _additionalLR) isNotEqualTo 0) then {
-		private _values = _radioValuesHash getOrDefault [west, [[],[]]];
+		private _values = _radioValuesHash getOrDefault [_side, [[],[]]];
 		private _lrValues = _values select 1;
 		private _srValues = _values select 0;
 		private _count = (count _lrValues) + 1;
