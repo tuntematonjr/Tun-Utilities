@@ -63,14 +63,9 @@ if ( !(_updateTime < 0) && {(_lastUpdateTime > ( _lostContactTime + _updateTime)
 		];
 
 	private _IDC = _display ctrlAddEventHandler ["Draw",_drawValues];
-	TRACE_2("create Icon",_display, _IDC);
 	if (_isOther) then {
-		LOG("add other marcer to array");
 		GVAR(otherMarkers) pushBack [_display, _IDC];
-		TRACE_1("Other array",GVAR(otherMarkers));
 	} else {
-		LOG("add vehicle marcer to array");
 		GVAR(vehicleMarkers) pushBack [_display, _IDC];
-		TRACE_1("vehicle array",GVAR(vehicleMarkers));
 	};
 } forEach _displays;
