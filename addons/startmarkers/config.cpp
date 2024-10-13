@@ -63,7 +63,7 @@ class Cfg3DEN
 						tooltip = "You can change the default startpos marker name shown at brieffing to a different one. Names shorter than 2 characters wont be set.";
 						property = "tunuti_startmarkers_startPosName";
 						control = "EditShort";
-						expression = "if (count _value > 1) then { _this setVariable ['displayName', str _value,true]};";
+						expression = "if (count _value > 1) then { _this setVariable ['displayName', _value,true]};";
 						defaultValue = "''";
 						condition = "objectHasInventoryCargo + objectVehicle";
 					};
