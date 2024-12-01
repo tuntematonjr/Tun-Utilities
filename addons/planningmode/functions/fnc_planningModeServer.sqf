@@ -33,8 +33,8 @@ if !(GVAR(isRunning)) then { //Start planning mode
 			{ 
 				private _unit = _x; 
 				private _marker = createMarker [format["%1_%2", QGVAR(playerPosMarker),_unit], position _unit]; 
-				_marker setMarkerText name _unit ; 
-				_marker setMarkerType "mil_triangle"; 
+				_marker setMarkerTextLocal name _unit ; 
+				_marker setMarkerTypeLocal "mil_triangle"; 
 				_marker setMarkerDir direction _unit; 
 				GVAR(playerPositionMarkers) pushBack _marker; 
 			} forEach allPlayers; 

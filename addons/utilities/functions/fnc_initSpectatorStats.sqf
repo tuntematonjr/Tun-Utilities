@@ -37,10 +37,7 @@ private _id = ["ace_spectator_displayLoaded", {
 				_handle call CBA_fnc_removePerFrameHandler;
 			};
 
-			private _hashWaitTime = tunres_Respawn_nextWaveTimesHash;
 			private _allowRespawnHash = tunres_Respawn_allowRespawnHash;
-			private _waitingRespawnListHash = tunres_Respawn_allowRespawnHash;
-			private _waitingRespawnDelayedListHash = tunres_Respawn_allowRespawnHash;
 
 			{
 				_x params ["_side"];
@@ -65,12 +62,12 @@ private _id = ["ace_spectator_displayLoaded", {
 							_ticketCount = str(_hash get _side);
 						};
 
-						private _waitingRespawnCount = count (_waitingRespawnListHash getOrDefault [_side, []]) + count (_waitingRespawnDelayedListHash getOrDefault [_side, []]);
-						private _allowRespawn = _allowRespawnHash get _side;
+						private _waitingRespawnCount = ([_side, false] call tunres_Respawn_fnc_getWaitingRespawnCount) + ([_side, true] call tunres_Respawn_fnc_getWaitingRespawnCount);
+
 						private _time = "Disabled";
-						if (_allowRespawn) then {
-							private _waitTime = _hashWaitTime get _side;
-							_time = [ceil (_waitTime - cba_missiontime), "MM:SS"] call BIS_fnc_secondsToString;
+						if (_allowRespawnHash getOrDefault [_side,false]) then {
+							_time = [_side] call tunres_respawn_fnc_getRemainingTime;
+							_time = [_time, "M:SS"] call CBA_fnc_formatElapsedTime;
 						};
 						
 						_text =  format["%2Respawn:%1Tickets: %4%1Next Wave: %3%1Waiting Respawn: %5",endl, _text, _time, _ticketCount, _waitingRespawnCount];
