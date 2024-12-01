@@ -20,13 +20,12 @@ enabled = false
 
 [hemtt.launch.default]
 workshop = [
-    "450814997",
-    "463939057",
-    "894678801",
+    "450814997", # CBA
+    "463939057", # ACE
+    "894678801", # TFAR
     "1776575634",
     "623475643",
     "1420348567",
-    "894678801",
 ]
 parameters = [
     "-skipIntro",           # These parameters are passed to the Arma 3 executable
@@ -39,3 +38,41 @@ parameters = [
 
 [hemtt.release]
 folder = "Tun_Utility"
+
+
+[hemtt.launch.server]
+workshop = [
+    "450814997", # CBA
+    "463939057", # ACE
+    "894678801", # TFAR
+    "1776575634",
+    "623475643",
+    "1420348567",
+]
+parameters = [
+    "-server",
+    "-port=2302",
+    "-filePatching",
+    "-cfg=C:\\Users\\mikal\\Documents\\GitHub\\tun-utilities\\server\\server_basic.cfg",
+    "-config=C:\\Users\\mikal\\Documents\\GitHub\\tun-utilities\\server\\server_config.cfg",
+]
+
+[hemtt.launch.player]
+workshop = [
+    "450814997", # CBA
+    "463939057", # ACE
+    "894678801", # TFAR
+    "1776575634",
+    "623475643",
+    "1420348567",
+]
+parameters = [
+    "-debug",
+    "-filePatching",
+    "-world=empty",
+    "-noPause",
+    "-noPauseAudio",
+    "-connect=localHost",
+    "-port=2302",
+    "-window",
+]
