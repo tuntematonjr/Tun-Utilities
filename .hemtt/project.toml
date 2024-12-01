@@ -34,6 +34,7 @@ parameters = [
     "-debug",
     "-filePatching",
     "C:\\Users\\mikal\\Documents\\Arma 3 - Other Profiles\\Tuntematon\\missions\\startmarkers.Enoch\\mission.sqm", # Launch into existing Editor Mission - \\ needed
+    "-mod=C:\\Users\\mikal\\Documents\\GitHub\\Tun-Respawn-System\\.hemttout\\build",
 ]
 
 [hemtt.release]
@@ -55,6 +56,7 @@ parameters = [
     "-filePatching",
     "-cfg=C:\\Users\\mikal\\Documents\\GitHub\\tun-utilities\\server\\server_basic.cfg",
     "-config=C:\\Users\\mikal\\Documents\\GitHub\\tun-utilities\\server\\server_config.cfg",
+    "-mod=C:\\Users\\mikal\\Documents\\GitHub\\Tun-Respawn-System\\.hemttout\\build",
 ]
 
 [hemtt.launch.player]
@@ -75,4 +77,5 @@ parameters = [
     "-connect=localHost",
     "-port=2302",
     "-window",
+    "-mod=C:\\Users\\mikal\\Documents\\GitHub\\Tun-Respawn-System\\.hemttout\\build",
 ]

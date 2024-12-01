@@ -19,7 +19,7 @@ params ["_lineStart", "_lineEnd", "_color"];
 private _lineDistance = (_lineEnd distance2D _lineStart) / 2;
 private _lineDir = _lineStart getDir _lineEnd;
 private _lineMiddlePos = _lineStart getPos [_lineDistance, _lineDir];
-private _markerLine = createMarkerLocal [format["%%3_%1-%2", _lineStart, _lineEnd, QGVAR(losCheckMarker)], _lineMiddlePos];
+private _markerLine = createMarkerLocal [format["%3_%1-%2", _lineStart, _lineEnd, QGVAR(losCheckMarker)], _lineMiddlePos];
 _markerLine setMarkerDirLocal _lineDir;
 _markerLine setMarkerShapeLocal "RECTANGLE";
 _markerLine setMarkerBrushLocal "SolidBorder";
