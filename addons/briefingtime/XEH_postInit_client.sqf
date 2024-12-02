@@ -1,11 +1,11 @@
 #include "script_component.hpp"
  
 if (isMultiplayer) then {
-    [{ ADDON && !isNil "cba_missiontime" }, {
-        if (GVAR(enable)) then {
-            GVAR(Notifications) = [];
+	[{ ADDON && !isNil "cba_missiontime" }, {
+		if (GVAR(enable)) then {
+			GVAR(Notifications) = [];
 
-            [{ !isNull findDisplay 53 || !isNull findDisplay 52 }, {
+			[{ !isNull findDisplay 53 || !isNull findDisplay 52 }, {
 				private _display = TUNUTI_FIND_MAPDISPLAY;
 				private _control = findDisplay _display ctrlCreate [QGVAR(timeText), TIME_TEXT_IDC];
 				uiNamespace setVariable [QGVAR(timeText), _control ];
@@ -31,7 +31,7 @@ if (isMultiplayer) then {
 				"Request more briefing time. Do not spam!
 				<br/><br/><font size=20><execute expression=' [] call "+QFUNC(openTimeDialog)+"'> Request more time / Modify briefing time</execute></font>"
 				]];
-            }] call CBA_fnc_waitUntilAndExecute;
-        };
-    }] call CBA_fnc_waitUntilAndExecute;
+			}] call CBA_fnc_waitUntilAndExecute;
+		};
+	}] call CBA_fnc_waitUntilAndExecute;
 };

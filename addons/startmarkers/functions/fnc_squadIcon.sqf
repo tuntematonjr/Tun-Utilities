@@ -22,15 +22,15 @@ private _side = side _leader;
 private _groupID = groupId _group;
 
 private _isHQ = {
-    private _return = _x in _groupID;
-    if (_return) exitWith {
-        true
-    };
-    false
+	private _return = _x in _groupID;
+	if (_return) exitWith {
+		true
+	};
+	false
 } forEach (GVAR(commandElementID) splitString ",");
 
 if ( _isHQ ) exitWith {
-    ["n_hq", "b_hq", "o_hq"] select ((["GUER", "WEST", "EAST"] find str _side) max 0)
+	["n_hq", "b_hq", "o_hq"] select ((["GUER", "WEST", "EAST"] find str _side) max 0)
 };  
 
 [_group] call ace_common_fnc_getMarkerType
