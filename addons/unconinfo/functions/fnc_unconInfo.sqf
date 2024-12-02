@@ -81,7 +81,7 @@ if (GVAR(allowNearestUnit)) then {
 
 		if ([_unit] call ace_common_fnc_isMedic && {_distance <= _closestMedicDistance}) then {
 			_closestMedic = _unit;
-			_closestMedicDistance = round _distance;           
+			_closestMedicDistance = round _distance;		   
 		};
 	} forEach _nearUnits;
 

@@ -225,9 +225,9 @@ PREP_RECOMPILE_END;
 	{ 
 		params ["_value"];
 		_value = round _value;
-        GVAR(delayForUnconInfoTexts) = _value; 
-    },
-    false
+		GVAR(delayForUnconInfoTexts) = _value; 
+	},
+	false
 ] call CBA_fnc_addSetting;
 
 ADDON = true;

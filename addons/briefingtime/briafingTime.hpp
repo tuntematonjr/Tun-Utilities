@@ -13,11 +13,11 @@ class GVAR(timeText) : RscText
 
 class GVAR(notificationBox) : GVAR(timeText)
 {
-    type = 0;
-    idc = NOTIFICATION_BOX_IDC;
-    y = "safeZoneY + safeZoneH * 0.10462963";
-    h = "safeZoneH * 0.125";
-    style = 2+16;
+	type = 0;
+	idc = NOTIFICATION_BOX_IDC;
+	y = "safeZoneY + safeZoneH * 0.10462963";
+	h = "safeZoneH * 0.125";
+	style = 2+16;
 	sizeEx = QUOTE(GUI_TEXT_SIZE_MEDIUM);
 };
 
