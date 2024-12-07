@@ -25,7 +25,7 @@ if !(GVAR(isRunning)) then { //Start planning mode
 		params ["_args", "_handle"];
 
 		{ 
-			deleteMarker _x;    
+			deleteMarker _x;	
 		} forEach GVAR(playerPositionMarkers); 
 		GVAR(playerPositionMarkers) = []; 
 

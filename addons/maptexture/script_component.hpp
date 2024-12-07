@@ -1,5 +1,5 @@
-#define COMPONENT unconinfo
-#define COMPONENT_BEAUTIFIED UnconInfo
+#define COMPONENT maptexture
+#define COMPONENT_BEAUTIFIED maptexture
 #include "\x\tunuti\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL
@@ -10,3 +10,4 @@
 #endif
 
 #include "\x\tunuti\addons\main\script_macros.hpp"
+
