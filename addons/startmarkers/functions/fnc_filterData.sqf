@@ -34,7 +34,7 @@ private _deleteMarkerTime = GVAR(deleteMarkerTime);
 		private _value = _y;
 		private _valueUpdateTime = _value select 5;
 
-		if (( !(_valueUpdateTime < 0) && {(_lastUpdateTime > ( _deleteMarkerTime + _valueUpdateTime))})) then {
+		if (((_valueUpdateTime >= 0) && {(_lastUpdateTime > ( _deleteMarkerTime + _valueUpdateTime))})) then {
 			_hash deleteAt _key;
 		};
 	} forEach _hash;	

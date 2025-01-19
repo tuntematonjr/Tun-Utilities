@@ -45,7 +45,7 @@ private _deleteMarkerTime = GVAR(deleteMarkerTime);
 {
 	_x params ["_classname", "_texts", "_pos", "_direction", "_color", "_updateTime"];
 
-	if ( !(_updateTime < 0) && {(_lastUpdateTime > (_deleteMarkerTime + _updateTime))}) exitWith {
+	if ((_updateTime >= 0) && {(_lastUpdateTime > (_deleteMarkerTime + _updateTime))}) exitWith {
 		private _logText = format ["other marker %1 has not been updated long time, so it is skipped", _texts select 0];
 		LOG(_logText);
 	};
