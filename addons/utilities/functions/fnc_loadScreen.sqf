@@ -18,7 +18,8 @@ if (!isMultiplayer) exitWith { LOG("Skip desync load screen in SP"); }; // skip 
 
 [{!isNull player && !isNull findDisplay 12 && !isNil QGVAR(runLoadScreen)}, {
 	if (!GVAR(runLoadScreen)) exitWith { INFO("Desync load screen disabled"); };
-	if (count allPlayers < 10) exitWith { INFO("Desync load disabled under 10 players"); };
+	private _allPlayers = count(call BIS_fnc_listPlayers);
+	if (_allPlayers < 10) exitWith { INFO("Desync load disabled under 10 players"); };
 	if !(playerSide in [west, east, resistance, civilian]) exitWith { INFO("Not in right side, so skip desync load screen"); };
 	if (10*60 < cba_missiontime) exitWith { INFO("Mission has started already"); };
 	INFO("Start desync load screen");
