@@ -47,13 +47,13 @@ private _deleteMarkerTime = GVAR(deleteMarkerTime);
 {
 	_x params ["_icon", "_pos", "_color", "_group", "_text", "_updateTime", "_hide"];
 
-	if ( !(_updateTime < 0) && {(_lastUpdateTime > ( _deleteMarkerTime + _updateTime))}) exitWith {
+	if ((_updateTime >= 0) && {(_lastUpdateTime > ( _deleteMarkerTime + _updateTime))}) exitWith {
 		private _logText = format ["Marker %1 has not been updated long time, so it is skipped. Should be deleted in next update.",_text];
 		LOG(_logText);
 	};
 
 	private _alpha = 1;
-	if ( !(_updateTime < 0) && {(_lastUpdateTime > ( _lostContactTime + _updateTime))}) then {
+	if ((_updateTime >= 0) && {(_lastUpdateTime > ( _lostContactTime + _updateTime))}) then {
 		_alpha = 0.5;
 	};
 

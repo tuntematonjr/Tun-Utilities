@@ -37,7 +37,7 @@ if (!isNull _dialogDisplay) then {
 };
 
 
-if ( !(_updateTime < 0) && {(_lastUpdateTime > ( _lostContactTime + _updateTime))}) then {
+if ((_updateTime >= 0) && {(_lastUpdateTime > ( _lostContactTime + _updateTime))}) then {
 	_color set [-1, 0.5];
 };
 
