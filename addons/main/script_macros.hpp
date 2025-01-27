@@ -17,7 +17,7 @@
 //#define DEBUG_ENABLED_MAIN
 
 
-#include "\a3\ui_f\hpp\definecommoncolors.inc"
+#include "\a3\ui_f\hpp\defineCommonColors.inc"
 
 // Default grid
 #define GUI_GRID_WAbs		   ((safezoneW / safezoneH) min 1.2)
