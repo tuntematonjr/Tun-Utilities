@@ -72,21 +72,25 @@ LOG(_debugText);
 					private _player_pos = getPos ace_player;
 					if !( _player_pos inPolygon GVAR(borderPolygon)) then {
 						[(format["<t color='#ff0000' size = '.8'>%1</t>",_hintText]),-1,-1,4,1,0,789] spawn BIS_fnc_dynamicText;
+						if (IS_ADMIN) then {
+							ace_player sideChat "You are admin, hope you are not crossing the AO line without reason. Please turn back.";
+						} else {
 						switch (ceil random 3) do {
-							case 1: { 
-								playSound3D ['a3\dubbing_f_epa\zone_restriction\A_Warn_No_Leader\zone_restriction_a_warn_no_leader_KER_0.ogg', ace_player];
+								case 1: { 
+									playSound3D ['a3\dubbing_f_epa\zone_restriction\A_Warn_No_Leader\zone_restriction_a_warn_no_leader_KER_0.ogg', ace_player];
 
-								[[profileName, "Where the hell am I? I should check my map.", 0]] spawn BIS_fnc_EXP_camp_playSubtitles;
-							};
-							case 2: { 
-								playSound3D ['a3\dubbing_f_epa\zone_restriction\A_Warn_No_Leader\zone_restriction_a_warn_no_leader_KER_1.ogg', ace_player];
+									[[profileName, "Where the hell am I? I should check my map.", 0]] spawn BIS_fnc_EXP_camp_playSubtitles;
+								};
+								case 2: { 
+									playSound3D ['a3\dubbing_f_epa\zone_restriction\A_Warn_No_Leader\zone_restriction_a_warn_no_leader_KER_1.ogg', ace_player];
 
-								[[profileName, "This doesn't look right at all. Where am I?", 0]] spawn BIS_fnc_EXP_camp_playSubtitles;
-							};
-							case 3: { 
-								playSound3D ['a3\dubbing_f_epa\zone_restriction\A_Warn_No_Leader\zone_restriction_a_warn_no_leader_KER_2.ogg', ace_player];
+									[[profileName, "This doesn't look right at all. Where am I?", 0]] spawn BIS_fnc_EXP_camp_playSubtitles;
+								};
+								case 3: { 
+									playSound3D ['a3\dubbing_f_epa\zone_restriction\A_Warn_No_Leader\zone_restriction_a_warn_no_leader_KER_2.ogg', ace_player];
 
-								[[profileName, "Wow, I must be way off course. Better check my map.", 0]] spawn BIS_fnc_EXP_camp_playSubtitles;
+									[[profileName, "Wow, I must be way off course. Better check my map.", 0]] spawn BIS_fnc_EXP_camp_playSubtitles;
+								};
 							};
 						};
 						LOG("player out of AO");
