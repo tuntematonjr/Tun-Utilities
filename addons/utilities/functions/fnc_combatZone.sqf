@@ -68,23 +68,23 @@ LOG(_debugText);
 				LOG("Create combatzone for main screen");
 			_handle = [{
 				_args params ["_hintText"];
-				if ( player isKindOf "man" && {alive player} && {!(player isKindOf "ace_spectator_virtual")} && {playerSide in [west,east,resistance,civilian]} && {!(vehicle player isKindOf "air")} && {!(player getVariable ["tunres_Respawn_isWaitingRespawn", false])} ) then {
-					private _player_pos = getPos player;
+				if ( ace_player isKindOf "man" && {alive ace_player} && {!(ace_player isKindOf "ace_spectator_virtual")} && {playerSide in [west,east,resistance,civilian]} && {!(vehicle ace_player isKindOf "air")} && {!(ace_player getVariable ["tunres_Respawn_isWaitingRespawn", false])} ) then {
+					private _player_pos = getPos ace_player;
 					if !( _player_pos inPolygon GVAR(borderPolygon)) then {
 						[(format["<t color='#ff0000' size = '.8'>%1</t>",_hintText]),-1,-1,4,1,0,789] spawn BIS_fnc_dynamicText;
 						switch (ceil random 3) do {
 							case 1: { 
-								playSound3D ['a3\dubbing_f_epa\zone_restriction\A_Warn_No_Leader\zone_restriction_a_warn_no_leader_KER_0.ogg', player];
+								playSound3D ['a3\dubbing_f_epa\zone_restriction\A_Warn_No_Leader\zone_restriction_a_warn_no_leader_KER_0.ogg', ace_player];
 
 								[[profileName, "Where the hell am I? I should check my map.", 0]] spawn BIS_fnc_EXP_camp_playSubtitles;
 							};
 							case 2: { 
-								playSound3D ['a3\dubbing_f_epa\zone_restriction\A_Warn_No_Leader\zone_restriction_a_warn_no_leader_KER_1.ogg', player];
+								playSound3D ['a3\dubbing_f_epa\zone_restriction\A_Warn_No_Leader\zone_restriction_a_warn_no_leader_KER_1.ogg', ace_player];
 
 								[[profileName, "This doesn't look right at all. Where am I?", 0]] spawn BIS_fnc_EXP_camp_playSubtitles;
 							};
 							case 3: { 
-								playSound3D ['a3\dubbing_f_epa\zone_restriction\A_Warn_No_Leader\zone_restriction_a_warn_no_leader_KER_2.ogg', player];
+								playSound3D ['a3\dubbing_f_epa\zone_restriction\A_Warn_No_Leader\zone_restriction_a_warn_no_leader_KER_2.ogg', ace_player];
 
 								[[profileName, "Wow, I must be way off course. Better check my map.", 0]] spawn BIS_fnc_EXP_camp_playSubtitles;
 							};
