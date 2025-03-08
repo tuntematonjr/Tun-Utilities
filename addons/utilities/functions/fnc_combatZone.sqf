@@ -78,17 +78,14 @@ LOG(_debugText);
 						switch (ceil random 3) do {
 								case 1: { 
 									playSound3D ['a3\dubbing_f_epa\zone_restriction\A_Warn_No_Leader\zone_restriction_a_warn_no_leader_KER_0.ogg', ace_player];
-
 									[[profileName, "Where the hell am I? I should check my map.", 0]] spawn BIS_fnc_EXP_camp_playSubtitles;
 								};
 								case 2: { 
 									playSound3D ['a3\dubbing_f_epa\zone_restriction\A_Warn_No_Leader\zone_restriction_a_warn_no_leader_KER_1.ogg', ace_player];
-
 									[[profileName, "This doesn't look right at all. Where am I?", 0]] spawn BIS_fnc_EXP_camp_playSubtitles;
 								};
 								case 3: { 
 									playSound3D ['a3\dubbing_f_epa\zone_restriction\A_Warn_No_Leader\zone_restriction_a_warn_no_leader_KER_2.ogg', ace_player];
-
 									[[profileName, "Wow, I must be way off course. Better check my map.", 0]] spawn BIS_fnc_EXP_camp_playSubtitles;
 								};
 							};
