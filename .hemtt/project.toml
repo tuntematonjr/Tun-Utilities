@@ -20,17 +20,14 @@ enabled = false
 
 [hemtt.launch.default]
 workshop = [
-	"450814997", # CBA
-	"463939057", # ACE
-	"894678801", # TFAR
-	"1776575634",
-	"623475643",
-	"1420348567",
+    "450814997", # CBA_A3
+    "463939057", # ACE
+    "2369477168", # Advanced tool thing
+	# "1776575634",
+	# "623475643",
+	# "1420348567",
 ]
 parameters = [
-	"-skipIntro",		   # These parameters are passed to the Arma 3 executable
-	"-noSplash",			# They do not need to be added to your list
-	"-showScriptErrors",	# You can add additional parameters here
 	"-debug",
 	"-filePatching",
 	"C:\\Users\\mikal\\Documents\\Arma 3 - Other Profiles\\Tuntematon\\missions\\startmarkers.Enoch\\mission.sqm", # Launch into existing Editor Mission - \\ needed
@@ -78,4 +75,11 @@ parameters = [
 	"-port=2302",
 	"-window",
 	"-mod=C:\\Users\\mikal\\Documents\\GitHub\\Tun-Respawn-System\\.hemttout\\build",
+]
+
+[hemtt.launch.uncon]
+extends = "default"
+
+parameters = [
+	"C:\\Users\\mikal\\Documents\\Arma 3 - Other Profiles\\Tuntematon\\missions\\unconTest.enoch\\mission.sqm",
 ]
