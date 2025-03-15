@@ -97,7 +97,7 @@ if (GVAR(allowNearestUnit)) then {
 
 		if ([_unit] call ace_common_fnc_isMedic && {_distance <= _closestMedicDistance}) then {
 			_closestMedic = _unit;
-			_closestMedicDistance = round _distance;		   
+			_closestMedicDistance = round _distance;
 		};
 	} forEach _nearUnits;
 
@@ -108,7 +108,7 @@ if (GVAR(allowNearestUnit)) then {
 		private _closestUnitInVehicleText = "";
 		if (_closestUnitInVehicle) then {
 			private _vehicleName = _closestUnitVehicle getVariable ["displayName", getText (configOf _closestUnitVehicle >> "displayName")];
-			_closestUnitInVehicleText = format [localize "STR_TunCon_isInVehicle", _vehicleName];;
+			_closestUnitInVehicleText = format [localize "STR_TunCon_isInVehicle", _vehicleName];
 		};
 		
 		if (_closestUnit isEqualTo _closestMedic) then {
