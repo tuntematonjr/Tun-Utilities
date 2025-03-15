@@ -21,6 +21,22 @@
 private _text = localize "STR_TunCon_firstLine" + "<br/>";
 private _bleeding = ace_player getVariable ["ace_medical_woundBleeding", 0];
 private _hasStableVitals = [ace_player] call ace_medical_status_fnc_hasStableVitals;
+private _drugs = [ace_player] call ace_medical_status_fnc_getAllMedicationCount;
+private _hasEpi = false;
+// private _hasMorphine = false;
+// private _hasPils = false;
+
+{
+	_x params ["_name"];
+
+	if (_name == "epinephrine") then {_hasEpi = true;};
+	// switch (toLower _name) do {
+	// 	case ("epinephrine"): {_hasEpi = true;};
+	// 	case ("morphine"): {_hasMorphine = true;};
+	// 	case ("painkillers"): {_hasPils = true;};
+	// 	default {};
+	// };
+} forEach _drugs;
 
 if (GVAR(enableShowBleeding) && _bleeding > 0) then {
 	_text = _text + localize "STR_TunCon_isBleeding" + "<br/>";
@@ -41,7 +57,7 @@ if (ace_player getVariable ["ace_medical_inCardiacArrest", false]) then {
 			_text = _text + localize "STR_TunCon_hasStableVitals" + "<br/>";
 		};
 
-		if (GVAR(enableShowEpinephrine) && {[ace_player, "Epinephrine"] call ace_medical_status_fnc_getMedicationCount > 0}) then {
+		if (GVAR(enableShowEpinephrine) && {_hasEpi}) then {
 			_text = _text + localize "STR_TunCon_hasepinEphrine" + "<br/>";
 		};
 	} else {
