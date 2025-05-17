@@ -31,7 +31,7 @@ parameters = [
 	"-debug",
 	"-filePatching",
 	"C:\\Users\\mikal\\Documents\\Arma 3 - Other Profiles\\Tuntematon\\missions\\startmarkers.Enoch\\mission.sqm", # Launch into existing Editor Mission - \\ needed
-	"-mod=C:\\Users\\mikal\\Documents\\GitHub\\Tun-Respawn-System\\.hemttout\\build",
+	#"-mod=C:\\Users\\mikal\\Documents\\GitHub\\Tun-Respawn-System\\.hemttout\\build",
 ]
 
 [hemtt.release]
