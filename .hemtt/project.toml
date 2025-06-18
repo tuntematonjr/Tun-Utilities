@@ -22,10 +22,9 @@ enabled = false
 workshop = [
     "450814997", # CBA_A3
     "463939057", # ACE
-    "2369477168", # Advanced tool thing
+    "3499977893", # Advanced tool thing
 	# "1776575634",
 	# "623475643",
-	# "1420348567",
 ]
 parameters = [
 	"-debug",
@@ -45,7 +44,6 @@ workshop = [
 	"894678801", # TFAR
 	"1776575634",
 	"623475643",
-	"1420348567",
 ]
 parameters = [
 	"-server",
@@ -60,7 +58,6 @@ workshop = [
 	"894678801", # TFAR
 	"1776575634",
 	"623475643",
-	"1420348567",
 ]
 parameters = [
 	"-debug",
