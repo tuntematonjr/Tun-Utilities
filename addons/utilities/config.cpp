@@ -18,7 +18,6 @@ class CfgPatches {
 class  RscPictureKeepAspect;
 class  RscButton;
 class  RscText;
-class  RscXSliderH;
 #include "biggerImage.hpp"
 #include "spectatorStats.hpp"
 
