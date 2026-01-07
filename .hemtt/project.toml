@@ -13,10 +13,10 @@ include = [
 git_hash = 0 
 
 [binarize]
-enabled = false 
+enabled = true 
 
 [lint.sqf]
-enabled = false
+enabled = true
 
 [hemtt.launch.default]
 workshop = [
