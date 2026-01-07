@@ -25,6 +25,6 @@ uiNamespace setVariable [QGVAR(biggerPictureInBriefingUI), _control];
 
 [{!isNull findDisplay BIGGER_PICTURE_MAIN_IDD}, {
 	private _imagePath = _this;
-	_textControl = (uiNamespace getVariable QGVAR(biggerPictureInBriefingUI)) displayCtrl BIGGER_PICTURE_IMAGE_IDC;
+	private _textControl = (uiNamespace getVariable QGVAR(biggerPictureInBriefingUI)) displayCtrl BIGGER_PICTURE_IMAGE_IDC;
 	_textControl ctrlSetText _imagePath;
 }, _imagePath] call CBA_fnc_waitUntilAndExecute; 

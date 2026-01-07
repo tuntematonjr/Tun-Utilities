@@ -21,7 +21,7 @@
 		GVAR(vehicleTogle) = true;
 		GVAR(otherToggle) = true;
 		//BFT PFH
-		_handle = [{
+		[{
 			if (GVAR(runBFT) && GVAR(lastDataUpdate) < cba_missiontime) then {
 				private _items = (assignedItems player + items player);
 				MAP(_items,toLower _x);
