@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 
 private _id = [QGVAR(createServerInfoEvent), {
-	_params params [["_battleEye", false],["_hostname", "No name set"],["_maxDesync", -1],["_maxPacketLoss", -1],["_maxPing", -1],["_verifySignatures", -1]];
+	params [["_battleEye", false],["_hostname", "No name set"],["_maxDesync", -1],["_maxPacketLoss", -1],["_maxPing", -1],["_verifySignatures", -1]];
 	player createDiarySubject ["Server info","Server info"];
 
 	private _text = format ["Basic server info<br/><br/>Server Name: %1

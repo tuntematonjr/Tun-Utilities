@@ -5,6 +5,7 @@ if (isMultiplayer) then {
 		if (GVAR(enable)) then {
 
 			[{
+				params ["_args", "_handle"];
 				if (GVAR(briefingTime) > 0) then {
 					DEC(GVAR(briefingTime));
 					publicVariable QGVAR(briefingTime);

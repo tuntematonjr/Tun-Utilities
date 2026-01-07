@@ -15,7 +15,7 @@
 disableSerialization;
 
 params["_params", "_lastUpdateTime", "_lostContactTime", ["_isOther",false]];
-_params params ["_text", "_pos", "_direction", "_color", "_updateTime"];
+_params params ["_text", "_pos", "_direction", "_color", "_updateTime", "_icon"];
 
 
 private _displays = [];

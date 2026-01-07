@@ -66,5 +66,5 @@ private _deleteMarkerTime = GVAR(deleteMarkerTime);
 		};
 	};
 
-	[[_text,_pos,_direction,_color,_updateTime]] call FUNC(createVehicleIcon);
+	[[_text,_pos,_direction,_color,_updateTime, _icon]] call FUNC(createVehicleIcon);
 } forEach _markerData;

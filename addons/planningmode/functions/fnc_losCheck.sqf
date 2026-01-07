@@ -31,7 +31,7 @@ if (_enable) then {
 			_endPos set [2, _newZ];
 			private _intersections = lineIntersectsSurfaces [_startPos, _endPos, player, objNull, true, -1];
 	
-			_markerStart setMarkerShadowLocal false;
+			//_markerStart setMarkerShadowLocal false; //emt mikä tää on, pitäs kai olla joku start marker?
 
 			private _markerEnd = createMarkerLocal [QGVAR(losCheckMarker_end), _endPos]; 
 			private _distance2D = round(_startPos distance2D _endPos);
