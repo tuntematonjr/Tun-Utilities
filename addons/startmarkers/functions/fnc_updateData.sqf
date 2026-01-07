@@ -118,7 +118,7 @@ private _showUnmanned = GVAR(showUnmanned);
 
 		if (!_isThing && {!(_vehicle isKindOf "uav")}) then {
 			private _vehicleCrew = crew _vehicle;
-			if (count _vehicleCrew > 0) then {
+			if (_vehicleCrew isNotEqualTo []) then {
 				private _groups = [];
 				private _groupsText = [];
 				{
