@@ -20,7 +20,7 @@ if (_medic isEqualTo _patient || _player isNotEqualTo _patient) exitWith {};
 
 private _config = configFile >> "ACE_Medical_Treatment_Actions" >> _classname;
 private _displayName = toLower (getText (_config >> "displayName"));
-private _displayNameProgress = toLower (getText (_config >> "displayNameProgress") trim ["."]);
+private _displayNameProgress = toLower (getText (_config >> "displayNameProgress") trim [".",0]);
 
 _medic = name _medic;
 private _isUncon = lifeState _player == "INCAPACITATED" && GVAR(enableShowIfTreated);
