@@ -1,6 +1,6 @@
 /*
  * Author: Tuntematon
- * Monitors player position and restricts movement outside designated combat zone
+ * Monitors player position and warns when outside the designated combat zone
  *
  * Arguments:
  * None
