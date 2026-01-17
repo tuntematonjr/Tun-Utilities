@@ -7,7 +7,7 @@ class CfgPatches {
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = REQUIRED_VERSION;
-		requiredAddons[] = {"cba_main","cba_xeh","cba_settings","A3_BaseConfig_F",MAIN_ADDON_STR};
+		requiredAddons[] = {"A3_BaseConfig_F",QGVARMAIN(main)};
 		author = "Tuntematon";
 		authorUrl = GITHUBLINK;
 		VERSION_CONFIG;

@@ -7,7 +7,7 @@ class CfgPatches {
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = REQUIRED_VERSION;
-		requiredAddons[] = {"ace_interaction","ace_interact_menu","tfar_core",MAIN_ADDON_STR};
+		requiredAddons[] = {"ace_interaction","ace_interact_menu","tfar_core",QGVARMAIN(main)};
 		author = "Tuntematon";
 		authorUrl = GITHUBLINK;
 		VERSION_CONFIG;
