@@ -38,7 +38,7 @@ class CfgVehicles {
 		isDisposable = 0; // 1 if modules is to be disabled once it's activated (i.e., repeated trigger activation won't work)
 		//icon = QPATHTOF(UI\Icon_Module_Slideshow_ca.paa);
 		class Arguments {
-			class markerPreFix {
+			class markerPrefix {
 				displayName = "Marker prefix";
 				//description = "";
 				typeName = "STRING";
@@ -50,6 +50,13 @@ class CfgVehicles {
 				//description = "";
 				typeName = "NUMBER";
 				defaultValue = 0;
+			};
+
+			class showMarkers {
+				displayName = "Show Markers";
+				//description = "";
+				typeName = "BOOL";
+				defaultValue = 1;
 			};
 
 			class sideWest {
