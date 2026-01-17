@@ -2,7 +2,6 @@
 .bikey
 .hemttout
 .lnk
-.md
 .txt
 .vscode/*
 @*
@@ -14,7 +13,6 @@
 *.swp
 *.zip
 ArmaScriptCompiler.exe
-CHANGELOG.md
 extensions/vcproj32/*
 extensions/vcproj64/*
 hemtt
