@@ -1,4 +1,3 @@
-PREP(combatZone);
 PREP(createBriefingBiggerPicture);
 PREP(initSpectatorStats);
 PREP(loadScreen);
