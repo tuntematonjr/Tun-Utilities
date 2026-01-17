@@ -1,17 +1,18 @@
 /*
  * Author: [Tuntematon]
- * [Description]
+ * Updates slider text when briefing time slider changes
  *
  * Arguments:
- * 0: UI Control <CONTROL>
- * 1: New Time <NUMBER>
+ * 0: UI control <CONTROL>
+ * 1: New value <NUMBER>
  *
  * Return Value:
  * None
  *
  * Example:
- * [slider, 15] call tunuti_briefingtime_fnc_SliderPosUpdated
+ * [_control, 15] call tunuti_briefingtime_fnc_SliderPosUpdated
  */
+
 #include "script_component.hpp"
 params ["_control", "_newValue"];
 

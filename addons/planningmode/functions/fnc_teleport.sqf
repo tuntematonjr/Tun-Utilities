@@ -1,16 +1,17 @@
 /*
  * Author: [Tuntematon]
- * [Description]
- * Teleport player to clicked position while holding ALT
+ * Enables or disables ALT-click teleport on map
+ *
  * Arguments:
  * 0: Toggle enable/disable <BOOL>
  *
  * Return Value:
- * Nothing
+ * None
  *
  * Example:
  * [true] call tunuti_planningmode_fnc_teleport
  */
+
 #include "script_component.hpp"
 params ["_enable"];
 

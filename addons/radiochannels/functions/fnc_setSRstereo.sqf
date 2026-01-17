@@ -1,18 +1,18 @@
 /*
  * Author: [Tuntematon]
- * [Description]
- * Set Stereo for radio
+ * Sets SR stereo mode
  *
  * Arguments:
  * 0: Stereo 0 - Both, 1 - Left, 2 - Right <NUMBER>
- * 1: IS additional <BOOL>
+ * 1: Is additional <BOOL>
  *
  * Return Value:
- * True if changed, false if not
+ * True if changed, false otherwise <BOOL>
  *
  * Example:
- * [0, false] call tunuti_radiochannels_fnc_setStereo
+ * [0, false] call tunuti_radiochannels_fnc_setSRstereo
  */
+
 #include "script_component.hpp"
 params ["_ear", "_isAdditional"];
 

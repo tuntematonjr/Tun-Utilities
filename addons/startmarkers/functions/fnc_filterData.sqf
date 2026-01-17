@@ -1,7 +1,6 @@
 /*
  * Author: [Tuntematon]
- * [Description]
- * Filter unused data out
+ * Removes stale marker data from hash maps
  *
  * Arguments:
  * None
@@ -12,6 +11,7 @@
  * Example:
  * [] call tunuti_startmarkers_fnc_filterData
  */
+
 #include "script_component.hpp"
 
 private _westSquadHash = GVAR(squadMarkersWestData);

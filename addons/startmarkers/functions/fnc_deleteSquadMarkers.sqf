@@ -1,6 +1,6 @@
 /*
  * Author: [Tuntematon]
- * [Description]
+ * Deletes squad markers and clears local list
  *
  * Arguments:
  * None
@@ -11,6 +11,7 @@
  * Example:
  * [] call tunuti_startmarkers_fnc_deleteSquadMarkers
  */
+
 #include "script_component.hpp"
 
 {

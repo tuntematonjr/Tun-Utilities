@@ -1,16 +1,17 @@
 /*
  * Author: [Tuntematon]
- * [Description]
+ * Creates briefing diary entries for start markers and BFT
  *
  * Arguments:
  * None
  *
  * Return Value:
- * The return value <BOOL>
+ * None
  *
  * Example:
  * [] call tunuti_startmarkers_fnc_createDiaryRecord
  */
+
 #include "script_component.hpp"
 
 private _text = "<font face='PuristaBold' size='15'>This missions uses automatic startpositions markers.</font><br/>";

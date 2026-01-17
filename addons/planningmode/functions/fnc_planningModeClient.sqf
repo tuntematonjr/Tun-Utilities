@@ -1,16 +1,17 @@
 /*
  * Author: [Tuntematon]
- * [Description]
- * Enables/Disables palnnig mode
+ * Enables or disables planning mode client features
+ *
  * Arguments:
  * 0: Toggle enable/disable <BOOL>
  *
  * Return Value:
- * Nothing
+ * None
  *
  * Example:
  * [true] call tunuti_planningmode_fnc_planningModeClient
  */
+
 #include "script_component.hpp"
 if (!hasInterface) exitWith {LOG("Not Client");};
 params ["_state"];

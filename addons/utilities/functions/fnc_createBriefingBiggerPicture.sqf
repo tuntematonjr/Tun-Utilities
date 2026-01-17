@@ -1,17 +1,18 @@
 /*
  * Author: [Tuntematon]
- * [Description]
+ * Creates briefing text with a clickable larger image
  *
  * Arguments:
  * 0: Text <STRING>
  * 1: Image path <STRING>
  *
  * Return Value:
- * The return value <BOOL>
+ * Formatted text <STRING>
  *
  * Example:
- * [_text, _imagePath] call tunuti_utilities_fnc_createBriefingBiggerPicture
+ * ["Map", "image.paa"] call tunuti_utilities_fnc_createBriefingBiggerPicture
  */
+
 #include "script_component.hpp"
 
 params ["_text", "_imagePath"];

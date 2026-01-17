@@ -1,20 +1,21 @@
 /*
  * Author: [Tuntematon]
- * [Description]
+ * Reads module settings and registers combat zones for selected sides.
  *
  * Arguments:
- * None
+ * 0: Module logic <OBJECT>
  *
  * Return Value:
- * none
+ * None
  *
  * Example:
- * [] call tunuti_utilities_fnc_combatZone
+ * [_module] call tunuti_combazone_fnc_combatZoneModule
  */
+
  
 #include "script_component.hpp"
 
-if (!isServer) exitWith {};
+if (isServer && !hasInterface) exitWith {};
 
 private _module = param [0,objNull,[objNull]];
 private _markerPreFix = _module getVariable ["markerPreFix", ""];

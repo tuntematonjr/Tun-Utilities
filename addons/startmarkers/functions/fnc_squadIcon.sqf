@@ -1,17 +1,17 @@
 /*
- * Author: KoffeinFlummi. Modified by Tuntematon
- * Get the apropriate marker for a group.
- * 
+ * Author: [KoffeinFlummi, Tuntematon]
+ * Returns marker type for a group, using HQ icon for command elements
  *
  * Arguments:
  * 0: Group <GROUP>
  *
  * Return Value:
- * Marker Type <STRING>
+ * Marker type <STRING>
  *
  * Example:
  * [_group] call tunuti_startmarkers_fnc_squadIcon
  */
+
 #include "script_component.hpp"
 
 params ["_group"];

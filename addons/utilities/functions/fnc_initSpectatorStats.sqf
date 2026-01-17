@@ -1,6 +1,6 @@
 /*
  * Author: [Tuntematon]
- * [Description]
+ * Initializes spectator stats UI and updates counts
  *
  * Arguments:
  * None
@@ -11,6 +11,7 @@
  * Example:
  * [] call tunuti_utilities_fnc_initSpectatorStats
  */
+
 #include "script_component.hpp"
 
 

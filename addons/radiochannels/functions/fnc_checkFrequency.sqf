@@ -1,16 +1,17 @@
 /*
  * Author: [Tuntematon]
- * [Description]
+ * Normalizes a frequency value and returns it as a string
  *
  * Arguments:
- * 0: frequency to check <NUMBER>
+ * 0: Frequency to check <STRING or NUMBER>
  *
  * Return Value:
- * Valid frequency
+ * Valid frequency <STRING>
  *
  * Example:
- * [frequency] call tunuti_radiochannels_fnc_checkFrequency
+ * ["123.4"] call tunuti_radiochannels_fnc_checkFrequency
  */
+
 #include "script_component.hpp"
 params [["_frequency", nil, [""]]];
 

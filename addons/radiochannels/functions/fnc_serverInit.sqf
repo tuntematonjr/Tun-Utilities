@@ -1,6 +1,6 @@
 /*
  * Author: [Tuntematon]
- * [Description]
+ * Initializes radio channel assignments and stores values (server-only)
  *
  * Arguments:
  * None
@@ -11,6 +11,7 @@
  * Example:
  * [] call tunuti_radiochannels_fnc_serverInit
  */
+
 #include "script_component.hpp"
 
 LOG("Server init start");

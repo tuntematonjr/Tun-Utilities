@@ -1,16 +1,17 @@
 /*
  * Author: [Tuntematon]
- * [Description]
- * Check los between player and clicked position.
+ * Enables or disables line-of-sight check on map click
+ *
  * Arguments:
  * 0: Toggle enable/disable <BOOL>
  *
  * Return Value:
- * Nothing
+ * None
  *
  * Example:
  * [true] call tunuti_planningmode_fnc_losCheck
  */
+
 #include "script_component.hpp"
 params ["_enable"];
 

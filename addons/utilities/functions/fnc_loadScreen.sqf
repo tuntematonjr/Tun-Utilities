@@ -1,7 +1,7 @@
 /*
  * Author: [Tuntematon]
- * [Description]
- * Force players to map view to reduce desync
+ * Forces players into map view during load to reduce desync
+ *
  * Arguments:
  * None
  *
@@ -11,6 +11,7 @@
  * Example:
  * [] call tunuti_utilities_fnc_loadScreen
  */
+
  
 #include "script_component.hpp"
 INFO("Called desync load screen");

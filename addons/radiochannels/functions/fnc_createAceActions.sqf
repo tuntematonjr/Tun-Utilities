@@ -1,6 +1,6 @@
 /*
  * Author: [Tuntematon]
- * [Description]
+ * Creates ACE self-actions for radio channel selection and stereo
  *
  * Arguments:
  * None
@@ -11,6 +11,7 @@
  * Example:
  * [] call tunuti_radiochannels_fnc_createAceActions
  */
+
 #include "script_component.hpp"
 
 LOG("create ace actions");

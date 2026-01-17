@@ -1,6 +1,6 @@
 /*
  * Author: [Tuntematon]
- * [Description]
+ * Removes vehicle marker draw event handlers
  *
  * Arguments:
  * None
@@ -11,6 +11,7 @@
  * Example:
  * [] call tunuti_startmarkers_fnc_deleteVehicleMarkers
  */
+
 #include "script_component.hpp"
 LOG("Runned delete vehicle markers");
 {

@@ -1,7 +1,6 @@
 /*
  * Author: [Tuntematon]
- * [Description]
- * 
+ * Builds and displays unconscious info text for the player
  *
  * Arguments:
  * None
@@ -10,8 +9,9 @@
  * None
  *
  * Example:
- * [] call tunuti_unconInfo_fnc_unconInfo
+ * [] call tunuti_unconinfo_fnc_unconInfo
  */
+
 #include "script_component.hpp"
 
 #define TEXTSIZE_NORMAL	"1.75"

@@ -1,18 +1,20 @@
 /*
  * Author: [Tuntematon]
- * [Description]
+ * Starts the per-frame handler that enforces combat zone restrictions.
  *
  * Arguments:
  * None
  *
  * Return Value:
- * none
+ * None
  *
  * Example:
- * [] call tunuti_utilities_fnc_combatZone
+ * [] call tunuti_combazone_fnc_startCombatZone
  */
+
  
 #include "script_component.hpp"
+if (isServer && !hasInterface) exitWith {};
 
 [{
 	if !(GVAR(disableCombazone)) then {

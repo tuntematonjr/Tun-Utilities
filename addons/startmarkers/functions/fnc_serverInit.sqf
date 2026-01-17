@@ -1,6 +1,6 @@
 /*
  * Author: [Tuntematon]
- * [Description]
+ * Initializes marker data hash maps and schedules updates (server-only)
  *
  * Arguments:
  * None
@@ -11,6 +11,7 @@
  * Example:
  * [] call tunuti_startmarkers_fnc_serverInit
  */
+
 #include "script_component.hpp"
 
 LOG("Runned server init starmarkers");

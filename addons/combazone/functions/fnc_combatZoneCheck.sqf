@@ -1,18 +1,20 @@
 /*
- * Author: Tuntematon
- * Checks if the player is inside a combat zone for their side
+ * Author: [Tuntematon]
+ * Checks if the player is inside a combat zone for their side.
  *
  * Arguments:
  * None
  *
  * Return Value:
- * Boolean - true if player is in a combat zone, false otherwise
+ * True if player is in a combat zone, false otherwise <BOOL>
  *
  * Example:
- * [] call tunuti_utilities_fnc_combatZoneCheck
+ * [] call tunuti_combazone_fnc_combatZoneCheck
  */
+
  
 #include "script_component.hpp"
+if (isServer && !hasInterface) exitWith {};
 
 private _polygons = GVAR(combatZones) get side ace_player;
 private _isInside = false;

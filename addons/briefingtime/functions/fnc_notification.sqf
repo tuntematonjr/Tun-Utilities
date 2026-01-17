@@ -1,6 +1,6 @@
 /*
  * Author: [Tuntematon]
- * [Description]
+ * Shows a briefing time notification (queued)
  *
  * Arguments:
  * 0: Text to show <STRING>
@@ -11,6 +11,7 @@
  * Example:
  * ["Hello World!"] call tunuti_briefingtime_fnc_notification
  */
+
 #include "script_component.hpp"
 
 params ["_text"];

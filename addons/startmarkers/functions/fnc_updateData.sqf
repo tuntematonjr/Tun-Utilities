@@ -1,6 +1,6 @@
 /*
  * Author: [Tuntematon]
- * [Description]
+ * Collects squad and vehicle data and updates marker hash maps
  *
  * Arguments:
  * None
@@ -11,6 +11,7 @@
  * Example:
  * [] call tunuti_startmarkers_fnc_updateData
  */
+
 #include "script_component.hpp"
 
 LOG("Runned update data");

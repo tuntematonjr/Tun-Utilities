@@ -1,16 +1,17 @@
 /*
  * Author: [Tuntematon]
- * [Description]
+ * Opens the bigger picture dialog with the provided image
  *
  * Arguments:
- * 0: image path <STRING>
+ * 0: Image path <STRING>
  *
  * Return Value:
- * 
+ * None
  *
  * Example:
- * [_imagePath] call tunuti_utilities_fnc_openBiggerPicture
+ * ["image.paa"] call tunuti_utilities_fnc_openBiggerPicture
  */
+
 #include "script_component.hpp"
 params ["_imagePath"];
 

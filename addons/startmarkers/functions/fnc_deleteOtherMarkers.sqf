@@ -1,6 +1,6 @@
 /*
  * Author: [Tuntematon]
- * [Description]
+ * Removes other marker draw event handlers
  *
  * Arguments:
  * None
@@ -11,6 +11,7 @@
  * Example:
  * [] call tunuti_startmarkers_fnc_deleteOtherMarkers
  */
+
 #include "script_component.hpp"
 LOG("Runned delete other markers");
 {

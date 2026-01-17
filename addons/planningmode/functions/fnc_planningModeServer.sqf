@@ -1,7 +1,7 @@
 /*
  * Author: [Tuntematon]
- * [Description]
- * Starst/Ends planning mode for clients. Creates markers on player positions.
+ * Starts or ends planning mode and updates player position markers (server-only)
+ *
  * Arguments:
  * None
  *
@@ -11,6 +11,7 @@
  * Example:
  * [] call tunuti_planningmode_fnc_planningModeServer
  */
+
 #include "script_component.hpp"
 if (!isServer) exitWith {LOG("Not Server");};
 

@@ -1,6 +1,6 @@
 /*
  * Author: [Tuntematon]
- * [Description]
+ * Creates vehicle markers for allowed sides based on current data
  *
  * Arguments:
  * None
@@ -11,6 +11,7 @@
  * Example:
  * [] call tunuti_startmarkers_fnc_createVehicleMarkers
  */
+
 #include "script_component.hpp"
 disableSerialization;
 

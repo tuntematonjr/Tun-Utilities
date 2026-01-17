@@ -1,19 +1,20 @@
 /*
  * Author: [Tuntematon]
- * [Description]
- * Set SR channel
+ * Sets SR channel or additional/team channel based on mode
  *
  * Arguments:
- * 0: Channel to change <NUMBER>
- * 1: frequency number in string <STRING>
- * 2: Is additional <BOOL>
+ * 0: Channel index <NUMBER>
+ * 1: Mode (1 main, 2 additional, 3 team) <NUMBER>
+ * 2: Use LR values <BOOL> (default: false)
+ * 3: Use squad values <BOOL> (default: false)
  *
  * Return Value:
- * True if changed, false if not
+ * True if changed, false otherwise <BOOL>
  *
  * Example:
- * [2, "123", false] call tunuti_radiochannels_fnc_setSRchannel
+ * [2, 1, false, false] call tunuti_radiochannels_fnc_setSRchannel
  */
+
 #include "script_component.hpp"
 
 params ["_index", "_mode", ["_isLR", false], ["_setSquadValuest", false]];

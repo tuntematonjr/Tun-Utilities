@@ -1,6 +1,6 @@
 /*
  * Author: [Tuntematon]
- * [Description]
+ * Creates squad markers for allowed sides based on current data
  *
  * Arguments:
  * None
@@ -11,6 +11,7 @@
  * Example:
  * [] call tunuti_startmarkers_fnc_createSquadMarkers
  */
+
 #include "script_component.hpp"
 
 // LOG("Runned squad vehicle markers");

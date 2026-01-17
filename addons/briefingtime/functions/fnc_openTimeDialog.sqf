@@ -1,7 +1,6 @@
 /*
  * Author: [Tuntematon]
- * [Description]
- *
+ * Opens the briefing time dialog and initializes the slider text
  *
  * Arguments:
  * None
@@ -12,6 +11,7 @@
  * Example:
  * [] call tunuti_briefingtime_fnc_openTimeDialog
  */
+
 #include "script_component.hpp"
 
 private _display = TUNUTI_FIND_MAPDISPLAY;

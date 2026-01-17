@@ -1,21 +1,23 @@
 /*
  * Author: [Tuntematon]
- * Adds a combat zone to the specified side's combat zone list
+ * Adds a combat zone definition for the specified sides.
  *
  * Arguments:
  * 0: Sides <ARRAY of SIDE>
  * 1: Marker prefix <STRING>
  * 2: Marker count <NUMBER>
+ * 3: Reset zones <BOOL> (default: false)
  *
  * Return Value:
  * Hash key <STRING>
  *
  * Example:
- * [[west, east], "marker_", 5] call tunuti_combazone_fnc_addCombatZone
+ * [[west, east], "marker_", 5, false] call tunuti_combazone_fnc_addCombatZone
  */
+
  
 #include "script_component.hpp"
-if (!isServer) exitWith {};
+if (isServer && !hasInterface) exitWith {};
 params [["_sides", nil, [[]]],["_markerPreFix", nil, [""]], ["_markerCount", nil, [0]], ["_resetZones", false, [false]]];
 
 private _value = [_markerPreFix, _markerCount];

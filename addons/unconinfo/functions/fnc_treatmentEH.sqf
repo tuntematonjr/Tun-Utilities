@@ -1,17 +1,21 @@
 /*
  * Author: [Tuntematon]
- * [Description]
- * 
+ * Handles ACE medical treatment events and displays messages
  *
  * Arguments:
- * None
+ * 0: Event type <NUMBER>
+ * 1: Medic <OBJECT>
+ * 2: Patient <OBJECT>
+ * 3: Body part <STRING>
+ * 4: Treatment class <STRING>
  *
  * Return Value:
  * None
  *
  * Example:
- * [1, player, player, "Head", "BasicBandage"] call tunuti_unconInfo_fnc_treatmentEH
+ * [1, medic, patient, "Head", "BasicBandage"] call tunuti_unconinfo_fnc_treatmentEH
  */
+
 #include "script_component.hpp"
 
 params [["_event", 0, [1]], ["_medic", objNull, [objNull]], ["_patient", objNull, [objNull]], ["_bodyPart", "", [""]], ["_classname", "", [""]]];

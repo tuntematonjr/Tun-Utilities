@@ -1,19 +1,20 @@
 /*
  * Author: [Tuntematon]
- * Updates the combat zone polygon display on the map
+ * Updates the combat zone polygon display on the map.
  *
  * Arguments:
  * None
  *
  * Return Value:
- * none
+ * None
  *
  * Example:
- * [] call tunuti_utilities_fnc_updateCombatZonePolygon
+ * [] call tunuti_combazone_fnc_updateCombatZonePolygon
  */
+
  
 #include "script_component.hpp"
-if (!isServer) exitWith {};
+if (isServer && !hasInterface) exitWith {};
 private _displayIDD = TUNUTI_FIND_MAPDISPLAY;
 
 {

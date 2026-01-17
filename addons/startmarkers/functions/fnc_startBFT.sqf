@@ -1,16 +1,17 @@
 /*
  * Author: [Tuntematon]
- * [Description]
- * Starts BFT loop
+ * Starts the BFT update loop and GPS-based marker updates
  *
  * Arguments:
  * None
  *
  * Return Value:
+ * None
  *
  * Example:
  * [] call tunuti_startmarkers_fnc_startBFT
  */
+
 #include "script_component.hpp"
 
 [{!isNil QGVAR(enableBFT) && !isNil QGVAR(bftItems)}, {

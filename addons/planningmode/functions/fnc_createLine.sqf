@@ -1,18 +1,19 @@
 /*
  * Author: [Tuntematon]
- * [Description]
- * Create line between two position
+ * Creates a line marker between two positions
+ *
  * Arguments:
- * 0: Line start pos <ARRAY>
- * 1: Line end pos <ARRAY>
+ * 0: Line start position <ARRAY>
+ * 1: Line end position <ARRAY>
  * 2: Marker color <STRING>
  *
  * Return Value:
- * Returns marker <STRING>
+ * Marker name <STRING>
  *
  * Example:
- * [getpos player, _endPos, "ColorWest"] call tunuti_planningmode_fnc_createLine
+ * [getPos player, _endPos, "ColorWest"] call tunuti_planningmode_fnc_createLine
  */
+
 #include "script_component.hpp"
 params ["_lineStart", "_lineEnd", "_color"];
 

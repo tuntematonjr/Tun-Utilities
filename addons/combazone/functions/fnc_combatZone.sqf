@@ -1,6 +1,6 @@
 /*
- * Author: Tuntematon
- * Monitors player position and warns when outside the designated combat zone
+ * Author: [Tuntematon]
+ * Monitors player position and warns when outside the designated combat zone.
  *
  * Arguments:
  * None
@@ -9,10 +9,12 @@
  * None
  *
  * Example:
- * [] call FUNC(combatZone)
+ * [] call tunuti_combazone_fnc_combatZone
  */
+
  
 #include "script_component.hpp"
+if (isServer && !hasInterface) exitWith {};
 
 if 	(ace_player isKindOf "CAManBase" &&
 	{alive ace_player} &&

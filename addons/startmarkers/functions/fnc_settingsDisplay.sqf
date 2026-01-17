@@ -1,16 +1,17 @@
 /*
  * Author: [Tuntematon]
- * [Description]
+ * Opens the settings UI or refreshes markers when closing
  *
  * Arguments:
- * 0: True if open GUI <BOOL>
+ * 0: True to open the settings UI <BOOL>
  *
  * Return Value:
  * None
  *
  * Example:
- * [false] call tunuti_startmarkers_fnc_settingsDisplay
+ * [true] call tunuti_startmarkers_fnc_settingsDisplay
  */
+
 #include "script_component.hpp"
 
 params ["_open"];

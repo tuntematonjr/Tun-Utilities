@@ -1,19 +1,19 @@
 /*
  * Author: [Tuntematon]
- * [Description]
- * Set SR channel
+ * Sets LR channel or additional channel
  *
  * Arguments:
- * 0: Channel to change <NUMBER>
- * 1: frequency number in string <STRING>
- * 2: Is additional <BOOL>
+ * 0: Channel index <NUMBER>
+ * 1: Is additional <BOOL> (default: false)
+ * 2: Use squad values <BOOL> (default: false)
  *
  * Return Value:
- * True if changed, false if not
+ * None
  *
  * Example:
- * [2, "123", false]] call tunuti_radiochannels_fnc_setLRchannel
+ * [2, false, false] call tunuti_radiochannels_fnc_setLRchannel
  */
+
 #include "script_component.hpp"
 
 params ["_index", ["_isAdditional", false], ["_setSquadValues", false]];

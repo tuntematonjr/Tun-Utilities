@@ -1,6 +1,6 @@
 /*
  * Author: [Tuntematon]
- * [Description]
+ * Initializes player marker settings and briefing markers
  *
  * Arguments:
  * None
@@ -9,8 +9,9 @@
  * None
  *
  * Example:
- * [] call tunuti_startmarkers_fnc_imanexample
+ * [] call tunuti_startmarkers_fnc_playerInit
  */
+
 #include "script_component.hpp"
 
 GVAR(squadTogle) = true;

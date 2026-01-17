@@ -1,6 +1,6 @@
 /*
  * Author: [Tuntematon]
- * [Description]
+ * Initializes player radio diary entries and auto-setup
  *
  * Arguments:
  * None
@@ -11,6 +11,7 @@
  * Example:
  * [] call tunuti_radiochannels_fnc_playerInit
  */
+
 #include "script_component.hpp"
 
 if ([west,east,resistance] find playerSide isEqualTo -1) exitWith { };

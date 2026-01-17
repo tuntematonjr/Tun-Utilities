@@ -1,16 +1,17 @@
 /*
  * Author: [Tuntematon]
- * [Description]
+ * Filters allowed sides based on player side and enemy relationships
  *
  * Arguments:
  * None
  *
  * Return Value:
- * Nothing
+ * None
  *
  * Example:
  * [] call tunuti_startmarkers_fnc_sortAllowedSides
  */
+
 #include "script_component.hpp"
 
 private _playerSide = playerSide;

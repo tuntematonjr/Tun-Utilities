@@ -1,7 +1,6 @@
 /*
  * Author: [Tuntematon]
- * [Description]
- *
+ * Handles closing the briefing time dialog and applies changes or requests
  *
  * Arguments:
  * None
@@ -12,6 +11,7 @@
  * Example:
  * [] call tunuti_briefingtime_fnc_onCloseDisplay
  */
+
 #include "script_component.hpp"
 
 private _newTime = sliderPosition ((uiNamespace getVariable QGVAR(Time)) displayCtrl SLIDER_IDC);

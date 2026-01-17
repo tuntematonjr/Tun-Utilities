@@ -1,16 +1,26 @@
 /*
  * Author: [Tuntematon]
- * [Description]
+ * Draws a vehicle or other icon on map displays
  *
  * Arguments:
- * None
+ * 0: Marker params <ARRAY>
+ *     0: Text <STRING>
+ *     1: Position <ARRAY>
+ *     2: Direction <NUMBER>
+ *     3: Color RGBA <ARRAY of NUMBERs>
+ *     4: Update time <NUMBER>
+ *     5: Icon path <STRING>
+ * 1: Last update time <NUMBER> (default: nil)
+ * 2: Lost contact time <NUMBER> (default: nil)
+ * 3: Is other marker <BOOL> (default: false)
  *
  * Return Value:
  * None
  *
  * Example:
- * [] call tunuti_startmarkers_fnc_createVehicleIcon
+ * [["Text", [0, 0, 0], 0, [1, 1, 1, 1], 0, "icon.paa"], 0, 0, false] call tunuti_startmarkers_fnc_createVehicleIcon
  */
+
 #include "script_component.hpp"
 disableSerialization;
 

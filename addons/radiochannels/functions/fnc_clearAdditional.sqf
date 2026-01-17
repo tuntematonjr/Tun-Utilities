@@ -1,17 +1,17 @@
 /*
  * Author: [Tuntematon]
- * [Description]
- * Clear additional
+ * Clears additional channel for SR or LR radio
  *
  * Arguments:
- * 0: is SR radio <BOOL>
+ * 0: Is SR radio <BOOL>
  *
  * Return Value:
- * True if changed, false if not
+ * True if changed, false otherwise <BOOL>
  *
  * Example:
  * [true] call tunuti_radiochannels_fnc_clearAdditional
  */
+
 #include "script_component.hpp"
 params ["_isSR"];
 
