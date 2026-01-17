@@ -15,8 +15,8 @@
  
 #include "script_component.hpp"
 
-if (isServer && !hasInterface) exitWith {};
 
+if (isServer && !hasInterface || !GVAR(enableCombazone)) exitWith {};
 private _module = param [0,objNull,[objNull]];
 private _markerPreFix = _module getVariable ["markerPreFix", ""];
 private _markerCount = _module getVariable ["markerCount", 0];

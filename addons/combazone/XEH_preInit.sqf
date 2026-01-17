@@ -6,22 +6,22 @@ PREP_RECOMPILE_START;
 PREP_RECOMPILE_END;
 
 [
-	QGVAR(runLoadScreen), // Unique setting name. Matches resulting variable name <STRING>
-	"CHECKBOX", // Type of setting. Can be "CHECKBOX", "EDITBOX", "LIST", "SLIDER" or "COLOR" <STRING>
-	["Run load screen", "On mission start, force players to map screen, so decreasing desync"], // Display name or display name + tooltip (optional, default: same as setting name) <STRING, ARRAY>
-	["Tun Utilities - Utilities", "Load Screen"], // Category for the settings menu + optional sub-category <STRING, ARRAY>
-	true, // Extra properties of the setting depending of _settingType.
-	1, // 1: all clients share the same setting, 2: setting can't be overwritten (optional, default: 0) <ARRAY>
-	{}, // Script to execute when setting is changed. (optional) <CODE>
-	true //Setting will be marked as needing mission restart after being changed. (optional, default false) <BOOL>
+	QGVAR(enableCombazone),
+	"CHECKBOX",
+	["Enable Combazone", "Enable or disable the combazone functionality."],
+	"Tun Utilities - Combazone",
+	true,
+	1,
+	{},
+	true
 ] call CBA_fnc_addSetting;
 
 [
 	QGVAR(updateInterval),
-	"SLIDER",
+	"TIME",
 	["Combazone check interval", "Interval in seconds between combazone checks."],
 	"Tun Utilities - Combazone",
-	[1, 10, 60],
+	[0, 60, 10, 0],
 	1,
 	{
 		params ["_value"];
