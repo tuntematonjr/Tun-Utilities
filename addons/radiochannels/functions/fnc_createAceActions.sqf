@@ -98,7 +98,7 @@ private _interactionTeamRed = ["Team_channels", "Red Team", "\z\ace\addons\inter
 private _interactionTeamBlue = ["Team_channels", "Blue Team", "\z\ace\addons\interaction\UI\team\team_blue_ca.paa", _teamStatement,  {true}, nil, 2] call ace_interact_menu_fnc_createAction;
 [player, 1, ["ACE_SelfActions", "RadioBase", "Team_channels"], _interactionTeamBlue] call ace_interact_menu_fnc_addActionToObject;
 
-private _interactionTeamGreen = ["Team_channels", " Green Team", "\z\ace\addons\interaction\UI\team\team_green_ca.paa", _teamStatement,  {true}, nil, 3] call ace_interact_menu_fnc_createAction;
+private _interactionTeamGreen = ["Team_channels", "Green Team", "\z\ace\addons\interaction\UI\team\team_green_ca.paa", _teamStatement,  {true}, nil, 3] call ace_interact_menu_fnc_createAction;
 [player, 1, ["ACE_SelfActions", "RadioBase", "Team_channels"], _interactionTeamGreen] call ace_interact_menu_fnc_addActionToObject;
 
 private _interactionTeamYellow = ["Team_channels", "Yellow Team", "\z\ace\addons\interaction\UI\team\team_yellow_ca.paa", _teamStatement,  {true}, nil, 4] call ace_interact_menu_fnc_createAction;

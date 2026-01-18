@@ -55,7 +55,7 @@ switch (_mode) do {
 	};
 	
 	case 2: { //SET additional for sr or lr frequency
-		if (toLower call TFAR_fnc_activeSwRadio select [0,11] in ["tf_rf7800st","tf_anprc154","tf_pnr1000a"]) exitWith { [parseText "Your SR radio does not support additional", 7] call TFAR_fnc_showHint;};
+		if (toLower call TFAR_fnc_activeSwRadio select [0,11] in ["tf_rf7800st","tf_anprc154","tf_pnr1000a"]) exitWith { [parseText "Your SR radio model does not support additional channels", 7] call TFAR_fnc_showHint;};
 		private _debugText = format ["set mode: SR additonal: %1, %2, %3", _channel - 1, _frequency, _isLR];
 		LOG(_debugText);
 		if (_channel > 6 && !_isLR) then {
@@ -91,7 +91,7 @@ switch (_mode) do {
 			LOG("Missing SR channels");
 		};
 	};
-	default { [parseText "Missing SR mode", 7] call TFAR_fnc_showHint; };
+	default { [parseText "Invalid SR channel mode", 7] call TFAR_fnc_showHint; };
 };
 
 [(call TFAR_fnc_activeSwRadio), false] call TFAR_fnc_ShowRadioInfo;
