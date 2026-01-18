@@ -42,6 +42,7 @@ if (!isMultiplayer) exitWith { LOG("Skip desync load screen in SP"); }; // skip 
 	//Run loadscreen text loop
 	private _debugText = format ["Desync load screen start time: %1", cba_missiontime]; 
 	INFO(_debugText);
+	
 	[{
 		params ["_args", "_handle"];
 		if (GVAR(loadScreenTimer) <= 0) then {

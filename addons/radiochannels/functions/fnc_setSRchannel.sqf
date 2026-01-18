@@ -19,8 +19,7 @@
 
 params ["_index", "_mode", ["_isLR", false], ["_setSquadValuest", false]];
 
-private _debugText = format ["set SR start: %1, %2, %3, %4", _index , _mode, _isLR, _setSquadValuest];
-LOG(_debugText);
+TRACE_4("set SR start", _index , _mode, _isLR, _setSquadValuest);
 if (cba_missionTime isEqualTo 0) exitWith { false };
 if (!(call TFAR_fnc_haveSWRadio)) exitWith { [parseText "You don't have SR radio", 5] call TFAR_fnc_showHint; false };
 
@@ -48,16 +47,15 @@ _frequency = [_frequency] call FUNC(checkFrequency);
 
 switch (_mode) do {
 	case 1: { //set main channel
-		private _debugText = format ["set mode: SR main: %1, %2", _channel - 1, _frequency];
-		LOG(_debugText);
+		TRACE_2("set mode: SR main", _channel - 1, _frequency);
 		[(call TFAR_fnc_activeSwRadio), _channel, _frequency] call TFAR_fnc_SetChannelFrequency;
 		[(call TFAR_fnc_activeSwRadio), _channel - 1] call TFAR_fnc_setSwChannel;
 	};
 	
 	case 2: { //SET additional for sr or lr frequency
 		if (toLower call TFAR_fnc_activeSwRadio select [0,11] in ["tf_rf7800st","tf_anprc154","tf_pnr1000a"]) exitWith { [parseText "Your SR radio model does not support additional channels", 7] call TFAR_fnc_showHint;};
-		private _debugText = format ["set mode: SR additonal: %1, %2, %3", _channel - 1, _frequency, _isLR];
-		LOG(_debugText);
+		TRACE_3("set mode: SR additonal", _channel - 1, _frequency, _isLR);
+		
 		if (_channel > 6 && !_isLR) then {
 			_channel = 8;
 		};
@@ -79,8 +77,8 @@ switch (_mode) do {
 		if (count _values > 0) then {
 			private _frequency = _values select _index;
 			_frequency = [_frequency] call FUNC(checkFrequency);
-			private _debugText = format ["set mode: SR team: %1, %2", _frequency, _channel];
-			LOG(_debugText);
+			TRACE_2("set mode: SR team", _frequency, _channel);
+			
 			if (((call TFAR_fnc_ActiveSwRadio) call TFAR_fnc_getAdditionalSwChannel) isNotEqualTo -1) then {
 				[true] call FUNC(clearAdditional);
 			};

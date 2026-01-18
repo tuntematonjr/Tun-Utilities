@@ -22,12 +22,12 @@ if (IS_ADMIN) then {
 	_newTime = _newTime * 60;
 	GVAR(briefingTime) = _newTime;
 	publicVariable QGVAR(briefingTime);
-	private _debugText = format ["set new time: %1", _newTime];
-	LOG(_debugText);
+	TRACE_1("set new time", _newTime);
+
 	["Briefing time has been modified"] remoteExecCall [QFUNC(notification), [0,-2] select isDedicated, false];
 } else {
 	private _text = format ["%2 (%1) Has requested an additional %3 minutes of briefing time.", playerSide, profileName, _newTime];
-	private _debugText = format ["ask new time: %1", _text];
-	LOG(_debugText);
+
+	TRACE_1("ask new time", _text);
 	[_text] remoteExecCall [QFUNC(notification), [0,-2] select isDedicated, false];
 };
