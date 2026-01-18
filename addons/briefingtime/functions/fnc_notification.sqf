@@ -38,7 +38,7 @@ if (!IS_STRING(_text)) then {
 	_text = str _text;
 };
 
-TRACE_1("set text for notification", _text);
+TRACE_1("set text for notification",_text);
 (uiNamespace getVariable QGVAR(notificationBox)) ctrlSetText _text;
 
 [{ diag_tickTime > _this select 1 }, {
