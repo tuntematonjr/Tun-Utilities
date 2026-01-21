@@ -1,5 +1,5 @@
-#define COMPONENT combazone
-#define COMPONENT_BEAUTIFIED combazone
+#define COMPONENT combatzone
+#define COMPONENT_BEAUTIFIED combatzone
 #include "\x\tunuti\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL
