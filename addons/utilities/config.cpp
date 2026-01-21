@@ -7,7 +7,7 @@ class CfgPatches {
 		units[] = { QGVAR(combatZoneModule)};
 		weapons[] = {};
 		requiredVersion = REQUIRED_VERSION;
-		requiredAddons[] = {QGVARMAIN(combazone),QGVARMAIN(main)};
+		requiredAddons[] = {QGVARMAIN(combatZone),QGVARMAIN(main)};
 		author = "Tuntematon";
 		authorUrl = GITHUBLINK;
 		VERSION_CONFIG;
@@ -22,9 +22,9 @@ class  RscText;
 #include "spectatorStats.hpp"
 
 class CfgVehicles {
-	class EGVAR(combazone,combatZoneModule);
+	class EGVAR(combatZone,combatZoneModule);
 
-	class GVAR(combatZoneModule): EGVAR(combazone,combatZoneModule) {
+	class GVAR(combatZoneModule): EGVAR(combatZone,combatZoneModule) {
 		displayName = "Deprecated - But works";
 		scope = 1;// Editor visibility; 2 will show it in the menu, 1 will hide it.
 	};

@@ -9,7 +9,7 @@
  * True if the zone existed and was removed <BOOL>
  *
  * Example:
- * ["123456"] call tunuti_combazone_fnc_removeCombatZone
+ * ["123456"] call tunuti_combatZone_fnc_removeCombatZone
  */
 
  

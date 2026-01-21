@@ -9,13 +9,13 @@
  * None
  *
  * Example:
- * [_module] call tunuti_combazone_fnc_combatZoneModule
+ * [_module] call tunuti_combatZone_fnc_combatZoneModule
  */
 
  
 #include "script_component.hpp"
 
-if (isServer && !hasInterface || !GVAR(enableCombazone)) exitWith {};
+if (isServer && !hasInterface || !GVAR(enableCombatZone)) exitWith {};
 
 private _module = param [0,objNull,[objNull]];
 private _markerPreFix = _module getVariable ["markerPreFix", ""];

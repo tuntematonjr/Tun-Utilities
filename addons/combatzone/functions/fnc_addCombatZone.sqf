@@ -14,7 +14,7 @@
  * Hash key <STRING>
  *
  * Example:
- * [[west, east], "c", 10, false, true, false] call tunuti_combazone_fnc_addCombatZone
+ * [[west, east], "c", 10, false, true, false] call tunuti_combatZone_fnc_addCombatZone
  */
 
  

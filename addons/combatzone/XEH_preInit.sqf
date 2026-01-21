@@ -6,10 +6,10 @@ PREP_RECOMPILE_START;
 PREP_RECOMPILE_END;
 
 [
-	QGVAR(enableCombazone),
+	QGVAR(enableCombatZone),
 	"CHECKBOX",
-	["Enable Combazone", "Enable or disable the combazone functionality."],
-	"Tun Utilities - Combazone",
+	["Enable CombatZone", "Enable or disable the combatZone functionality."],
+	"Tun Utilities - CombatZone",
 	true,
 	1,
 	{},
@@ -19,8 +19,8 @@ PREP_RECOMPILE_END;
 [
 	QGVAR(updateInterval),
 	"TIME",
-	["Combazone check interval", "Interval in seconds between combazone checks."],
-	"Tun Utilities - Combazone",
+	["CombatZone check interval", "Interval in seconds between combatZone checks."],
+	"Tun Utilities - CombatZone",
 	[0, 60, 10, 0],
 	1,
 	{
@@ -33,8 +33,8 @@ PREP_RECOMPILE_END;
 [
 	QGVAR(hintText),
 	"EDITBOX",
-	["Combazone hint text", "Text displayed when player is outside combat zone."],
-	"Tun Utilities - Combazone",
+	["CombatZone hint text", "Text displayed when player is outside combat zone."],
+	"Tun Utilities - CombatZone",
 	"You are outside of the combat zone! Return immediately!",
 	1,
 	{},
@@ -44,8 +44,8 @@ PREP_RECOMPILE_END;
 [
 	QGVAR(enableVoiceEffect),
 	"CHECKBOX",
-	["Combazone voice effect", "Enable voice warning when player is outside combat zone heard by everyone nearby."],
-	"Tun Utilities - Combazone",
+	["CombatZone voice effect", "Enable voice warning when player is outside combat zone heard by everyone nearby."],
+	"Tun Utilities - CombatZone",
 	true,
 	1,
 	{},

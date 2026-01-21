@@ -1,4 +1,4 @@
-# Tun Utilities – Combazone
+# Tun Utilities – CombatZone
 
 Server-side safe-zone/area-of-operations enforcement with map polygons driven by editor markers or script calls.
 
@@ -22,7 +22,7 @@ Place the module **Tun Combat Zone** (category "Tun Utilities"). Arguments:
 Call the function after mission start on each client (it exits on server headless):
 ```sqf
 // Returns a hash key for later removal
-private _hash = [[west, east], "ao", 5, false, true, false] call tunuti_combazone_fnc_addCombatZone;
+private _hash = [[west, east], "ao", 5, false, true, false] call tunuti_combatZone_fnc_addCombatZone;
 ```
 Parameters match the module fields plus:
 1. Sides array
@@ -34,26 +34,26 @@ Parameters match the module fields plus:
 
 Remove a zone by hash:
 ```sqf
-[_hash] call tunuti_combazone_fnc_removeCombatZone;
+[_hash] call tunuti_combatZone_fnc_removeCombatZone;
 ```
 
 ## Runtime behavior
 - Starts once loading screen is done (client) and runs every `updateInterval` seconds.
 - Ignores spectators, players in air vehicles, and those flagged `tunres_Respawn_isWaitingRespawn`.
 - Admins are exempt from the teleport/voice effects (they only get a chat warning).
-- Uses `GVAR(disableCombazone)` (bool, per client) to temporarily stop checks if you need to pause enforcement.
+- Uses `GVAR(disableCombatZone)` (bool, per client) to temporarily stop checks if you need to pause enforcement.
 
 ## Visuals
 - Polygons are drawn on the map (control 51) in red. Draw handlers are refreshed whenever zones are added/removed.
 - Source markers can be shown/hidden via the module/param.
 
 ## CBA settings (per mission)
-- **Enable Combazone**: Master toggle (default: on).
-- **Combazone check interval**: Seconds between checks (default: 10s).
-- **Combazone hint text**: Text shown in the red on-screen warning.
-- **Combazone voice effect**: Play localized voice lines when leaving the zone (default: on).
+- **Enable CombatZone**: Master toggle (default: on).
+- **CombatZone check interval**: Seconds between checks (default: 10s).
+- **CombatZone hint text**: Text shown in the red on-screen warning.
+- **CombatZone voice effect**: Play localized voice lines when leaving the zone (default: on).
 
 ## Tips
 - Keep polygon vertices ordered (clockwise or counter-clockwise) to avoid self-intersections.
 - Use at least 3 markers; more points give smoother boundaries.
-- If you change markers mid-mission, call `tunuti_combazone_fnc_updateCombatZonePolygon` to refresh the map overlay.
+- If you change markers mid-mission, call `tunuti_combatZone_fnc_updateCombatZonePolygon` to refresh the map overlay.

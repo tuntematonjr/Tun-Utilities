@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [] call tunuti_combazone_fnc_startCombatZone
+ * [] call tunuti_combatZone_fnc_startCombatZone
  */
 
  
@@ -17,7 +17,7 @@
 if (isServer && !hasInterface) exitWith {};
 
 [{
-	if !(GVAR(disableCombazone)) then {
+	if !(GVAR(disableCombatZone)) then {
 		[] call FUNC(combatZone);
 	};
 }, GVAR(updateInterval)] call CBA_fnc_addPerFrameHandler;

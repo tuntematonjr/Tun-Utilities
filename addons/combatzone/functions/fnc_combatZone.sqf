@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [] call tunuti_combazone_fnc_combatZone
+ * [] call tunuti_combatZone_fnc_combatZone
  */
 
  

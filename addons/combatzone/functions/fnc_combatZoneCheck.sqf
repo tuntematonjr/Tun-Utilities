@@ -9,7 +9,7 @@
  * True if player is in a combat zone, false otherwise <BOOL>
  *
  * Example:
- * [] call tunuti_combazone_fnc_combatZoneCheck
+ * [] call tunuti_combatZone_fnc_combatZoneCheck
  */
 
  
