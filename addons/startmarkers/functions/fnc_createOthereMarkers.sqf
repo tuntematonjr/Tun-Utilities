@@ -59,5 +59,5 @@ private _deleteMarkerTime = GVAR(deleteMarkerTime);
 		private _occupationText = _texts select 1;
 	};
 
-	[[_text,_pos,_direction,_color,_updateTime,true]] call FUNC(createVehicleIcon);
+	[[_text, _pos, _direction, _color, _updateTime, _icon], _lastUpdateTime, _lostContactTime, true] call FUNC(createVehicleIcon);
 } forEach _markerData;

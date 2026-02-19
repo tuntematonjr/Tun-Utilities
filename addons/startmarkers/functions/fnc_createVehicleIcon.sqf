@@ -24,8 +24,8 @@
 #include "script_component.hpp"
 disableSerialization;
 
-params["_params", "_lastUpdateTime", "_lostContactTime", ["_isOther",false]];
-_params params ["_text", "_pos", "_direction", "_color", "_updateTime", "_icon"];
+params["_params", ["_lastUpdateTime", nil, [0]], ["_lostContactTime", nil, [0]], ["_isOther", false, [false]]];
+_params params [["_text",nil, [""]], ["_pos",nil, [[]]], ["_direction",nil, [0]], ["_color",nil, [[]]], ["_updateTime",nil, [-1]], ["_icon",nil, [""]]];
 
 
 private _displays = [];
