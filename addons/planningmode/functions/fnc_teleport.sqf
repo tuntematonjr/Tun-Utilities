@@ -16,6 +16,7 @@
 params ["_enable"];
 
 if (_enable) then {
+	//IGNORE_PRIVATE_WARNING ["_shift"];
 	onMapSingleClick {_shift};
 	GVAR(tpEH) = addMissionEventHandler ["MapSingleClick", {
 		params ["_units", "_pos", "_alt", "_shift"];

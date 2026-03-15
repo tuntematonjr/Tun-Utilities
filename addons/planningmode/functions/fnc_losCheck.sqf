@@ -18,6 +18,7 @@ params ["_enable"];
 ISNILS(GVAR(losMarkers),[]);
 
 if (_enable) then {
+	//IGNORE_PRIVATE_WARNING ["_shift"];
 	onMapSingleClick {_shift};
 	GVAR(losCheckerEH) = addMissionEventHandler ["MapSingleClick", {
 		params ["_units", "_endPos", "_alt", "_shift"];
