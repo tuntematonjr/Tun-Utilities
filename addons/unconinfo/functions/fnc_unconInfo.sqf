@@ -41,6 +41,13 @@ if (GVAR(enableShowBleeding) && _bleeding > 0) then {
 	_texts pushBack localize "STR_TunCon_isBleeding";
 };
 
+if (GVAR(enableShowTriage)) then {
+	private _triageStatus = [ace_player] call ace_medical_treatment_fnc_getTriageStatus;
+	if ((_triageStatus select 0) isNotEqualTo 0) then {
+		_texts pushBack format [localize "STR_TunCon_triageStatus", _triageStatus select 1];
+	};
+};
+
 //Heart rate/
 if (ace_player getVariable ["ace_medical_inCardiacArrest", false]) then {
 	if (GVAR(enableShowCardiacArrest)) then {
@@ -154,7 +161,7 @@ if (GVAR(allowNearestUnit)) then {
 					_closestMedicText = _closestMedicText + format[" (%1m)", _closestMedicDistance];
 				};
 			};
-			_text = _text + _closestUnitText + "<br/>" + _closestMedicText;
+			_text = _closestUnitText + "<br/>" + _closestMedicText;
 		};
 	} else {
 		_text = localize "STR_TunCon_noFriends";

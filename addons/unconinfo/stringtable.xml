@@ -118,6 +118,14 @@
                 <Original>Enable showing if player has stable or unstable vitals</Original>
                 <English>Enable showing if player has stable or unstable vitals</English>
             </Key>
+            <Key ID="STR_TunCon_CBA_enableShowTriage">
+                <Original>Enable Show Triage</Original>
+                <English>Enable Show Triage</English>
+            </Key>
+            <Key ID="STR_TunCon_CBA_enableShowTriageTooltip">
+                <Original>Enable showing what triage status has been assigned to player</Original>
+                <English>Enable showing what triage status has been assigned to player</English>
+            </Key>
             <Key ID="STR_TunCon_CBA_enableShowingDistance">
                 <Original>Enable showing nearest unit distance</Original>
                 <English>Enable showing nearest unit distance</English>
@@ -280,6 +288,10 @@
             <Key ID="STR_TunCon_treatments">
                 <Original>Treatments:</Original>
                 <English>Treatments:</English>
+            </Key>
+            <Key ID="STR_TunCon_triageStatus">
+                <Original>Your triage status is: %1</Original>
+                <English>Your triage status is: %1</English>
             </Key>
         </Container>
     </Package>

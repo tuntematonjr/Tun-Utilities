@@ -50,6 +50,17 @@ PREP_RECOMPILE_END;
 ] call CBA_fnc_addSetting;
 
 [
+	QGVAR(enableShowTriage),
+	"CHECKBOX",
+	[localize "STR_TunCon_CBA_enableShowTriage", localize "STR_TunCon_CBA_enableShowTriageTooltip"],
+	["Tun Utilities - Uncon Info", "Uncon Info"],
+	true,
+	1,
+	{},
+	false
+] call CBA_fnc_addSetting;
+
+[
 	QGVAR(enableShowCardiacArrest),
 	"CHECKBOX",
 	[localize "STR_TunCon_CBA_enableShowCardiacArrest", localize "STR_TunCon_CBA_enableShowCardiacArrestTooltip"],
