@@ -126,6 +126,14 @@
                 <Original>Enable showing what triage status has been assigned to player</Original>
                 <English>Enable showing what triage status has been assigned to player</English>
             </Key>
+            <Key ID="STR_TunCon_CBA_enableShowWakeUpChance">
+                <Original>Enable showing wake-up chance</Original>
+                <English>Enable showing wake-up chance</English>
+            </Key>
+            <Key ID="STR_TunCon_CBA_enableShowWakeUpChanceTooltip">
+                <Original>Enable showing extensive wake-up chance information</Original>
+                <English>Enable showing extensive wake-up chance information</English>
+            </Key>
             <Key ID="STR_TunCon_CBA_enableShowingDistance">
                 <Original>Enable showing nearest unit distance</Original>
                 <English>Enable showing nearest unit distance</English>
@@ -217,6 +225,10 @@
                 <Spanish>El aliado mas cercano es %1 y es medico</Spanish>
                 <Japanese>最も近い友軍は %1 で衛生兵です</Japanese>
             </Key>
+            <Key ID="STR_TunCon_epiBoost">
+                <Original>Epi boost: +%1%%</Original>
+                <English>Epi boost: +%1%%</English>
+            </Key>
             <Key ID="STR_TunCon_firstLine">
                 <Original>You sense that</Original>
                 <English>You sense that</English>
@@ -292,6 +304,14 @@
             <Key ID="STR_TunCon_triageStatus">
                 <Original>Your triage status is: %1</Original>
                 <English>Your triage status is: %1</English>
+            </Key>
+            <Key ID="STR_TunCon_wakeUpChance">
+                <Original>Wake-up: %1%%/check | %2 checks/min</Original>
+                <English>Wake-up: %1%%/check | %2 checks/min</English>
+            </Key>
+            <Key ID="STR_TunCon_wakeUpNextMinute">
+                <Original>Wake-up next 1 min: %1%%</Original>
+                <English>Wake-up next 1 min: %1%%</English>
             </Key>
         </Container>
     </Package>

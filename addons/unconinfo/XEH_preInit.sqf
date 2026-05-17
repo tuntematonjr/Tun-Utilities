@@ -39,6 +39,17 @@ PREP_RECOMPILE_END;
 ] call CBA_fnc_addSetting;
 
 [
+	QGVAR(enableShowWakeUpChance),
+	"CHECKBOX",
+	[localize "STR_TunCon_CBA_enableShowWakeUpChance", localize "STR_TunCon_CBA_enableShowWakeUpChanceTooltip"],
+	["Tun Utilities - Uncon Info", "Uncon Info"],
+	true,
+	1,
+	{},
+	false
+] call CBA_fnc_addSetting;
+
+[
 	QGVAR(enableShowBleeding),
 	"CHECKBOX",
 	[localize "STR_TunCon_CBA_enableShowBleeding", localize "STR_TunCon_CBA_enableShowBleedingTooltip"],

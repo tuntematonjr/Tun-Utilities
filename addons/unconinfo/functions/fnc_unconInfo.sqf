@@ -63,8 +63,17 @@ if (ace_player getVariable ["ace_medical_inCardiacArrest", false]) then {
 			_texts pushBack localize "STR_TunCon_hasStableVitals";
 		};
 
-		if (GVAR(enableShowEpinephrine) && {_hasEpi}) then {
+		if (GVAR(enableShowEpinephrine) && {_hasEpi} && {!GVAR(enableShowWakeUpChance)}) then {
 			_texts pushBack localize "STR_TunCon_hasepinEphrine";
+		};
+
+		if (GVAR(enableShowWakeUpChance)) then {
+			([ace_player] call FUNC(epiEstimation)) params ["_wakeChancePerCheck", "_epiBoostCheckRate", "_wakeChanceNextMinute", "_checksPerMinute"];
+			_texts pushBack format [localize "STR_TunCon_wakeUpChance", round (_wakeChancePerCheck * 10000) / 100, round (_checksPerMinute * 100) / 100];
+			_texts pushBack format [localize "STR_TunCon_wakeUpNextMinute", round (_wakeChanceNextMinute * 10000) / 100];
+			if (_hasEpi) then {
+				_texts pushBack format [localize "STR_TunCon_epiBoost", round (_epiBoostCheckRate * 100) / 100];
+			};
 		};
 	} else {
 		if (GVAR(enableShowStableVitals)) then {
