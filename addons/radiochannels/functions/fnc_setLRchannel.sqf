@@ -30,14 +30,13 @@ private _lrValues = _radioValues select 1;
 if (_setSquadValues) then {
 	private _values = (group player) getVariable [QGVAR(radioValues), [[],[],[]]];
 	private _lrValues = _values select 1;
-	_channel = _lrValues select 1;
 	_frequency = _lrValues select 0;
+	_channel = ((_lrValues select 1) - 1);
 } else {
 	_frequency = (_lrValues select _index) select 0;
-	_channel = (_lrValues select _index) select 1;
+	_channel = ((_lrValues select _index) select 1) - 1;
 };
 
-_channel = _channel - 1;
 
 if (_isAdditional) then {
 	_frequency = [_frequency] call FUNC(checkFrequency);

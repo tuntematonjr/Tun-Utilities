@@ -22,16 +22,16 @@ private _radioValues = GVAR(radioValues) getOrDefault [playerSide, [[],[]]];
 private _srValues = _radioValues select 0;
 private _lrValues = _radioValues select 1;
 
-private _text = "<font face='PuristaBold' size='20'>Long Range Net(s)</font><br/><br/>";
+private _text = ["<font face='PuristaBold' size='20'>Long Range Net(s)</font><br/><br/>"];
 
 { 
 	_x params ["_frequency", "_channel", "_name"];
 	_frequency = [_frequency] call FUNC(checkFrequency);
 	private _index = _forEachIndex;
-	_text = _text + format ["[<execute expression='[%6,false] call %5;'>Set LR</execute> - <execute expression='[%6,true] call %5;'>Set LR Additional</execute> - <execute expression='[%6,2,true] call %4;'>Set SR Additional</execute> ] Channel: %1 (%2) - %3<br/>", _channel, _frequency, toUpper _name, QFUNC(setSRchannel), QFUNC(setLRchannel), _index];
+	_text pushBack (format["[<execute expression='[%6,false] call %5;'>Set LR</execute> - <execute expression='[%6,true] call %5;'>Set LR Additional</execute> - <execute expression='[%6,2,true] call %4;'>Set SR Additional</execute> ] Channel: %1 (%2) - %3<br/>", _channel, _frequency, toUpper _name, QFUNC(setSRchannel), QFUNC(setLRchannel), _index]);
 } forEach _lrValues;
 
-_text = _text + "<br/><br/><font face='PuristaBold' size='20'>Squad Net(s)</font>";
+_text pushBack "<br/><br/><font face='PuristaBold' size='20'>Squad Net(s)</font>";
 
 private _commandTrimmedLast = "";
 { 
@@ -47,18 +47,18 @@ private _commandTrimmedLast = "";
 	if (parseNumber _frequency < 100) then {
 		_space = "   ";
 	};
-	_text = _text + (format ["%4[ <execute expression='[%7,1] call %5;'>Set</execute> - <execute expression='[%7,2] call %5;'>Set Additional</execute> ] Channel: %1 (%2)%6- %3", _channel, _frequency, _name, _divader, QFUNC(setSRchannel), _space, _index]);
+	_text pushBack (format ["%4[ <execute expression='[%7,1] call %5;'>Set</execute> - <execute expression='[%7,2] call %5;'>Set Additional</execute> ] Channel: %1 (%2)%6- %3", _channel, _frequency, _name, _divader, QFUNC(setSRchannel), _space, _index]);
 
 	_commandTrimmedLast = _commandTrimmed;
 } forEach _srValues;
 
-_text = _text + (format ["<br/><br/><execute expression='[true] call %1;'>Clear SR additional</execute> - <execute expression='[false] call %1;'>Clear LR additional</execute>", QFUNC(clearAdditional)]);
+_text pushBack (format ["<br/><br/><execute expression='[true] call %1;'>Clear SR additional</execute> - <execute expression='[false] call %1;'>Clear LR additional</execute>", QFUNC(clearAdditional)]);
 
-_text = _text + (format ["<br/><br/>Radio channels are set automatically after mission start.<br/>The system attempts to find an LR net for your unit. If you are in a command element, it assigns the appropriate command LR channel; otherwise, it assigns the platoon channel if available.<br/>If you don't have LR capability, your command channel will be set to your SR additional channel.<br/><br/>Radio controls will become available once the mission begins and TFAR is fully initialized.<br/>Channel 7 is reserved for separately defined frequencies.<br/>Channel 8 is for additional channels.<br/><br/><font color='#4F4F4F' size='11'>Powered By TuntematonEngine v%1.%2.%3.%4</font>", MAJOR, MINOR, PATCH, BUILD]);
+_text pushBack (format ["<br/><br/>Radio channels are set automatically after mission start.<br/>The system attempts to find an LR net for your unit. If you are in a command element, it assigns the appropriate command LR channel; otherwise, it assigns the platoon channel if available.<br/>If you don't have LR capability, your command channel will be set to your SR additional channel.<br/><br/>Radio controls will become available once the mission begins and TFAR is fully initialized.<br/>Channel 7 is reserved for separately defined frequencies.<br/>Channel 8 is for additional channels.<br/><br/><font color='#4F4F4F' size='11'>Powered By TuntematonEngine v%1.%2.%3.%4</font>", MAJOR, MINOR, PATCH, BUILD]);
 
-player createDiaryRecord ["Diary",["Command & Signal",_text]];
+player createDiaryRecord ["Diary",["Command & Signal",_text joinString ""]];
 player createDiarySubject ["Command & Signal","Command & Signal", QPATHTOF(images\TunUti_Radios.paa)];
-player createDiaryRecord ["Command & Signal",["Command & Signal",_text]];
+player createDiaryRecord ["Command & Signal",["Command & Signal",_text joinString ""]];
 
 [{ cba_missionTime > 0 && {!isNull player}  && {TFAR_core_SettingsInitialized}}, {
 	LOG("Player start auto set radios");
